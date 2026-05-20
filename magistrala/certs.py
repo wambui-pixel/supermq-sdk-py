@@ -1,18 +1,18 @@
 import requests
 
-from mainflux import response
-from mainflux import errors
-from mainflux import utils
+from magistrala import response
+from magistrala import errors
+from magistrala import utils
 
 
 class Certs:
-    """Mainflux Certificates API
+    """Magistrala Certificates API
     
         Certs is used to issue, view, and revoke certificates.
-        It is used to issue certificates for things. 
+        It is used to issue certificates for clients. 
         
         Args:
-            url (str): Mainflux Certificates API URL.
+            url (str): Magistrala Certificates API URL.
             CERTS_ENDPOINT (str): Certificates API endpoint.
     """
     CERTS_ENDPOINT = "certs"
@@ -21,7 +21,7 @@ class Certs:
         """Initializes Certs with the provided URL.
         
             Args:
-                url (str): Mainflux Certificates API URL.
+                url (str): Magistrala Certificates API URL.
                 
             Returns:
                 Certs: Certs object.
@@ -38,10 +38,10 @@ class Certs:
             token (str): Authorization token.
             
         Returns:
-            Response: Mainflux response.
+            Response: Magistrala response.
             
         Usage:
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(certs_url="http://localhost:9019")
             >>> thing_id = "thing_id"
             >>> valid = "1h"
@@ -81,7 +81,7 @@ class Certs:
             
         Usage:
         
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(certs_url="http://localhost:9019")
             >>> thing_id = "thing_id"
             >>> mf_resp = mfsdk.certs.view_by_thing(thing_id)
@@ -116,7 +116,7 @@ class Certs:
             
         Usage:
 
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(certs_url="http://localhost:9019")
             >>> cert_id = "cert_id"
             >>> mf_resp = mfsdk.certs.view_by_serial(cert_id)
@@ -150,7 +150,7 @@ class Certs:
             
         Usage:
         
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(certs_url="http://localhost:9019")
             >>> thing_id = "thing_id"
             >>> mf_resp = mfsdk.certs.revoke(thing_id)

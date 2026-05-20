@@ -1,32 +1,32 @@
 import requests
-from mainflux import response
-from mainflux import errors
-from mainflux import utils
+from magistrala import response
+from magistrala import errors
+from magistrala import utils
 
 
-class Things:
-    """Things API client.
+class Clients:
+    """Clients API client.
     
-    Things API is used for creating and managing things.
-    It is used for creating new things, creating multiple things
+    Clients API is used for creating and managing clients.
+    It is used for creating new clients, creating multiple clients
     getting thing information, updating thing information, disabling 
-    and enabling things ,and connecting and disconnecting things.
+    and enabling clients ,and connecting and disconnecting clients.
     
     Attributes:
-        URL: str - URL of the Things API
-        THINGS_ENDPOINT: str - Things API endpoint
+        URL: str - URL of the Clients API
+        CLIENTS_ENDPOINT: str - Clients API endpoint
     """
-    THINGS_ENDPOINT = "things"
+    CLIENTS_ENDPOINT = "clients"
 
     def __init__(self, url: str):
         self.URL = url
-    """Initializes Things API client.
+    """Initializes Clients API client.
         
         params:
-            url: str - URL of the Things API
+            url: str - URL of the Clients API
         
         returns:
-            Thigs: Things - Things API client
+            Thigs: Clients - Clients API client
             
         raises:
             None
@@ -49,69 +49,69 @@ class Things:
 
         Usage::
             
-            >>> from mainflux import sdk
-            >>> mfsdk = sdk.SDK(things_url="http://localhost:9000")
+            >>> from magistrala import sdk
+            >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
             >>> thing = {
             ...     "name": "thing1",
             ...  }
-            >>> mf_resp = mfsdk.things.create(thing)
+            >>> mf_resp = mfsdk.clients.create(thing)
             >>> mf_resp            
         """
         mf_resp = response.Response()
         http_resp = requests.post(
-            self.URL + "/" + self.THINGS_ENDPOINT,
+            self.URL + "/" + self.CLIENTS_ENDPOINT,
             json=thing,
             headers=utils.construct_header(token, utils.CTJSON),
         )
         if http_resp.status_code != 201:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.things["create"], http_resp.status_code
+                errors.clients["create"], http_resp.status_code
             )
         else:
              mf_resp.value = http_resp.json()
         return mf_resp
 
-    def create_bulk(self, things: list, token: str):
-        """Creates multiple things in bulk.
+    def create_bulk(self, clients: list, token: str):
+        """Creates multiple clients in bulk.
                 
-        Creates multiple new things with provided things information.
-        If a token is provided, it will be used to create the new things.
+        Creates multiple new clients with provided clients information.
+        If a token is provided, it will be used to create the new clients.
 
         params:
-            things: list - a list of things with theri information for example:
+            clients: list - a list of clients with theri information for example:
                 [
                     {"name": "thing2"}, 
                     {"name": "thing3"}, 
                     {"name": "thing4"}
                 ]
-            token: str - token used for creating the new things.
+            token: str - token used for creating the new clients.
             
         returns:
             mf_resp: response.Response - response object
 
         Usage::
             
-            >>> from mainflux import sdk
-            >>> mfsdk = sdk.SDK(things_url="http://localhost:9000")
-            >>> things = [
+            >>> from magistrala import sdk
+            >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
+            >>> clients = [
             ...     {"name": "thing2"}, 
             ...     {"name": "thing3"}, 
             ...     {"name": "thing4"}
             ... ]
-            >>> mf_resp = mfsdk.things.create_bulk(things)
+            >>> mf_resp = mfsdk.clients.create_bulk(clients)
             >>> mf_resp            
         """
         mf_resp = response.Response()
         http_resp = requests.post(
-            self.URL + "/" + self.THINGS_ENDPOINT + "/bulk",
-            json=things,
+            self.URL + "/" + self.CLIENTS_ENDPOINT + "/bulk",
+            json=clients,
             headers=utils.construct_header(token, utils.CTJSON),
         )
         if http_resp.status_code != 200:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.things["create_bulk"], http_resp.status_code
+                errors.clients["create_bulk"], http_resp.status_code
             )
         else:
             mf_resp.value = http_resp.json()
@@ -133,30 +133,30 @@ class Things:
             
         Usage::
                 
-            >>> from mainflux import sdk
-            >>> mfsdk = sdk.SDK(things_url="http://localhost:9000")
+            >>> from magistrala import sdk
+            >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
             >>> thing_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
-            >>> mf_resp = mfsdk.things.get(thing_id)
+            >>> mf_resp = mfsdk.clients.get(thing_id)
             >>> mf_resp        
         """
         mf_resp = response.Response()
         http_resp = requests.get(
-            self.URL + "/" + self.THINGS_ENDPOINT + "/" + thing_id,
+            self.URL + "/" + self.CLIENTS_ENDPOINT + "/" + thing_id,
             headers=utils.construct_header(token, utils.CTJSON),
         )
         if http_resp.status_code != 200:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.things["get"], http_resp.status_code
+                errors.clients["get"], http_resp.status_code
             )
         else:
             mf_resp.value = http_resp.json()
         return mf_resp
 
     def get_all(self, query_params: dict, token: str):
-        """Gets all things from database.
+        """Gets all clients from database.
         
-        Provides information about all things in a JSON format. It is controlled
+        Provides information about all clients in a JSON format. It is controlled
         by a set of query parameters and a valid token.
         
         params:
@@ -165,42 +165,42 @@ class Things:
                     "offset": 0,
                     "limit": 10
                 }
-                where offset is the number of things to skip and limit is the maximum
-            token: str - token used for getting all things information
+                where offset is the number of clients to skip and limit is the maximum
+            token: str - token used for getting all clients information
         
         returns:
             mf_resp: response.Response - response object.
             
         Usage::
                     
-            >>> from mainflux import sdk
-            >>> mfsdk = sdk.SDK(things_url="http://localhost:9000")
+            >>> from magistrala import sdk
+            >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
             >>> query_params = {
             ...     "offset": 0,
             ...     "limit": 10
             ... }
-            >>> mf_resp = mfsdk.things.get_all(query_params)
+            >>> mf_resp = mfsdk.clients.get_all(query_params)
             >>> mf_resp        
         """
         mf_resp = response.Response()
         http_resp = requests.get(
-            self.URL + "/" + self.THINGS_ENDPOINT,
+            self.URL + "/" + self.CLIENTS_ENDPOINT,
             headers=utils.construct_header(token, utils.CTJSON),
             params=query_params,
         )
         if http_resp.status_code != 200:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.things["get_all"], http_resp.status_code
+                errors.clients["get_all"], http_resp.status_code
             )
         else:
             mf_resp.value = http_resp.json()
         return mf_resp
 
     def get_by_channel(self, channel_id: str, query_params: dict, token: str):
-        """Gets all things to which a specific thing is connected to.
+        """Gets all clients to which a specific thing is connected to.
         
-        Provides a list of all things that are connected to a specific channel when
+        Provides a list of all clients that are connected to a specific channel when
         given a channel ID and valid token.
         
         params:
@@ -210,34 +210,34 @@ class Things:
                     "offset": 0,
                     "limit": 10
                 }
-                where offset is the number of things to skip and limit is the maximum
-            token: str - token used for getting all things information
+                where offset is the number of clients to skip and limit is the maximum
+            token: str - token used for getting all clients information
         
         returns:    
             mf_resp: response.Response - response object.
             
         Usage::
                         
-            >>> from mainflux import sdk
-            >>> mfsdk = sdk.SDK(things_url="http://localhost:9000")
+            >>> from magistrala import sdk
+            >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
             >>> channel_id = "567f7da5-b7bf-49b7-bf2f-99995e78afd9"
             >>> query_params = {
             ...     "offset": 0,
             ...     "limit": 10
             ... }
-            >>> mf_resp = mfsdk.things.get_by_channel(channel_id, query_params)
+            >>> mf_resp = mfsdk.clients.get_by_channel(channel_id, query_params)
             >>> mf_resp        
         """
         mf_resp = response.Response()
         http_resp = requests.get(
-            self.URL + "/channels/" + channel_id + "/" + self.THINGS_ENDPOINT,
+            self.URL + "/channels/" + channel_id + "/" + self.CLIENTS_ENDPOINT,
             headers=utils.construct_header(token, utils.CTJSON),
             params=query_params,
         )
         if http_resp.status_code != 200:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.things["get_by_channel"], http_resp.status_code
+                errors.clients["get_by_channel"], http_resp.status_code
             )
         else:
             mf_resp.value = http_resp.json()
@@ -263,17 +263,17 @@ class Things:
             
         Usage::
                                 
-            >>> from mainflux import sdk
-            >>> mfsdk = sdk.SDK(things_url="http://localhost:9000")
+            >>> from magistrala import sdk
+            >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
             >>> thing_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
             >>> thing = {
             ...     "name": "thing2",
             ...  }
-            >>> mf_resp = mfsdk.things.update(thing_id, thing)
+            >>> mf_resp = mfsdk.clients.update(thing_id, thing)
             >>> mf_resp            
         """
         http_resp = requests.patch(
-            self.URL + "/" + self.THINGS_ENDPOINT + "/" + thing_id,
+            self.URL + "/" + self.CLIENTS_ENDPOINT + "/" + thing_id,
             json=thing,
             headers=utils.construct_header(token, utils.CTJSON),
         )
@@ -281,7 +281,7 @@ class Things:
         if http_resp.status_code != 200:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.things["update"], http_resp.status_code
+                errors.clients["update"], http_resp.status_code
             )
         else:
             mf_resp.value = http_resp.json()
@@ -307,17 +307,17 @@ class Things:
         
         Usage::
 
-            >>> from mainflux import sdk
-            >>> mfsdk = sdk.SDK(things_url="http://localhost:9000")
+            >>> from magistrala import sdk
+            >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
             >>> thing_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
             >>> thing = {
             ...     "key": "thing2",
             ...  }
-            >>> mf_resp = mfsdk.things.update_thing_secret(thing_id, thing)
+            >>> mf_resp = mfsdk.clients.update_thing_secret(thing_id, thing)
             >>> mf_resp
         """
         http_resp = requests.patch(
-            self.URL + "/" + self.THINGS_ENDPOINT + "/" + thing_id + "/secret",
+            self.URL + "/" + self.CLIENTS_ENDPOINT + "/" + thing_id + "/secret",
             json=thing,
             headers=utils.construct_header(token, utils.CTJSON),
         )
@@ -325,7 +325,7 @@ class Things:
         if http_resp.status_code != 200:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.things["update_thing_secret"], http_resp.status_code
+                errors.clients["update_thing_secret"], http_resp.status_code
             )
         else:
             mf_resp.value = http_resp.json()
@@ -351,17 +351,17 @@ class Things:
             
         Usage::
         
-            >>> from mainflux import sdk   
-            >>> mfsdk = sdk.SDK(things_url="http://localhost:9000")
+            >>> from magistrala import sdk   
+            >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
             >>> thing_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
             >>> thing = {
             ...     "tags": ["tag1", "tag2"]
             ...  }
-            >>> mf_resp = mfsdk.things.update_thing_tags(thing_id, thing)
+            >>> mf_resp = mfsdk.clients.update_thing_tags(thing_id, thing)
             >>> mf_resp
         """
         http_resp = requests.patch(
-            self.URL + "/" + self.THINGS_ENDPOINT + "/" + thing_id + "/tags",
+            self.URL + "/" + self.CLIENTS_ENDPOINT + "/" + thing_id + "/tags",
             json=thing,
             headers=utils.construct_header(token, utils.CTJSON),
         )
@@ -369,7 +369,7 @@ class Things:
         if http_resp.status_code != 200:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.things["update_thing_tags"], http_resp.status_code
+                errors.clients["update_thing_tags"], http_resp.status_code
             )
         else:
             mf_resp.value = http_resp.json()
@@ -395,17 +395,17 @@ class Things:
             
         Usage::
 
-            >>> from mainflux import sdk
-            >>> mfsdk = sdk.SDK(things_url="http://localhost:9000")
+            >>> from magistrala import sdk
+            >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
             >>> thing_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
             >>> thing = {
             ...     "owner": "user1"
             ...  }
-            >>> mf_resp = mfsdk.things.update_thing_owner(thing_id, thing)
+            >>> mf_resp = mfsdk.clients.update_thing_owner(thing_id, thing)
             >>> mf_resp
         """
         http_resp = requests.patch(
-            self.URL + "/" + self.THINGS_ENDPOINT + "/" + thing_id + "/owner",
+            self.URL + "/" + self.CLIENTS_ENDPOINT + "/" + thing_id + "/owner",
             json=thing,
             headers=utils.construct_header(token, utils.CTJSON),
         )
@@ -413,7 +413,7 @@ class Things:
         if http_resp.status_code != 200:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.things["update_thing_owner"], http_resp.status_code
+                errors.clients["update_thing_owner"], http_resp.status_code
             )
         else:
             mf_resp.value = http_resp.json()
@@ -433,28 +433,28 @@ class Things:
             
         Usage::
                         
-            >>> from mainflux import sdk
-            >>> mfsdk = sdk.SDK(things_url="http://localhost:9000")
+            >>> from magistrala import sdk
+            >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
             >>> thing_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
-            >>> mf_resp = mfsdk.things.disable(thing_id)
+            >>> mf_resp = mfsdk.clients.disable(thing_id)
             >>> mf_resp        
         """
         http_resp = requests.post(
-            self.URL + "/" + self.THINGS_ENDPOINT + "/" + thing_id + "/disable",
+            self.URL + "/" + self.CLIENTS_ENDPOINT + "/" + thing_id + "/disable",
             headers=utils.construct_header(token, utils.CTJSON),
         )
         mf_resp = response.Response()
         if http_resp.status_code != 200:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.things["delete"], http_resp.status_code
+                errors.clients["delete"], http_resp.status_code
             )
         return mf_resp
 
     def connects(self, thing_ids: list, channel_ids: list, actions: list, token: str):
-        """Connects things and channels. 
+        """Connects clients and channels. 
         
-        Connects multiple things and channels with provided thing IDs 
+        Connects multiple clients and channels with provided thing IDs 
         as the subjects, channel IDs as the objects, actions that the 
         thing can partake in and a valid token.
         
@@ -463,19 +463,19 @@ class Things:
             channel_ids: list - list of channel IDs
             actions: list - list of actions for example: 
                 ["m_write", "m_read"]
-            token: str - token used for connecting things and channels
+            token: str - token used for connecting clients and channels
             
         returns:
             mf_resp: response.Response - response object.
             
         Usage::
         
-            >>> from mainflux import sdk
-            >>> mfsdk = sdk.SDK(things_url="http://localhost:9000")
+            >>> from magistrala import sdk
+            >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
             >>> thing_ids = ["fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"]
             >>> channel_ids = ["567f7da5-b7bf-49b7-bf2f-99995e78afd9"]
             >>> actions = ["m_write", "m_read"]
-            >>> mf_resp = mfsdk.things.connects(thing_ids, channel_ids, actions)
+            >>> mf_resp = mfsdk.clients.connects(thing_ids, channel_ids, actions)
             >>> mf_resp            
         """
         payload = {"subjects": thing_ids, "objects": channel_ids, "actions": actions}
@@ -488,33 +488,33 @@ class Things:
         if http_resp.status_code != 201:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.things["connect"], http_resp.status_code
+                errors.clients["connect"], http_resp.status_code
             )
         else:
             mf_resp.value = http_resp.json()
         return mf_resp
 
     def disconnects(self, thing_ids: list, channel_ids: list, token: str):
-        """Disconnect things and channels.
+        """Disconnect clients and channels.
         
-        Disconnects multiple things and channels with provided thing IDs 
+        Disconnects multiple clients and channels with provided thing IDs 
         as the subjects, channel IDs as the objects and a valid token.
         
         params:
             thing_ids: list - list of thing IDs
             channel_ids: list - list of channel IDs
-            token: str - token used for disconnecting things and channels
+            token: str - token used for disconnecting clients and channels
         
         returns:
             mf_resp: response.Response - response object.
             
         Usage::
         
-            >>> from mainflux import sdk
-            >>> mfsdk = sdk.SDK(things_url="http://localhost:9000")
+            >>> from magistrala import sdk
+            >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
             >>> thing_ids = ["fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"]
             >>> channel_ids = ["567f7da5-b7bf-49b7-bf2f-99995e78afd9"]
-            >>> mf_resp = mfsdk.things.disconnects(thing_ids, channel_ids)
+            >>> mf_resp = mfsdk.clients.disconnects(thing_ids, channel_ids)
             >>> mf_resp
         """
         payload = {"subjects": thing_ids, "objects": channel_ids}
@@ -527,7 +527,7 @@ class Things:
         if http_resp.status_code != 204:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.things["disconnect"], http_resp.status_code
+                errors.clients["disconnect"], http_resp.status_code
             )
         return mf_resp
 
@@ -549,12 +549,12 @@ class Things:
             
         Usage::
         
-            >>> from mainflux import sdk
-            >>> mfsdk = sdk.SDK(things_url="http://localhost:9000")
+            >>> from magistrala import sdk
+            >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
             >>> thing_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
             >>> channel_id = "567f7da5-b7bf-49b7-bf2f-99995e78afd9"
             >>> action = "m_write"
-            >>> mf_resp = mfsdk.things.connect(thing_id, channel_id, action)
+            >>> mf_resp = mfsdk.clients.connect(thing_id, channel_id, action)
             >>> mf_resp
         """
         payload= {"subject": thing_id, "object": channel_id, "action": action}
@@ -567,7 +567,7 @@ class Things:
         if http_resp.status_code != 201:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.things["connect"], http_resp.status_code
+                errors.clients["connect"], http_resp.status_code
             )
         else:
             mf_resp.value = "connected"
@@ -589,11 +589,11 @@ class Things:
             
         Usage::
 
-            >>> from mainflux import sdk
-            >>> mfsdk = sdk.SDK(things_url="http://localhost:9000")
+            >>> from magistrala import sdk
+            >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
             >>> thing_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
             >>> channel_id = "567f7da5-b7bf-49b7-bf2f-99995e78afd9"
-            >>> mf_resp = mfsdk.things.disconnect(thing_id, channel_id)
+            >>> mf_resp = mfsdk.clients.disconnect(thing_id, channel_id)
             >>> mf_resp
         """
         payload = {"subject": thing_id, "object": channel_id}
@@ -606,7 +606,7 @@ class Things:
         if http_resp.status_code != 204:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.things["disconnect"], http_resp.status_code
+                errors.clients["disconnect"], http_resp.status_code
             )
         else:
             mf_resp.value = "Disconnected"
@@ -631,12 +631,12 @@ class Things:
             
         Usage::
         
-            >>> from mainflux import sdk
-            >>> mfsdk = sdk.SDK(things_url="http://localhost:9000")
+            >>> from magistrala import sdk
+            >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
             >>> user_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
             >>> channel_id = "567f7da5-b7bf-49b7-bf2f-99995e78afd9"
             >>> actions = ["m_write", "m_read"]
-            >>> mf_resp = mfsdk.things.share_thing(user_id, channel_id, actions)
+            >>> mf_resp = mfsdk.clients.share_thing(user_id, channel_id, actions)
             >>> mf_resp
         """
         payload = {"object": channel_id, "subject": user_id, "actions": actions, "external": True}
@@ -649,7 +649,7 @@ class Things:
         if http_resp.status_code != 201:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.things["share_thing"], http_resp.status_code
+                errors.clients["share_thing"], http_resp.status_code
             )
         else:
             mf_resp.value = "OK"
@@ -677,15 +677,15 @@ class Things:
             
         Usage::
         
-            >>> from mainflux import sdk
-            >>> mfsdk = sdk.SDK(things_url="http://localhost:9000")
+            >>> from magistrala import sdk
+            >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
             >>> access_request = {
             ...     "subject": "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9",
             ...     "object": "567f7da5-b7bf-49b7-bf2f-99995e78afd9",
             ...     "actions": "m_write"
             ...     "entity_type": "group"
             ... }
-            >>> mf_resp = mfsdk.things.authorise_thing(access_request)
+            >>> mf_resp = mfsdk.clients.authorise_thing(access_request)
             >>> mf_resp
         """
         mf_resp = response.Response()
@@ -697,7 +697,7 @@ class Things:
         if http_resp.status_code != 200:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.things["authorise_thing"], http_resp.status_code
+                errors.clients["authorise_thing"], http_resp.status_code
             )
         else:
             mf_resp.value = "True"

@@ -1,9 +1,9 @@
 import requests
 import json
 
-from mainflux import response
-from mainflux import errors
-from mainflux import utils
+from magistrala import response
+from magistrala import errors
+from magistrala import utils
 
 
 class Users:
@@ -55,7 +55,7 @@ class Users:
 
         Usage::
             
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")
             >>> user = {
             ...     "name": "example",
@@ -91,7 +91,7 @@ class Users:
         params: 
             user: a dict with the user information and password for example: 
             {"credentials":{
-                "identity": "user@mainflux.com",
+                "identity": "user@magistrala.com",
                 "secret": "12345678"
                 }
             }
@@ -100,10 +100,10 @@ class Users:
         
         Usage:: 
         
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")
             >>> credentials= {
-            ...         "identity": "user@mainflux.com",
+            ...         "identity": "user@magistrala.com",
             ...         "secret": "12345678"
             ... }
             >>> mf_resp = mfsdk.users.login(credentials)
@@ -135,7 +135,7 @@ class Users:
         
         Usage:: 
 
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")
             >>> mf_resp = mfsdk.users.refresh_token(refresh_token)
             >>> mf_resp
@@ -169,7 +169,7 @@ class Users:
 
         Usage::
             
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")
             >>> user_id = "886b4266-77d1-4258-abae-2931fb4f16de"
             >>> token = ""
@@ -210,7 +210,7 @@ class Users:
         
         Usage::
 
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")
             >>> query_params = {
             ...     "offset" : 0, "limit" : 10
@@ -258,7 +258,7 @@ class Users:
 
         Usage::
             
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")
             >>> user = {
             ...     "name": "example",
@@ -311,7 +311,7 @@ class Users:
 
         Usage::
             
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")
             >>> user = {
             ...    "name": "example",
@@ -369,7 +369,7 @@ class Users:
 
         Usage::
             
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")
             >>> user = {
             ...     "name": "example",
@@ -418,7 +418,7 @@ class Users:
 
         Usage::
             
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")
             >>> user = {
             ...     "name": "example",
@@ -459,7 +459,7 @@ class Users:
 
         Usage::
             
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")
             ... old_secret = 12345678
             ... new_secret = 87654321
@@ -500,7 +500,7 @@ class Users:
         
         Usage::
             
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")
             ... email = admin@example.com
             ... url = stp@gmail.com
@@ -540,7 +540,7 @@ class Users:
         
         Usage::
             
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")
             ... password = 234567
             ... confirm_password = 234567
@@ -580,7 +580,7 @@ class Users:
 
         Usage::
             
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")
             >>> user_id= "886b4266-77d1-4258-abae-2931fb4f16de"
             >>> mf_resp = mfsdk.users.enable(user_id, user_token)
@@ -612,7 +612,7 @@ class Users:
 
         Usage::
             
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")
             >>> user_id= "886b4266-77d1-4258-abae-2931fb4f16de"
             >>> mf_resp = mfsdk.users.disable(user_id, user_token)
@@ -654,7 +654,7 @@ class Users:
 
         Usage::
             
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")
             >>> access_request = {
             ...     "subject": "<user_id>",

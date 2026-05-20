@@ -1,4 +1,4 @@
-from mainflux import sdk
+from magistrala import sdk
 
 import requests_mock
 
@@ -21,7 +21,7 @@ thing = {
   },
   "status": "enabled"
 }
-things = [{
+clients = [{
   "id": "4e5532c0-cf92-4ef3-ab7b-65ee30151c99",
   "name": "thing1",
   "tags": [
@@ -89,187 +89,187 @@ policies= {
 }
 
 def test_create_thing(requests_mock):
-    requests_mock.register_uri("POST", url + "/things", headers={"location": "/things/" + thing["id"]}, json=thing, status_code=201)
-    r = s.things.create(thing=thing, token=token)
+    requests_mock.register_uri("POST", url + "/clients", headers={"location": "/clients/" + thing["id"]}, json=thing, status_code=201)
+    r = s.clients.create(thing=thing, token=token)
     assert r.error.status == 0
     assert thing == r.value
 
 def test_create_existing_thing(requests_mock):
-    requests_mock.register_uri("POST", url + "/things", headers={"location": "/things/" + thing_id}, status_code=409)
-    r = s.things.create(thing=thing, token=token)
+    requests_mock.register_uri("POST", url + "/clients", headers={"location": "/clients/" + thing_id}, status_code=409)
+    r = s.clients.create(thing=thing, token=token)
     assert r.error.status == 1
     assert r.error.message == "Entity already exist."
 
-def test_create_bulk_things(requests_mock):
-    requests_mock.register_uri("POST", url + "/things/bulk", json=things, status_code=200)
-    r = s.things.create_bulk(things=things, token=token)
+def test_create_bulk_clients(requests_mock):
+    requests_mock.register_uri("POST", url + "/clients/bulk", json=clients, status_code=200)
+    r = s.clients.create_bulk(clients=clients, token=token)
     assert r.error.status == 0
-    assert things == r.value
+    assert clients == r.value
 
-def test_create_bulk_things_missing_token(requests_mock):
-    requests_mock.register_uri("POST", url + "/things/bulk", json=[thing_id, thing_id1], headers={"location": "/things/" + thing_id}, status_code=401)
-    r = s.things.create_bulk(things=things, token=token)
+def test_create_bulk_clients_missing_token(requests_mock):
+    requests_mock.register_uri("POST", url + "/clients/bulk", json=[thing_id, thing_id1], headers={"location": "/clients/" + thing_id}, status_code=401)
+    r = s.clients.create_bulk(clients=clients, token=token)
     assert r.error.status == 1
     assert r.error.message == "Missing or invalid access token provided."
 
 def test_get_thing(requests_mock):
-    requests_mock.register_uri("GET", url + "/things/" + thing_id, json=thing, status_code=200)
-    r = s.things.get(thing_id=thing_id, token=token)
+    requests_mock.register_uri("GET", url + "/clients/" + thing_id, json=thing, status_code=200)
+    r = s.clients.get(thing_id=thing_id, token=token)
     assert r.error.status == 0
     assert thing == r.value
 
 def test_get_thing_malformed_query(requests_mock):
-    requests_mock.register_uri("GET", url + "/things/" + thing_id, json=thing, status_code=400)
-    r = s.things.get(thing_id=thing_id, token=token)
+    requests_mock.register_uri("GET", url + "/clients/" + thing_id, json=thing, status_code=400)
+    r = s.clients.get(thing_id=thing_id, token=token)
     assert r.error.status == 1
     assert r.error.message == "Failed due to malformed query parameters."
 
-def test_get_all_things(requests_mock):
-    requests_mock.register_uri("GET", url + "/things", json=[thing_id, thing_id1], status_code=200)
-    r = s.things.get_all(token=token, query_params=params)
+def test_get_all_clients(requests_mock):
+    requests_mock.register_uri("GET", url + "/clients", json=[thing_id, thing_id1], status_code=200)
+    r = s.clients.get_all(token=token, query_params=params)
     assert r.error.status == 0
     assert [thing_id, thing_id1] == r.value
 
 def test_get_all_thing_does_not_exist(requests_mock):
-    requests_mock.register_uri("GET", url + "/things", json=[thing_id, thing_id1], status_code=404)
-    r = s.things.get_all(token=token, query_params=params)
+    requests_mock.register_uri("GET", url + "/clients", json=[thing_id, thing_id1], status_code=404)
+    r = s.clients.get_all(token=token, query_params=params)
     assert r.error.status == 1
     assert r.error.message == "Thing does not exist."
 
 def test_get_by_channel(requests_mock):
-    requests_mock.register_uri("GET", url + "/channels/" + channel_id + "/things", json=channel_id, headers={"Authorization": "/channels/" + channel_id + "/things"}, status_code=200)
-    r = s.things.get_by_channel(channel_id=channel_id, query_params=params, token=token)
+    requests_mock.register_uri("GET", url + "/channels/" + channel_id + "/clients", json=channel_id, headers={"Authorization": "/channels/" + channel_id + "/clients"}, status_code=200)
+    r = s.clients.get_by_channel(channel_id=channel_id, query_params=params, token=token)
     assert r.error.status == 0
     assert channel_id == r.value
 
 def test_get_by_channel_missing_token(requests_mock):
-    requests_mock.register_uri("GET", url + "/channels/" + channel_id + "/things", json=channel_id, headers={"Authorization": "/channels/" + channel_id + "/things"}, status_code=401)
-    r = s.things.get_by_channel(channel_id=channel_id, query_params=params, token=token)
+    requests_mock.register_uri("GET", url + "/channels/" + channel_id + "/clients", json=channel_id, headers={"Authorization": "/channels/" + channel_id + "/clients"}, status_code=401)
+    r = s.clients.get_by_channel(channel_id=channel_id, query_params=params, token=token)
     assert r.error.status == 1
     assert r.error.message == "Missing or invalid access token provided."
 
 def test_update_thing(requests_mock):
-    requests_mock.register_uri("PATCH", url + "/things/" + thing["id"], json=thing, status_code=200)
-    r = s.things.update(thing_id=thing["id"], token=token, thing=thing)
+    requests_mock.register_uri("PATCH", url + "/clients/" + thing["id"], json=thing, status_code=200)
+    r = s.clients.update(thing_id=thing["id"], token=token, thing=thing)
     assert r.error.status == 0
     assert thing== r.value
 
 def test_update_thing_bad_json(requests_mock):
-    requests_mock.register_uri("PATCH", url + "/things/" + thing["id"], json=thing, status_code=404)
-    r = s.things.update(thing_id=thing["id"], token=token, thing=thing)
+    requests_mock.register_uri("PATCH", url + "/clients/" + thing["id"], json=thing, status_code=404)
+    r = s.clients.update(thing_id=thing["id"], token=token, thing=thing)
     assert r.error.status == 1
     assert r.error.message == "Thing does not exist."
 
 def test_update_thing_secret(requests_mock):
-    requests_mock.register_uri("PATCH", url + "/things/" + thing["id"] + "/secret", json=thing, status_code=200)
-    r = s.things.update_thing_secret(thing_id=thing["id"], token=token, thing=thing)
+    requests_mock.register_uri("PATCH", url + "/clients/" + thing["id"] + "/secret", json=thing, status_code=200)
+    r = s.clients.update_thing_secret(thing_id=thing["id"], token=token, thing=thing)
     assert r.error.status == 0
     assert thing== r.value
 
 def test_update_thing_secret_bad_token(requests_mock):
-    requests_mock.register_uri("PATCH", url + "/things/" + thing["id"] + "/secret", json=thing, status_code=401)
-    r = s.things.update_thing_secret(thing_id=thing["id"], token=token, thing=thing)
+    requests_mock.register_uri("PATCH", url + "/clients/" + thing["id"] + "/secret", json=thing, status_code=401)
+    r = s.clients.update_thing_secret(thing_id=thing["id"], token=token, thing=thing)
     assert r.error.status == 1
     assert r.error.message == "Missing or invalid access token provided."
 
 def test_update_thing_tags(requests_mock):
-    requests_mock.register_uri("PATCH", url + "/things/" + thing["id"] + "/tags", json=thing, status_code=200)
-    r = s.things.update_thing_tags(thing_id=thing["id"], token=token, thing=thing)
+    requests_mock.register_uri("PATCH", url + "/clients/" + thing["id"] + "/tags", json=thing, status_code=200)
+    r = s.clients.update_thing_tags(thing_id=thing["id"], token=token, thing=thing)
     assert r.error.status == 0
     assert thing== r.value
 
 def test_update_thing_tags_bad_token(requests_mock):
-    requests_mock.register_uri("PATCH", url + "/things/" + thing["id"] + "/tags", json=thing, status_code=401)
-    r = s.things.update_thing_tags(thing_id=thing["id"], token=token, thing=thing)
+    requests_mock.register_uri("PATCH", url + "/clients/" + thing["id"] + "/tags", json=thing, status_code=401)
+    r = s.clients.update_thing_tags(thing_id=thing["id"], token=token, thing=thing)
     assert r.error.status == 1
     assert r.error.message == "Missing or invalid access token provided."
 
 def test_update_thing_owner(requests_mock):
-    requests_mock.register_uri("PATCH", url + "/things/" + thing["id"] + "/owner", json=thing, status_code=200)
-    r = s.things.update_thing_owner(thing_id=thing["id"], token=token, thing=thing)
+    requests_mock.register_uri("PATCH", url + "/clients/" + thing["id"] + "/owner", json=thing, status_code=200)
+    r = s.clients.update_thing_owner(thing_id=thing["id"], token=token, thing=thing)
     assert r.error.status == 0
     assert thing== r.value
 
 def test_update_thing_owner_bad_token(requests_mock):
-    requests_mock.register_uri("PATCH", url + "/things/" + thing["id"] + "/owner", json=thing, status_code=401)
-    r = s.things.update_thing_owner(thing_id=thing["id"], token=token, thing=thing)
+    requests_mock.register_uri("PATCH", url + "/clients/" + thing["id"] + "/owner", json=thing, status_code=401)
+    r = s.clients.update_thing_owner(thing_id=thing["id"], token=token, thing=thing)
     assert r.error.status == 1
     assert r.error.message == "Missing or invalid access token provided."
 
 def test_disable_thing(requests_mock):
-    requests_mock.register_uri("POST", url + "/things/" + thing["id"] + "/disable", status_code=200)
-    r = s.things.disable(thing_id=thing["id"], token=token)
+    requests_mock.register_uri("POST", url + "/clients/" + thing["id"] + "/disable", status_code=200)
+    r = s.clients.disable(thing_id=thing["id"], token=token)
     assert r.error.status == 0
 
 def test_disable_bad_thing_id(requests_mock):
-    requests_mock.register_uri("POST", url + "/things/" + thing["id"] + "/disable", status_code=400)
-    r = s.things.disable(thing_id=thing["id"], token=token)
+    requests_mock.register_uri("POST", url + "/clients/" + thing["id"] + "/disable", status_code=400)
+    r = s.clients.disable(thing_id=thing["id"], token=token)
     assert r.error.status == 1
     assert r.error.message == "Failed due to malformed thing's ID."
 
 def test_connect_thing(requests_mock):
     requests_mock.register_uri("POST", url + "/policies", status_code=201)
-    r = s.things.connect(channel_id=channel_id, thing_id=thing_id, token=token, action=["m_read"])
+    r = s.clients.connect(channel_id=channel_id, thing_id=thing_id, token=token, action=["m_read"])
     assert r.error.status == 0
     assert r.value == "connected"
 
-def test_connects_things(requests_mock):
+def test_connects_clients(requests_mock):
     requests_mock.register_uri("POST", url + "/connect", json=policies, status_code=201)
-    r = s.things.connects(channel_ids=[channel_id], thing_ids=[thing_id, thing_id1], token=token, actions=["m_read"])
+    r = s.clients.connects(channel_ids=[channel_id], thing_ids=[thing_id, thing_id1], token=token, actions=["m_read"])
     assert r.error.status == 0    
     
-def test_connects_things_non_existing_entity(requests_mock):
+def test_connects_clients_non_existing_entity(requests_mock):
     requests_mock.register_uri("POST", url + "/connect", status_code=400)
-    r = s.things.connects(channel_ids=[channel_id], thing_ids=[thing_id, thing_id1], token=token, actions=["m_read"])
+    r = s.clients.connects(channel_ids=[channel_id], thing_ids=[thing_id, thing_id1], token=token, actions=["m_read"])
     assert r.error.status == 1
     assert r.error.message == "A non-existent entity request."
 
 def test_connect_non_existing_entity(requests_mock):
     requests_mock.register_uri("POST", url + "/policies", status_code=404)
-    r = s.things.connect(channel_id=channel_id, thing_id=thing_id, token=token, action="m_read")
+    r = s.clients.connect(channel_id=channel_id, thing_id=thing_id, token=token, action="m_read")
     assert r.error.status == 1
     assert r.error.message == "A non-existent entity request."
 
 def test_disconnect_thing(requests_mock):
     requests_mock.register_uri("DELETE", url + "/policies" + "/" + thing_id + "/" + channel_id, status_code=204)
-    r = s.things.disconnect(channel_id=channel_id, thing_id=thing_id, token=token)
+    r = s.clients.disconnect(channel_id=channel_id, thing_id=thing_id, token=token)
     assert r.error.status == 0
     
 def test_disconnect_thing_or_channel_does_not_exist(requests_mock):
     requests_mock.register_uri("DELETE", url + "/policies" + "/" + thing_id + "/" + channel_id, status_code=404)
-    r = s.things.disconnect(channel_id=channel_id, thing_id=thing_id, token=token)
+    r = s.clients.disconnect(channel_id=channel_id, thing_id=thing_id, token=token)
     assert r.error.status == 1
     assert r.error.message == "Channel or thing does not exist."
 
 def test_disconnects(requests_mock):
     requests_mock.register_uri("POST", url + "/disconnect", status_code=204)
-    r = s.things.disconnects(channel_ids=[channel_id], thing_ids=[thing_id, thing_id1], token=token)
+    r = s.clients.disconnects(channel_ids=[channel_id], thing_ids=[thing_id, thing_id1], token=token)
     assert r.error.status == 0
 
 def test_disconnects_bad_json(requests_mock):
     requests_mock.register_uri("POST", url + "/disconnect", status_code=404)
-    r = s.things.disconnects(channel_ids=[channel_id], thing_ids=[thing_id, thing_id1], token=token)
+    r = s.clients.disconnects(channel_ids=[channel_id], thing_ids=[thing_id, thing_id1], token=token)
     assert r.error.status == 1
     assert r.error.message == "Channel or thing does not exist."
 
 def test_share_thing(requests_mock):
     requests_mock.register_uri("POST", url + "/policies", status_code=201)
-    r = s.things.share_thing(channel_id=channel_id, user_id=user_id, actions= action, token=token)
+    r = s.clients.share_thing(channel_id=channel_id, user_id=user_id, actions= action, token=token)
     assert r.error.status == 0
 
 def test_share_thing_bad_token(requests_mock):
     requests_mock.register_uri("POST", url + "/policies", status_code=400)
-    r = s.things.share_thing(channel_id=channel_id, user_id=user_id, actions= action, token=token)
+    r = s.clients.share_thing(channel_id=channel_id, user_id=user_id, actions= action, token=token)
     assert r.error.status == 1
     assert r.error.message == "A non-existent entity request."
     
 def test_authorise_thing(requests_mock):
     requests_mock.register_uri("POST", url + "/channels/object/access", status_code=200)
-    r = s.things.authorise_thing(access_request=access_request , token=token)
+    r = s.clients.authorise_thing(access_request=access_request , token=token)
     assert r.error.status == 0
 
 def test_authorise_thing_bad_token(requests_mock):
     requests_mock.register_uri("POST", url + "/channels/object/access", status_code=403)
-    r = s.things.authorise_thing(access_request=access_request , token=token)
+    r = s.clients.authorise_thing(access_request=access_request , token=token)
     assert r.error.status == 1
     assert r.error.message == "False"

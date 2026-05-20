@@ -1,4 +1,4 @@
-from mainflux import sdk
+from magistrala import sdk
 
 import json
 import requests_mock
@@ -78,14 +78,14 @@ def test_get_all_channels_channel_does_not_exist(requests_mock):
     assert r.error.message == "Channel does not exist."
 
 def test_get_by_thing(requests_mock):
-    requests_mock.register_uri("GET", url + "/things/" + thing_id + "/channels", json=channel_id, headers={"Authorization": "/channels/" + channel_id + "/things"}, status_code=200)
+    requests_mock.register_uri("GET", url + "/clients/" + thing_id + "/channels", json=channel_id, headers={"Authorization": "/channels/" + channel_id + "/clients"}, status_code=200)
     r = s.channels.get_by_thing(
         thing_id=thing_id, query_params=params, token=token)
     assert r.error.status == 0
     assert channel_id == r.value
 
 def test_get_by_thing_does_not_exist(requests_mock):
-    requests_mock.register_uri("GET", url + "/things/" + thing_id + "/channels", json=channel_id, headers={"Authorization": "/channels/" + channel_id + "/things"}, status_code=404)
+    requests_mock.register_uri("GET", url + "/clients/" + thing_id + "/channels", json=channel_id, headers={"Authorization": "/channels/" + channel_id + "/clients"}, status_code=404)
     r = s.channels.get_by_thing(
         thing_id=thing_id, query_params=params, token=token)
     assert r.error.status == 1

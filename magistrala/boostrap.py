@@ -1,18 +1,18 @@
 import requests
 
-from mainflux import response
-from mainflux import errors
-from mainflux import utils
+from magistrala import response
+from magistrala import errors
+from magistrala import utils
 
 
 class Bootstrap:
     """Bootstrap service API client.
     
-    Bootstrap service is used to manage configurations for Mainflux Things. It provides 
+    Bootstrap service is used to manage configurations for Magistrala Clients. It provides 
     services such as updating, viewing, removing and adding new configurations.
     
     Attributes:
-        url (str): Mainflux Bootstrap API URL.
+        url (str): Magistrala Bootstrap API URL.
         CONFIGS_ENDPOINT (str): Configurations API endpoint.
         BOOTSTRAP_ENDPOINT (str): Bootstrap API endpoint.
         WHITELIST_ENDPOINT (str): Whitelist API endpoint.
@@ -21,14 +21,14 @@ class Bootstrap:
     """
     CONFIGS_ENDPOINT = "configs"
     BOOTSTRAP_ENDPOINT = "bootstrap"
-    WHITELIST_ENDPOINT = "things/state"
+    WHITELIST_ENDPOINT = "clients/state"
     BOOTSTRAP_CERTS_ENDPOINT = "configs/certs"
 
     def __init__(self, url: str):
         """Initializes Bootstrap with the provided URL.
         
         params:
-            url (str): Mainflux Bootstrap API URL.
+            url (str): Magistrala Bootstrap API URL.
             
         returns:
             Bootstrap: Bootstrap object.
@@ -61,7 +61,7 @@ class Bootstrap:
             
         Usage:
         
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(bootstrap_url="http://localhost:9013")
             >>> config = {
             ... "external_id": "123",
@@ -74,7 +74,7 @@ class Bootstrap:
         """
         mf_resp = response.Response()
         http_resp = requests.post(
-            self.url + "/things" + "/" + self.CONFIGS_ENDPOINT,
+            self.url + "/clients" + "/" + self.CONFIGS_ENDPOINT,
             json=config,
             headers=utils.construct_header(token, utils.CTJSON),
         )
@@ -89,7 +89,7 @@ class Bootstrap:
 
     def whitelist(self, config: dict, token: str):
         """Updating state represents enabling/disabling Config,
-        i.e.connecting and disconnecting corresponding Mainflux Thing to the
+        i.e.connecting and disconnecting corresponding Magistrala Thing to the
         list of Channels.
         
         params:
@@ -107,7 +107,7 @@ class Bootstrap:
             
         Usage:
         
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(bootstrap_url="http://localhost:9013")
             >>> config = {
             ... "external_id": "123",
@@ -150,7 +150,7 @@ class Bootstrap:
             
         Usage:
         
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(bootstrap_url="http://localhost:9013")
             >>> thing_id = "thing_id"
             >>> mf_resp = mfsdk.bootstrap.view(thing_id, token)
@@ -158,7 +158,7 @@ class Bootstrap:
         """
         mf_resp = response.Response()
         http_resp = requests.get(
-            self.url + "/things" + "/" + self.CONFIGS_ENDPOINT + "/" + thing_id,
+            self.url + "/clients" + "/" + self.CONFIGS_ENDPOINT + "/" + thing_id,
             headers=utils.construct_header(token, utils.CTJSON),
         )
         if http_resp.status_code != 200:
@@ -173,7 +173,7 @@ class Bootstrap:
     def update(self, config: dict, token: str):
         """Update is performed by replacing the current resource data with
         values provided in a request payload. Note that the owner, ID,
-        external ID, external key, Mainflux Thing ID and key cannot be
+        external ID, external key, Magistrala Thing ID and key cannot be
         changed.
         
         params:
@@ -192,7 +192,7 @@ class Bootstrap:
             
         Usage:
         
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(bootstrap_url="http://localhost:9013")
             >>> config = {
             ... "external_id": "123",
@@ -208,7 +208,7 @@ class Bootstrap:
             mf_resp.error.status = 1
             mf_resp.error.message = "parameter not found in the query"
         http_resp = requests.put(
-            self.url + "/things/" + self.CONFIGS_ENDPOINT + "/" + config["thing_id"],
+            self.url + "/clients/" + self.CONFIGS_ENDPOINT + "/" + config["thing_id"],
             headers=utils.construct_header(token, utils.CTJSON),
             json=config,
         )
@@ -239,7 +239,7 @@ class Bootstrap:
             
         Usage:
         
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(bootstrap_url="http://localhost:9013")
             >>> config_id = "config_id"
             >>> client_cert = "client_cert"
@@ -266,7 +266,7 @@ class Bootstrap:
     def remove(self, config_id: str, token: str):
         """Removes a Config. In case of successful removal the service will
         ensure that the removed config is disconnected from all the
-        Mainflux channels.
+        Magistrala channels.
         
         params:
             config_id (str): Configuration ID.
@@ -277,7 +277,7 @@ class Bootstrap:
             
         Usage:
         
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(bootstrap_url="http://localhost:9013")
             >>> config_id = "config_id"
             >>> mf_resp = mfsdk.bootstrap.remove(config_id, token)
@@ -285,7 +285,7 @@ class Bootstrap:
         """
         mf_resp = response.Response()
         http_resp = requests.delete(
-            self.url + "/things/" + self.CONFIGS_ENDPOINT + "/" + config_id,
+            self.url + "/clients/" + self.CONFIGS_ENDPOINT + "/" + config_id,
             headers=utils.construct_header(token, utils.CTJSON),
         )
         if http_resp.status_code != 204:
@@ -310,7 +310,7 @@ class Bootstrap:
             
         Usage:
 
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(bootstrap_url="http://localhost:9013")
             >>> external_id = "external_id"
             >>> external_key = "external_key"
@@ -319,7 +319,7 @@ class Bootstrap:
         """
         mf_resp = response.Response()
         http_resp = requests.get(
-            self.url + "/things/bootstrap" + "/" + external_id,
+            self.url + "/clients/bootstrap" + "/" + external_id,
             headers=utils.construct_header(utils.ThingPrefix+external_key, utils.CTJSON),
         )
         if http_resp.status_code != 200:

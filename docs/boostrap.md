@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/boostrap.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/boostrap.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `boostrap`
 
@@ -11,18 +11,18 @@
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/boostrap.py#L8"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/boostrap.py#L8"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `Bootstrap`
 Bootstrap service API client. 
 
-Bootstrap service is used to manage configurations for Mainflux Things. It provides  services such as updating, viewing, removing and adding new configurations. 
+Bootstrap service is used to manage configurations for Magistrala Clients. It provides  services such as updating, viewing, removing and adding new configurations. 
 
 
 
 **Attributes:**
  
- - <b>`url`</b> (str):  Mainflux Bootstrap API URL. 
+ - <b>`url`</b> (str):  Magistrala Bootstrap API URL. 
  - <b>`CONFIGS_ENDPOINT`</b> (str):  Configurations API endpoint. 
  - <b>`BOOTSTRAP_ENDPOINT`</b> (str):  Bootstrap API endpoint. 
  - <b>`WHITELIST_ENDPOINT`</b> (str):  Whitelist API endpoint. 
@@ -30,7 +30,7 @@ Bootstrap service is used to manage configurations for Mainflux Things. It provi
 
 
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/boostrap.py#L27"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/boostrap.py#L27"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -40,7 +40,7 @@ __init__(url: str)
 
 Initializes Bootstrap with the provided URL. 
 
-params:  url (str): Mainflux Bootstrap API URL.  
+params:  url (str): Magistrala Bootstrap API URL.  
 
 
 
@@ -58,7 +58,7 @@ params:  url (str): Mainflux Bootstrap API URL.
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/boostrap.py#L41"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/boostrap.py#L41"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `add`
 
@@ -80,7 +80,7 @@ params:  config (dict): Configuration data for example:   {    "external_id": "1
 
 Usage: 
 
-``` from mainflux import sdk```
+``` from magistrala import sdk```
 
  - <b>`    >>> mfsdk = sdk.SDK(bootstrap_url="http`</b>: //localhost:9013")
     >>> config = {
@@ -99,7 +99,7 @@ Usage:
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/boostrap.py#L300"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/boostrap.py#L300"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `bootstrap`
 
@@ -119,7 +119,7 @@ params:  external_id (str): External ID.  external_key (str): External key.
 
 Usage: 
 
-``` from mainflux import sdk```
+``` from magistrala import sdk```
 
  - <b>`    >>> mfsdk = sdk.SDK(bootstrap_url="http`</b>: //localhost:9013")
     >>> external_id = "external_id"
@@ -130,7 +130,7 @@ Usage:
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/boostrap.py#L266"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/boostrap.py#L266"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `remove`
 
@@ -138,7 +138,7 @@ Usage:
 remove(config_id: str, token: str)
 ```
 
-Removes a Config. In case of successful removal the service will ensure that the removed config is disconnected from all the Mainflux channels. 
+Removes a Config. In case of successful removal the service will ensure that the removed config is disconnected from all the Magistrala channels. 
 
 params:  config_id (str): Configuration ID.  token (str): Authorization token.  
 
@@ -150,7 +150,7 @@ params:  config_id (str): Configuration ID.  token (str): Authorization token.
 
 Usage: 
 
-``` from mainflux import sdk```
+``` from magistrala import sdk```
 
  - <b>`    >>> mfsdk = sdk.SDK(bootstrap_url="http`</b>: //localhost:9013")
     >>> config_id = "config_id"
@@ -160,7 +160,7 @@ Usage:
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/boostrap.py#L173"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/boostrap.py#L173"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update`
 
@@ -168,7 +168,7 @@ Usage:
 update(config: dict, token: str)
 ```
 
-Update is performed by replacing the current resource data with values provided in a request payload. Note that the owner, ID, external ID, external key, Mainflux Thing ID and key cannot be changed. 
+Update is performed by replacing the current resource data with values provided in a request payload. Note that the owner, ID, external ID, external key, Magistrala Thing ID and key cannot be changed. 
 
 params:  config (dict): Configuration data for example:   {    "external_id": "123",  "external_key": "456",  "thing_id": "fdb1057c-2905-4f71-9a80-e0ce9191e667",  "name": "thing_name"  }  token (str): Authorization token.  
 
@@ -182,7 +182,7 @@ params:  config (dict): Configuration data for example:   {    "external_id": "1
 
 Usage: 
 
-``` from mainflux import sdk```
+``` from magistrala import sdk```
 
  - <b>`    >>> mfsdk = sdk.SDK(bootstrap_url="http`</b>: //localhost:9013")
     >>> config = {
@@ -201,7 +201,7 @@ Usage:
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/boostrap.py#L224"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/boostrap.py#L224"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update_certs`
 
@@ -227,7 +227,7 @@ params:   config_id (str): Configuration ID.  client_cert (str): Client certific
 
 Usage: 
 
-``` from mainflux import sdk```
+``` from magistrala import sdk```
 
  - <b>`    >>> mfsdk = sdk.SDK(bootstrap_url="http`</b>: //localhost:9013")
     >>> config_id = "config_id"
@@ -240,7 +240,7 @@ Usage:
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/boostrap.py#L139"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/boostrap.py#L139"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `view`
 
@@ -262,7 +262,7 @@ params:  thing_id (str): Thing ID.  token (str): Authorization token.
 
 Usage: 
 
-``` from mainflux import sdk```
+``` from magistrala import sdk```
 
  - <b>`    >>> mfsdk = sdk.SDK(bootstrap_url="http`</b>: //localhost:9013")
     >>> thing_id = "thing_id"
@@ -272,7 +272,7 @@ Usage:
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/boostrap.py#L90"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/boostrap.py#L90"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `whitelist`
 
@@ -280,7 +280,7 @@ Usage:
 whitelist(config: dict, token: str)
 ```
 
-Updating state represents enabling/disabling Config, i.e.connecting and disconnecting corresponding Mainflux Thing to the list of Channels. 
+Updating state represents enabling/disabling Config, i.e.connecting and disconnecting corresponding Magistrala Thing to the list of Channels. 
 
 params:  config (dict): Configuration data for example:   {    "external_id": "123",  "external_key": "456",  "thing_id": "fdb1057c-2905-4f71-9a80-e0ce9191e667",  "name": "thing_name"  }  token (str): Authorization token.  
 
@@ -292,7 +292,7 @@ params:  config (dict): Configuration data for example:   {    "external_id": "1
 
 Usage: 
 
-``` from mainflux import sdk```
+``` from magistrala import sdk```
 
  - <b>`    >>> mfsdk = sdk.SDK(bootstrap_url="http`</b>: //localhost:9013")
     >>> config = {

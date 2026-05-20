@@ -63,7 +63,7 @@ users = {
     }
 }
 
-things = {
+clients = {
     "create": {
         422: "Unprocessable Entity."
     },

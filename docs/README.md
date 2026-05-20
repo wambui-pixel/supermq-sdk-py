@@ -12,21 +12,21 @@
 - [`messages`](./messages.md#module-messages)
 - [`response`](./response.md#module-response)
 - [`sdk`](./sdk.md#module-sdk)
-- [`things`](./things.md#module-things)
+- [`clients`](./clients.md#module-clients)
 - [`users`](./users.md#module-users)
 - [`utils`](./utils.md#module-utils)
 
 ## Classes
 
 - [`boostrap.Bootstrap`](./boostrap.md#class-bootstrap): Bootstrap service API client.
-- [`certs.Certs`](./certs.md#class-certs): Mainflux Certificates API
-- [`channels.Channels`](./channels.md#class-channels): Channels class provides the abstraction of the Mainflux Channels API.
-- [`groups.Groups`](./groups.md#class-groups): Groups class provides the abstraction of the Mainflux groups service API.
+- [`certs.Certs`](./certs.md#class-certs): Magistrala Certificates API
+- [`channels.Channels`](./channels.md#class-channels): Channels class provides the abstraction of the Magistrala Channels API.
+- [`groups.Groups`](./groups.md#class-groups): Groups class provides the abstraction of the Magistrala groups service API.
 - [`messages.Messages`](./messages.md#class-messages): Messages API client
 - [`response.Error`](./response.md#class-error)
 - [`response.Response`](./response.md#class-response)
 - [`sdk.SDK`](./sdk.md#class-sdk)
-- [`things.Things`](./things.md#class-things): Things API client.
+- [`clients.Clients`](./clients.md#class-clients): Clients API client.
 - [`users.Users`](./users.md#class-users): Users API client.
 
 ## Functions

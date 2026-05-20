@@ -1,20 +1,20 @@
 import requests
 import json
 
-from mainflux import response
-from mainflux import errors
-from mainflux import utils
+from magistrala import response
+from magistrala import errors
+from magistrala import utils
 
 
 class Groups:
-    """Groups class provides the abstraction of the Mainflux groups service API.
+    """Groups class provides the abstraction of the Magistrala groups service API.
     
     Groups class provides the following functionality: create, get, get_all, parents, 
     children, update, members, memberships, assign, unassign, disable.
     
     Attributes:
-        URL: Mainflux groups service URL.
-        GROUPS_ENDPOINT: Mainflux groups service API endpoint.   
+        URL: Magistrala groups service URL.
+        GROUPS_ENDPOINT: Magistrala groups service API endpoint.   
     
     """
     GROUPS_ENDPOINT = "groups"
@@ -24,7 +24,7 @@ class Groups:
         """Initializes Groups API client with the provided URL.
         
            params:
-                url: Mainflux groups service URL.
+                url: Magistrala groups service URL.
                 
             returns:
                 Groups object.
@@ -50,7 +50,7 @@ class Groups:
             
         Usage::
         
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")
             >>> group = {
             ...     "name": "groupName",
@@ -88,7 +88,7 @@ class Groups:
             
         Usage::
         
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")
             >>> group_id = "group_id"
             >>> mf_resp = mfsdk.groups.get(group_id)
@@ -128,7 +128,7 @@ class Groups:
             
         Usage::
         
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")
             >>> query_params = {
             ...     "offset": 0,
@@ -174,7 +174,7 @@ class Groups:
             
         Usage::
 
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")
             >>> group_id = "group_id"
             >>> query_params = {
@@ -222,7 +222,7 @@ class Groups:
             
         Usage::
         
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")
             >>> group_id = "group_id"
             >>> query_params = {
@@ -267,7 +267,7 @@ class Groups:
             
         Usage::
             
-                >>> from mainflux import sdk
+                >>> from magistrala import sdk
                 >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")
                 >>> group_id = "group_id"
                 >>> group = {
@@ -313,7 +313,7 @@ class Groups:
             
         Usage::
         
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")
             >>> group_id = "group_id"
             >>> query_params = {
@@ -360,7 +360,7 @@ class Groups:
             
         Usage::
             
-                >>> from mainflux import sdk
+                >>> from magistrala import sdk
                 >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")
                 >>> member_id = "member_id"
                 >>> query_params = {
@@ -405,7 +405,7 @@ class Groups:
             
         Usage::
         
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")
             >>> group_id = "group_id"
             >>> member_id = "member_id"
@@ -447,7 +447,7 @@ class Groups:
             
         Usage::
                 
-                    >>> from mainflux import sdk
+                    >>> from magistrala import sdk
                     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")
                     >>> group_id = "group_id"
                     >>> members_ids = "members_ids"
@@ -483,7 +483,7 @@ class Groups:
             
         Usage::
             
-                >>> from mainflux import sdk
+                >>> from magistrala import sdk
                 >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")
                 >>> group_id = "group_id"
                 >>> mf_resp = mfsdk.groups.disable(group_id)

@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/channels.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/channels.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `channels`
 
@@ -11,12 +11,12 @@
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/channels.py#L8"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/channels.py#L8"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `Channels`
-Channels class provides the abstraction of the Mainflux Channels API. 
+Channels class provides the abstraction of the Magistrala Channels API. 
 
-Channels are used to connect things and users. They are used to send messages to things and  receive messages from things. Channels API provides the following functionalities: 
+Channels are used to connect clients and users. They are used to send messages to clients and  receive messages from clients. Channels API provides the following functionalities: 
     - create channel 
     - create multiple channels in a bulk 
     - get channel 
@@ -31,12 +31,12 @@ Channels are used to connect things and users. They are used to send messages to
 **Attributes:**
  
  - <b>`CHANNELS_ENDPOINT`</b> (str):  Channels API endpoint 
- - <b>`THINGS_ENDPOINT`</b> (str):  Things API endpoint 
+ - <b>`CLIENTS_ENDPOINT`</b> (str):  Clients API endpoint 
  - <b>`IDENTIFY_ENDPOINT`</b> (str):  Identify API endpoint 
 
 
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/channels.py#L32"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/channels.py#L32"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -50,7 +50,7 @@ Initializes Channels class with the provided url
 
 **Args:**
  
- - <b>`url`</b> (str):  Mainflux Channels API URL 
+ - <b>`url`</b> (str):  Magistrala Channels API URL 
 
 
 
@@ -68,7 +68,7 @@ Initializes Channels class with the provided url
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/channels.py#L46"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/channels.py#L46"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `create`
 
@@ -90,7 +90,7 @@ params:  channel (dict): Channel entity to be created for example:  {  "name": "
 
 Usage: 
 
-``` from mainflux import sdk```
+``` from magistrala import sdk```
 
  - <b>`    >>> mfsdk = sdk.SDK(channels_url="http`</b>: //localhost:9000")
     >>> channel = {
@@ -103,7 +103,7 @@ Usage:
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/channels.py#L89"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/channels.py#L89"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `create_bulk`
 
@@ -127,7 +127,7 @@ params:  channels: list- Channel entities to be created for example:  [  {  "nam
 
 Usage: 
 
-``` from mainflux import sdk```
+``` from magistrala import sdk```
 
  - <b>`    >>> mfsdk = sdk.SDK(channels_url="http`</b>: //localhost:9000")
     >>> channels = [
@@ -146,7 +146,7 @@ Usage:
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/channels.py#L314"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/channels.py#L314"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `disable`
 
@@ -172,7 +172,7 @@ params:
 
 Usage: 
 
-``` from mainflux import sdk```
+``` from magistrala import sdk```
 
  - <b>`        >>> mfsdk = sdk.SDK(channels_url="http`</b>: //localhost:9000")
         >>> channel_id = "channel_id"
@@ -182,7 +182,7 @@ Usage:
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/channels.py#L147"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/channels.py#L147"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get`
 
@@ -204,7 +204,7 @@ params:   channel_id (str): Channel ID  token (str): User's token
 
 Usage: 
 
-``` from mainflux import sdk```
+``` from magistrala import sdk```
 
  - <b>`    >>> mfsdk = sdk.SDK(channels_url="http`</b>: //localhost:9000")
     >>> channel_id = "channel_id"
@@ -214,7 +214,7 @@ Usage:
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/channels.py#L181"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/channels.py#L181"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get_all`
 
@@ -236,7 +236,7 @@ params:  query_params (dict): Query parameters for example:  {  "offset": 0,  "l
 
 Usage: 
 
-``` from mainflux import sdk```
+``` from magistrala import sdk```
 
  - <b>`    >>> mfsdk = sdk.SDK(channels_url="http`</b>: //localhost:9000")
     >>> query_params = {
@@ -251,7 +251,7 @@ Usage:
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/channels.py#L223"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/channels.py#L223"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get_by_thing`
 
@@ -273,7 +273,7 @@ params:  thing_id (str): Thing ID  query_params (dict): Query parameters for exa
 
 Usage: 
 
-``` from mainflux import sdk```
+``` from magistrala import sdk```
 
  - <b>`    >>> mfsdk = sdk.SDK(channels_url="http`</b>: //localhost:9000")
     >>> thing_id = "thing_id"
@@ -289,7 +289,7 @@ Usage:
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/channels.py#L349"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/channels.py#L349"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `identify_thing`
 
@@ -311,7 +311,7 @@ params:  thing_key (str): Thing's key
 
 Usage: 
 
-``` from mainflux import sdk    ```
+``` from magistrala import sdk    ```
 
  - <b>`    >>> mfsdk = sdk.SDK(channels_url="http`</b>: //localhost:9000")
     >>> thing_key = "thing_key"
@@ -321,7 +321,7 @@ Usage:
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/channels.py#L268"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/channels.py#L268"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update`
 
@@ -343,7 +343,7 @@ params:  channel_id (str): Channel ID  channel (dict): Channel entity to be upda
 
 Usage: 
 
-``` from mainflux import sdk```
+``` from magistrala import sdk```
 
  - <b>`    >>> mfsdk = sdk.SDK(channels_url="http`</b>: //localhost:9000")
     >>> channel_id = "channel_id"

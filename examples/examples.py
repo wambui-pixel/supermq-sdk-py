@@ -1,11 +1,11 @@
-from mainflux import sdk
+from magistrala import sdk
 import json
 
 default_url = "http://localhost"
 
 mfsdk = sdk.SDK(
     users_url=default_url,
-    things_url=default_url + ":9000",
+    clients_url=default_url + ":9000",
     reader_url=default_url + ":9011",
     http_adapter_url=default_url,
     certs_url=default_url + ":9019",
@@ -25,7 +25,7 @@ channel_id = "<channel_id>",
 channel_id2 = "<channel_id2>",
 group_id = "<group_id>",
 
-"""To start working with the Mainflux system,
+"""To start working with the Magistrala system,
 you need to create a user account"""
 mf_resp = mfsdk.users.create(
     user={"credentials": {"identity": "<user_identity>", "secret": password}},
@@ -36,7 +36,7 @@ if mf_resp.error.status == 0:
 else:
     print(mf_resp.error.message)
 
-"""To log in to the Mainflux system, you need to create a user token"""
+"""To log in to the Magistrala system, you need to create a user token"""
 mf_resp = mfsdk.users.login(
     user={ "identity" : "<user_identity>", "secret": password}
 )
@@ -188,24 +188,24 @@ access_request = {
     "action": "<action>",
     "entity_type": "<entity_type>"
 }
-mf_resp = mfsdk.things.authorise_thing(access_request=access_request, token= token)
+mf_resp = mfsdk.clients.authorise_thing(access_request=access_request, token= token)
 if mf_resp.error.status == 0:
     print(mf_resp.value)
 else:
     print(mf_resp.error.message)
 
 """To create a thing, you need the thing name and a user token"""
-mf_resp = mfsdk.things.create(
+mf_resp = mfsdk.clients.create(
     thing={"name": "<thing_name>"}, token= token)
 if mf_resp.error.status == 0:
     print(mf_resp.value)
 else:
     print(mf_resp.error.message)
 
-"""You can create multiple things at once
-by entering a series of things structures and a user token"""
-mf_resp = mfsdk.things.create_bulk(
-    things=[{"name": "<thing_name>"}, {"name": "<thing_name>"}, {"name": "<thing_name>"}],
+"""You can create multiple clients at once
+by entering a series of clients structures and a user token"""
+mf_resp = mfsdk.clients.create_bulk(
+    clients=[{"name": "<thing_name>"}, {"name": "<thing_name>"}, {"name": "<thing_name>"}],
     token= token,
 )
 if mf_resp.error.status == 0:
@@ -214,14 +214,14 @@ else:
     print(mf_resp.error.message)
 
 """You can get thing information by entering the thing ID and user token"""
-mf_resp = mfsdk.things.get(thing_id= thing_id, token= token)
+mf_resp = mfsdk.clients.get(thing_id= thing_id, token= token)
 if mf_resp.error.status == 0:
     print(mf_resp.value)
 else:
     print(mf_resp.error.message)
 
-"""You can get all things in the database by calling the get_all () function"""
-mf_resp = mfsdk.things.get_all(
+"""You can get all clients in the database by calling the get_all () function"""
+mf_resp = mfsdk.clients.get_all(
     query_params={"offset": 0, "limit": 5}, token= token
 )
 if mf_resp.error.status == 0:
@@ -230,7 +230,7 @@ else:
     print(mf_resp.error.message)
 
 """Updates a thing entity in a database"""
-mf_resp = mfsdk.things.update(
+mf_resp = mfsdk.clients.update(
     thing_id=thing_id, token= token, thing={"name": "<thing_name>"}
 )
 if mf_resp.error.status == 0:
@@ -239,7 +239,7 @@ else:
     print(mf_resp.error.message)
 
 """Updates a thing secret in a database"""
-mf_resp = mfsdk.things.update_thing_secret(
+mf_resp = mfsdk.clients.update_thing_secret(
     thing_id=thing_id, token= token, thing={"secret": password}
 )
 if mf_resp.error.status == 0:
@@ -255,7 +255,7 @@ thing=  {
     "dev","back"
     ]
   }
-mf_resp = mfsdk.things.update_thing_tags(
+mf_resp = mfsdk.clients.update_thing_tags(
     thing_id=thing_id, token= token, thing=thing
 )
 if mf_resp.error.status == 0:
@@ -269,7 +269,7 @@ thing=  {
     "name": "<thing_name>",
     "owner": "<owner_id>",
 }
-mf_resp = mfsdk.things.update_thing_owner(
+mf_resp = mfsdk.clients.update_thing_owner(
     thing_id=thing_id, token= token, thing=thing
 )
 if mf_resp.error.status == 0:
@@ -278,7 +278,7 @@ else:
     print(mf_resp.error.message)
 
 """You can get all thing connected to channel"""
-mf_resp = mfsdk.things.get_by_channel(
+mf_resp = mfsdk.clients.get_by_channel(
     channel_id=channel_id,
     query_params={"offset": 1, "limit": 5},
     token=token,
@@ -289,14 +289,14 @@ else:
     print(mf_resp.error.message)
 
 """To disable a thing you need a thing ID and a user token"""
-mf_resp = mfsdk.things.disable(thing_id=thing_id, token= token)
+mf_resp = mfsdk.clients.disable(thing_id=thing_id, token= token)
 if mf_resp.error.status == 0:
     print(mf_resp.value)
 else:
     print(mf_resp.error.message)
 
 """Connect thing to channel"""
-mf_resp = mfsdk.things.connect(
+mf_resp = mfsdk.clients.connect(
     channel_id=channel_id, thing_id=thing_id, action="<action>", token= token
 )
 if mf_resp.error.status == 0:
@@ -305,7 +305,7 @@ else:
     print(mf_resp.error.message)
 
 """Disconnect thing from channel"""
-mf_resp = mfsdk.things.disconnect(
+mf_resp = mfsdk.clients.disconnect(
     channel_id=channel_id, thing_id=thing_id, token= token
 )
 if mf_resp.error.status == 0:
@@ -313,8 +313,8 @@ if mf_resp.error.status == 0:
 else:
     print(mf_resp.error.message)
 
-"""Connect things to channels"""
-mf_resp = mfsdk.things.connects(
+"""Connect clients to channels"""
+mf_resp = mfsdk.clients.connects(
     thing_ids=[thing_id, thing_id2],
     channel_ids=[channel_id, channel_id2],
     actions="<action>",
@@ -326,8 +326,8 @@ if mf_resp.error.status == 0:
 else:
     print(mf_resp.error.message)
 
-"""Disconnect things from channels"""
-mf_resp = mfsdk.things.disconnects(
+"""Disconnect clients from channels"""
+mf_resp = mfsdk.clients.disconnects(
     thing_ids=[thing_id, thing_id2],
     channel_ids=[channel_id, channel_id2],
     token=token,
@@ -338,7 +338,7 @@ else:
     print(mf_resp.error.message)
 
 """Share thing"""
-mf_resp = mfsdk.things.share_thing(
+mf_resp = mfsdk.clients.share_thing(
     channel_id= channel_id, 
     user_id=  user_id, 
     actions= ["<actions>"], 
@@ -357,7 +357,7 @@ if mf_resp.error.status == 0:
 else:
     print(mf_resp.error.message)
 
-"""As with things, you can create multiple channels at once"""
+"""As with clients, you can create multiple channels at once"""
 mf_resp = mfsdk.channels.create_bulk(
     channels=[{"name": "<channel_name>"}, {"name": "<channel_name>"}],
     token= token,
@@ -588,7 +588,7 @@ if mf_resp.error.status == 0:
 else:
     print(mf_resp.error.message)
 
-"""Updating state represents enabling/disabling Config, i.e.connecting and disconnecting corresponding Mainflux Thing to the list of Channels."""
+"""Updating state represents enabling/disabling Config, i.e.connecting and disconnecting corresponding Magistrala Thing to the list of Channels."""
 config = {
    "external_id": "<external_id>",
   "external_key": "<external_key>",
@@ -608,7 +608,7 @@ if mf_resp.error.status == 0:
 else:
     print(mf_resp.error.message)  
   
-"""Update is performed by replacing the current resource data with values provided in a request payload. Note that the owner, ID, external ID, external key, Mainflux Thing ID and key cannot be changed."""
+"""Update is performed by replacing the current resource data with values provided in a request payload. Note that the owner, ID, external ID, external key, Magistrala Thing ID and key cannot be changed."""
 config = {
  "external_id": "<external_id>",
   "external_key": "<external_key>",
@@ -628,7 +628,7 @@ if mf_resp.error.status == 0:
 else:
     print(mf_resp.error.message)
 
-"""Removes a Config. In case of successful removal the service will ensure that the removed config is disconnected from all the Mainflux channels."""
+"""Removes a Config. In case of successful removal the service will ensure that the removed config is disconnected from all the Magistrala channels."""
 mf_resp = mfsdk.bootstrap.remove(config_id= "<config_id>", token= token)
 if mf_resp.error.status == 0:
     print(mf_resp.value)

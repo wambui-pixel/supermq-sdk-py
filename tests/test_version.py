@@ -1,4 +1,4 @@
-from mainflux import sdk
+from magistrala import sdk
 
 import json, requests_mock
 

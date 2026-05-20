@@ -1,19 +1,19 @@
 import requests
 
-from mainflux import response
-from mainflux import errors
-from mainflux import utils
+from magistrala import response
+from magistrala import errors
+from magistrala import utils
 
 
 class Messages:
     """Messages API client
     
-    Messages API client enables interaction with Mainflux Messages API.
+    Messages API client enables interaction with Magistrala Messages API.
     It provides methods for sending and reading messages.
     
     Attributes:
-        adapter_url: URL of the Mainflux Messages adapter
-        reader_url: URL of the Mainflux Messages reader
+        adapter_url: URL of the Magistrala Messages adapter
+        reader_url: URL of the Magistrala Messages reader
     """
     def __init__(self, adapter_url: str, reader_url: str):
         self.adapter_url = adapter_url
@@ -21,8 +21,8 @@ class Messages:
         """Initializes Messages API client with adapter and reader URLs
         
         params:
-            adapter_url: URL of the Mainflux Messages adapter
-            reader_url: URL of the Mainflux Messages reader
+            adapter_url: URL of the Magistrala Messages adapter
+            reader_url: URL of the Magistrala Messages reader
             
         returns:
             Messages API client object
@@ -50,7 +50,7 @@ class Messages:
             
         usage:
 
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.Sdk("http://localhost:9011")
             >>> channel_id = "2b86beba-83dd-4b39-8165-4dda4e6eb4ad"
             >>> msg = '[{"bn":"demo", "bu":"V", "n":"voltage", "u":"V", "v":5}]'
@@ -94,7 +94,7 @@ class Messages:
             
         usage:
 
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.Sdk("http://localhost:9011")
             >>> channel_id = "2b86beba-83dd-4b39-8165-4dda4e6eb4ad"
             >>> mf_resp = mfsdk.messages.read(channel_id, token)

@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/users.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `users`
 
@@ -11,7 +11,7 @@
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/users.py#L9"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L9"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `Users`
 Users API client. 
@@ -25,7 +25,7 @@ Users API is used for creating and managing users. It is used for creating new u
  - <b>`URL`</b>:  str - URL of the Users API 
  - <b>`USERS_ENDPOINT`</b>:  str - Users API endpoint 
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/users.py#L23"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L23"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -42,7 +42,7 @@ __init__(url: str)
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/users.py#L635"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L635"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `authorise_user`
 
@@ -63,11 +63,11 @@ params:  access_request = {  "subject": "<user_id>",  "object": "<group_id>",  "
  - <b>`mf_resp`</b>:  "True" 
 
 Usage:
-```          >>> from mainflux import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> access_request = {     ...     "subject": "<user_id>",     ...     "object": "<group_id>",     ...     "action": "<action>",     ...     "entity_type": "<entity_type>"     ...     }     >>> mf_resp = mfsdk.users.authorise_user(access_request, token)     >>> mf_resp             
+```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> access_request = {     ...     "subject": "<user_id>",     ...     "object": "<group_id>",     ...     "action": "<action>",     ...     "entity_type": "<entity_type>"     ...     }     >>> mf_resp = mfsdk.users.authorise_user(access_request, token)     >>> mf_resp             
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/users.py#L36"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L36"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `create`
 
@@ -88,11 +88,11 @@ params:  user: dict - user information for example:  {  "name": "example",  "cre
  - <b>`mf_resp`</b>:  response.Response - response object 
 
 Usage:
-```          >>> from mainflux import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user = {     ...     "name": "example",     ...     "credentials": {     ...         "identity": "example@mail.com",     ...         "secret": "12345678"     ...     }     ... }     >>> mf_resp = mfsdk.users.create(user)     >>> mf_resp             
+```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user = {     ...     "name": "example",     ...     "credentials": {     ...         "identity": "example@mail.com",     ...         "secret": "12345678"     ...     }     ... }     >>> mf_resp = mfsdk.users.create(user)     >>> mf_resp             
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/users.py#L603"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L603"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `disable`
 
@@ -111,11 +111,11 @@ params:  user_id: str - the user's given ID.  token: str - token used for enabli
  - <b>`mf_resp`</b>:  response.Response - response object 
 
 Usage:
-```          >>> from mainflux import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user_id= "886b4266-77d1-4258-abae-2931fb4f16de"     >>> mf_resp = mfsdk.users.disable(user_id, user_token)     >>> mf_resp             
+```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user_id= "886b4266-77d1-4258-abae-2931fb4f16de"     >>> mf_resp = mfsdk.users.disable(user_id, user_token)     >>> mf_resp             
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/users.py#L569"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L569"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `enable`
 
@@ -136,11 +136,11 @@ params:  user_id: str - the user's given ID.  token: str - token used for enabli
  - <b>`mf_resp`</b>:  response.Response - response object 
 
 Usage:
-```          >>> from mainflux import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user_id= "886b4266-77d1-4258-abae-2931fb4f16de"     >>> mf_resp = mfsdk.users.enable(user_id, user_token)     >>> mf_resp             
+```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user_id= "886b4266-77d1-4258-abae-2931fb4f16de"     >>> mf_resp = mfsdk.users.enable(user_id, user_token)     >>> mf_resp             
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/users.py#L157"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L157"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get`
 
@@ -161,11 +161,11 @@ params:  user_id: str - user information eg "886b4266-77d1-4258-abae-2931fb4f16d
  - <b>`mf_resp`</b>:  response.Response - response object 
 
 Usage:
-```          >>> from mainflux import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user_id = "886b4266-77d1-4258-abae-2931fb4f16de"     >>> token = ""     >>> mf_resp = mfsdk.users.get(user_id, token)     >>> mf_resp             
+```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user_id = "886b4266-77d1-4258-abae-2931fb4f16de"     >>> token = ""     >>> mf_resp = mfsdk.users.get(user_id, token)     >>> mf_resp             
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/users.py#L193"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L193"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get_all`
 
@@ -188,11 +188,11 @@ params:   user_token: str - token used for creating a new user  query_params: di
 Usage:
 ``` 
 
-    >>> from mainflux import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> query_params = {     ...     "offset" : 0, "limit" : 10     ...     }     >>> mf_resp = mfsdk.users.get(query_params, user_token)     >>> mf_resp         
+    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> query_params = {     ...     "offset" : 0, "limit" : 10     ...     }     >>> mf_resp = mfsdk.users.get(query_params, user_token)     >>> mf_resp         
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/users.py#L85"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L85"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `login`
 
@@ -204,7 +204,7 @@ Generates an access token when provided with proper credentials.
 
 Issues a new access and refresh token for a user for authenticating  into the system. 
 
-params:   user: a dict with the user information and password for example:   {"credentials":{  "identity": "user@mainflux.com",  "secret": "12345678"  }  } 
+params:   user: a dict with the user information and password for example:   {"credentials":{  "identity": "user@magistrala.com",  "secret": "12345678"  }  } 
 
 **returns:**
  
@@ -213,11 +213,11 @@ params:   user: a dict with the user information and password for example:   {"c
 Usage:
 ```  
 
-    >>> from mainflux import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> credentials= {     ...         "identity": "user@mainflux.com",     ...         "secret": "12345678"     ... }     >>> mf_resp = mfsdk.users.login(credentials)     >>> mf_resp                 
+    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> credentials= {     ...         "identity": "user@magistrala.com",     ...         "secret": "12345678"     ... }     >>> mf_resp = mfsdk.users.login(credentials)     >>> mf_resp                 
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/users.py#L123"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L123"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `refresh_token`
 
@@ -240,11 +240,11 @@ params:   refresh_token: str - token used to refresh access.
 Usage:
 ```  
 
-    >>> from mainflux import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> mf_resp = mfsdk.users.refresh_token(refresh_token)     >>> mf_resp 
+    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> mf_resp = mfsdk.users.refresh_token(refresh_token)     >>> mf_resp 
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/users.py#L525"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L525"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `reset_password`
 
@@ -265,11 +265,11 @@ params:   passwor: str - the user's new password.  confirm_password: str - a rec
  - <b>`mf_resp`</b>:  "OK" 
 
 Usage:
-```          >>> from mainflux import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     ... password = 234567     ... confirm_password = 234567     >>> mf_resp = mfsdk.users.reset_password(password, confirm_password, token)     >>> mf_resp 
+```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     ... password = 234567     ... confirm_password = 234567     >>> mf_resp = mfsdk.users.reset_password(password, confirm_password, token)     >>> mf_resp 
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/users.py#L485"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L485"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `reset_password_request`
 
@@ -290,11 +290,11 @@ params:  referrer email: str - this is the host being sent by the browser.  The 
  - <b>`mf_resp`</b>:  response.Response - response object 
 
 Usage:
-```          >>> from mainflux import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     ... email = admin@example.com     ... url = stp@gmail.com     >>> mf_resp = mfsdk.users.reset_password_request(email, url)     >>> mf_resp 
+```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     ... email = admin@example.com     ... url = stp@gmail.com     >>> mf_resp = mfsdk.users.reset_password_request(email, url)     >>> mf_resp 
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/users.py#L236"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L236"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update`
 
@@ -315,11 +315,11 @@ params:  user: dict - user information for example:  {  "name": "example",  "id"
  - <b>`mf_resp`</b>:  response.Response - response object 
 
 Usage:
-```          >>> from mainflux import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user = {     ...     "name": "example",     ...     "id": "886b4266-77d1-4258-abae-2931fb4f16de"     ...     "metadata": {     ...            "foo": "bar"     ...        }     ... }     >>> mf_resp = mfsdk.users.update(user, token)     >>> mf_resp             
+```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user = {     ...     "name": "example",     ...     "id": "886b4266-77d1-4258-abae-2931fb4f16de"     ...     "metadata": {     ...            "foo": "bar"     ...        }     ... }     >>> mf_resp = mfsdk.users.update(user, token)     >>> mf_resp             
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/users.py#L446"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L446"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update_password`
 
@@ -340,11 +340,11 @@ params:  old_secret: str - the logged in user's current secret.  new_secret: str
  - <b>`mf_resp`</b>:  response.Response - response object 
 
 Usage:
-```          >>> from mainflux import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     ... old_secret = 12345678     ... new_secret = 87654321     >>> mf_resp = mfsdk.users.update(old_secret, new_secret, user_token)     >>> mf_resp             
+```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     ... old_secret = 12345678     ... new_secret = 87654321     >>> mf_resp = mfsdk.users.update(old_secret, new_secret, user_token)     >>> mf_resp             
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/users.py#L288"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L288"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update_user_identity`
 
@@ -367,11 +367,11 @@ params:  user: dict - user information for example:
  - <b>`mf_resp`</b>:  response.Response - response object 
 
 Usage:
-```          >>> from mainflux import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user = {     ...    "name": "example",     ...    "id": "886b4266-77d1-4258-abae-2931fb4f16de"     ...    "credentials": {     ...        "identity": "example@main.com",     ...        "secret": "12345678"     ...    },     ...    "metadata": {     ...        "foo": "bar"     ...     }     ... }     >>> mf_resp = mfsdk.users.update_user_identity(user, user_token)     >>> mf_resp             
+```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user = {     ...    "name": "example",     ...    "id": "886b4266-77d1-4258-abae-2931fb4f16de"     ...    "credentials": {     ...        "identity": "example@main.com",     ...        "secret": "12345678"     ...    },     ...    "metadata": {     ...        "foo": "bar"     ...     }     ... }     >>> mf_resp = mfsdk.users.update_user_identity(user, user_token)     >>> mf_resp             
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/users.py#L400"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L400"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update_user_owner`
 
@@ -394,11 +394,11 @@ params:  user: dict - user information for example:
  - <b>`mf_resp`</b>:  response.Response - response object 
 
 Usage:
-```          >>> from mainflux import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user = {     ...     "name": "example",     ...     "id": "886b4266-77d1-4258-abae-2931fb4f16de",     ...     "owner": "c52d-3b0d-43b9-8c3e-275c087d875af"     ... }     >>> mf_resp = mfsdk.users.update_user_owner(user, user_token)     >>> mf_resp             
+```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user = {     ...     "name": "example",     ...     "id": "886b4266-77d1-4258-abae-2931fb4f16de",     ...     "owner": "c52d-3b0d-43b9-8c3e-275c087d875af"     ... }     >>> mf_resp = mfsdk.users.update_user_owner(user, user_token)     >>> mf_resp             
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/users.py#L345"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L345"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update_user_tags`
 
@@ -421,7 +421,7 @@ params:  user: dict - user information for example:
  - <b>`mf_resp`</b>:  response.Response - response object 
 
 Usage:
-```          >>> from mainflux import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user = {     ...     "name": "example",     ...     "id": "886b4266-77d1-4258-abae-2931fb4f16de"     ...     "tags": [     ...        "back",     ...        "end"     ...     ]     ... }     >>> mf_resp = mfsdk.users.update_user_tags(user, user_token)     >>> mf_resp             
+```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user = {     ...     "name": "example",     ...     "id": "886b4266-77d1-4258-abae-2931fb4f16de"     ...     "tags": [     ...        "back",     ...        "end"     ...     ]     ... }     >>> mf_resp = mfsdk.users.update_user_tags(user, user_token)     >>> mf_resp             
 
 
 

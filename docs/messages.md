@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/messages.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/messages.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `messages`
 
@@ -11,21 +11,21 @@
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/messages.py#L8"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/messages.py#L8"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `Messages`
 Messages API client 
 
-Messages API client enables interaction with Mainflux Messages API. It provides methods for sending and reading messages. 
+Messages API client enables interaction with Magistrala Messages API. It provides methods for sending and reading messages. 
 
 
 
 **Attributes:**
  
- - <b>`adapter_url`</b>:  URL of the Mainflux Messages adapter 
- - <b>`reader_url`</b>:  URL of the Mainflux Messages reader 
+ - <b>`adapter_url`</b>:  URL of the Magistrala Messages adapter 
+ - <b>`reader_url`</b>:  URL of the Magistrala Messages reader 
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/messages.py#L18"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/messages.py#L18"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -42,7 +42,7 @@ __init__(adapter_url: str, reader_url: str)
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/messages.py#L82"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/messages.py#L82"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read`
 
@@ -64,7 +64,7 @@ params:  channel_id: ID of the channel to read message from  token: token of the
 
 usage: 
 
-``` from mainflux import sdk```
+``` from magistrala import sdk```
 
  - <b>`    >>> mfsdk = sdk.Sdk("http`</b>: //localhost:9011")
     >>> channel_id = "2b86beba-83dd-4b39-8165-4dda4e6eb4ad"
@@ -74,7 +74,7 @@ usage:
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/messages.py#L33"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/messages.py#L33"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `send`
 
@@ -96,7 +96,7 @@ params:  channel_id: ID of the channel to send message to  msg: message to send 
 
 usage: 
 
-``` from mainflux import sdk```
+``` from magistrala import sdk```
 
  - <b>`    >>> mfsdk = sdk.Sdk("http`</b>: //localhost:9011")
     >>> channel_id = "2b86beba-83dd-4b39-8165-4dda4e6eb4ad"

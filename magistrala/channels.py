@@ -1,15 +1,15 @@
 import requests
 
-from mainflux import response
-from mainflux import errors
-from mainflux import utils
+from magistrala import response
+from magistrala import errors
+from magistrala import utils
 
 
 class Channels:
-    """Channels class provides the abstraction of the Mainflux Channels API.
+    """Channels class provides the abstraction of the Magistrala Channels API.
     
-    Channels are used to connect things and users. They are used to send messages to things and 
-    receive messages from things. Channels API provides the following functionalities:
+    Channels are used to connect clients and users. They are used to send messages to clients and 
+    receive messages from clients. Channels API provides the following functionalities:
         - create channel
         - create multiple channels in a bulk
         - get channel
@@ -21,19 +21,19 @@ class Channels:
         
     Attributes: 
         CHANNELS_ENDPOINT (str): Channels API endpoint
-        THINGS_ENDPOINT (str): Things API endpoint
+        CLIENTS_ENDPOINT (str): Clients API endpoint
         IDENTIFY_ENDPOINT (str): Identify API endpoint
         
     """
     CHANNELS_ENDPOINT = "channels"
-    THINGS_ENDPOINT = "things"
+    CLIENTS_ENDPOINT = "clients"
     IDENTIFY_ENDPOINT = "identify"
 
     def __init__(self, url: str):
         """Initializes Channels class with the provided url
 
             Args:
-                url (str): Mainflux Channels API URL
+                url (str): Magistrala Channels API URL
                 
             returns:
                 Channels: Channels object initialized with the provided url.
@@ -63,7 +63,7 @@ class Channels:
             
         Usage:
         
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(channels_url="http://localhost:9000")
             >>> channel = {
             ...    "name": "channel_name"
@@ -116,7 +116,7 @@ class Channels:
             
         Usage:
         
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(channels_url="http://localhost:9000")
             >>> channels = [
             ...    {
@@ -158,7 +158,7 @@ class Channels:
             
         Usage:
 
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(channels_url="http://localhost:9000")
             >>> channel_id = "channel_id"
             >>> mf_resp = mfsdk.channels.get(channel_id, token)
@@ -196,7 +196,7 @@ class Channels:
             
         Usage:
         
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(channels_url="http://localhost:9000")
             >>> query_params = {
             ...    "offset": 0,
@@ -240,7 +240,7 @@ class Channels:
             
         Usage:
 
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(channels_url="http://localhost:9000")
             >>> thing_id = "thing_id"
             >>> query_params = {
@@ -252,7 +252,7 @@ class Channels:
         """
         mf_resp = response.Response()
         http_resp = requests.get(
-            self.url + "/" + self.THINGS_ENDPOINT + "/" + thing_id + "/" + self.CHANNELS_ENDPOINT,
+            self.url + "/" + self.CLIENTS_ENDPOINT + "/" + thing_id + "/" + self.CHANNELS_ENDPOINT,
             headers=utils.construct_header(token, utils.CTJSON),
             params=query_params,
         )
@@ -287,7 +287,7 @@ class Channels:
             
         Usage:
 
-            >>> from mainflux import sdk
+            >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(channels_url="http://localhost:9000")
             >>> channel_id = "channel_id"
             >>> channel = {
@@ -328,7 +328,7 @@ class Channels:
             
         Usage:
             
-                >>> from mainflux import sdk
+                >>> from magistrala import sdk
                 >>> mfsdk = sdk.SDK(channels_url="http://localhost:9000")
                 >>> channel_id = "channel_id"
                 >>> mf_resp = mfsdk.channels.disable(channel_id, token)
@@ -359,7 +359,7 @@ class Channels:
             
         Usage:
         
-            >>> from mainflux import sdk    
+            >>> from magistrala import sdk    
             >>> mfsdk = sdk.SDK(channels_url="http://localhost:9000")
             >>> thing_key = "thing_key"
             >>> mf_resp = mfsdk.channels.identify_thing(thing_key)

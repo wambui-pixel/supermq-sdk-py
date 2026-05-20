@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/certs.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/certs.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `certs`
 
@@ -11,21 +11,21 @@
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/certs.py#L8"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/certs.py#L8"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `Certs`
-Mainflux Certificates API 
+Magistrala Certificates API 
 
-Certs is used to issue, view, and revoke certificates. It is used to issue certificates for things.  
+Certs is used to issue, view, and revoke certificates. It is used to issue certificates for clients.  
 
 
 
 **Args:**
  
- - <b>`url`</b> (str):  Mainflux Certificates API URL. 
+ - <b>`url`</b> (str):  Magistrala Certificates API URL. 
  - <b>`CERTS_ENDPOINT`</b> (str):  Certificates API endpoint. 
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/certs.py#L20"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/certs.py#L20"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -39,7 +39,7 @@ Initializes Certs with the provided URL.
 
 **Args:**
  
- - <b>`url`</b> (str):  Mainflux Certificates API URL. 
+ - <b>`url`</b> (str):  Magistrala Certificates API URL. 
 
 
 
@@ -52,7 +52,7 @@ Initializes Certs with the provided URL.
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/certs.py#L31"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/certs.py#L31"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `issue`
 
@@ -74,9 +74,9 @@ Issues a certificate for a given thing ID.
 
 **Returns:**
  
- - <b>`Response`</b>:  Mainflux response. 
+ - <b>`Response`</b>:  Magistrala response. 
 
-Usage: ``` from mainflux import sdk```
+Usage: ``` from magistrala import sdk```
 
  - <b>`    >>> mfsdk = sdk.SDK(certs_url="http`</b>: //localhost:9019")
     >>> thing_id = "thing_id"
@@ -87,7 +87,7 @@ Usage: ``` from mainflux import sdk```
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/certs.py#L139"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/certs.py#L139"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `revoke`
 
@@ -109,7 +109,7 @@ params:  thing_id (str): thing id  token (str): valid authorization token used t
 
 Usage: 
 
-``` from mainflux import sdk```
+``` from magistrala import sdk```
 
  - <b>`    >>> mfsdk = sdk.SDK(certs_url="http`</b>: //localhost:9019")
     >>> thing_id = "thing_id"
@@ -119,7 +119,7 @@ Usage:
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/certs.py#L104"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/certs.py#L104"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `view_by_serial`
 
@@ -143,7 +143,7 @@ Params:
 
 Usage: 
 
-``` from mainflux import sdk```
+``` from magistrala import sdk```
 
  - <b>`    >>> mfsdk = sdk.SDK(certs_url="http`</b>: //localhost:9019")
     >>> cert_id = "cert_id"
@@ -153,7 +153,7 @@ Usage:
 
 ---
 
-<a href="https://github.com/mainflux/sdk-py/blob/main/mainflux/certs.py#L70"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/certs.py#L70"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `view_by_thing`
 
@@ -175,7 +175,7 @@ Params:  thing_id (str): Thing ID.  token (str): Authorization token.
 
 Usage: 
 
-``` from mainflux import sdk```
+``` from magistrala import sdk```
 
  - <b>`    >>> mfsdk = sdk.SDK(certs_url="http`</b>: //localhost:9019")
     >>> thing_id = "thing_id"
