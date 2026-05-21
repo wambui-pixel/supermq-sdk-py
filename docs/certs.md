@@ -57,16 +57,16 @@ Initializes Certs with the provided URL.
 ### <kbd>method</kbd> `issue`
 
 ```python
-issue(thing_id: str, valid: str, token: str)
+issue(client_id: str, valid: str, token: str)
 ```
 
-Issues a certificate for a given thing ID. 
+Issues a certificate for a given client ID. 
 
 
 
 **Args:**
  
- - <b>`thing_id`</b> (str):  Thing ID. 
+ - <b>`client_id`</b> (str):  Client ID. 
  - <b>`valid`</b> (str):  Certificate validity period. 
  - <b>`token`</b> (str):  Authorization token. 
 
@@ -79,9 +79,9 @@ Issues a certificate for a given thing ID.
 Usage: ``` from magistrala import sdk```
 
  - <b>`    >>> mfsdk = sdk.SDK(certs_url="http`</b>: //localhost:9019")
-    >>> thing_id = "thing_id"
+    >>> client_id = "client_id"
     >>> valid = "1h"
-    >>> mf_resp = mfsdk.certs.issue(thing_id, valid)
+    >>> mf_resp = mfsdk.certs.issue(client_id, valid)
     >>> mf_resp
 
 
@@ -92,14 +92,14 @@ Usage: ``` from magistrala import sdk```
 ### <kbd>method</kbd> `revoke`
 
 ```python
-revoke(thing_id: str, token: str)
+revoke(client_id: str, token: str)
 ```
 
-Revokes a certificate for a given thing ID. 
+Revokes a certificate for a given client ID. 
 
-Deletes a certificate for a given thing ID and valid token. 
+Deletes a certificate for a given client ID and valid token. 
 
-params:  thing_id (str): thing id  token (str): valid authorization token used to delete the certificate 
+params:  client_id (str): client id  token (str): valid authorization token used to delete the certificate 
 
 
 
@@ -112,8 +112,8 @@ Usage:
 ``` from magistrala import sdk```
 
  - <b>`    >>> mfsdk = sdk.SDK(certs_url="http`</b>: //localhost:9019")
-    >>> thing_id = "thing_id"
-    >>> mf_resp = mfsdk.certs.revoke(thing_id)
+    >>> client_id = "client_id"
+    >>> mf_resp = mfsdk.certs.revoke(client_id)
     >>> mf_resp
 
 
@@ -155,17 +155,17 @@ Usage:
 
 <a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/certs.py#L70"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
-### <kbd>method</kbd> `view_by_thing`
+### <kbd>method</kbd> `view_by_client`
 
 ```python
-view_by_thing(thing_id: str, token: str)
+view_by_client(client_id: str, token: str)
 ```
 
-Retrieves a list of certificates' serial IDs for a given thing ID. 
+Retrieves a list of certificates' serial IDs for a given client ID. 
 
-Provides a list of certificates' serial IDs for a given thing ID. 
+Provides a list of certificates' serial IDs for a given client ID. 
 
-Params:  thing_id (str): Thing ID.  token (str): Authorization token.  
+Params:  client_id (str): Client ID.  token (str): Authorization token.  
 
 
 
@@ -178,8 +178,8 @@ Usage:
 ``` from magistrala import sdk```
 
  - <b>`    >>> mfsdk = sdk.SDK(certs_url="http`</b>: //localhost:9019")
-    >>> thing_id = "thing_id"
-    >>> mf_resp = mfsdk.certs.view_by_thing(thing_id)
+    >>> client_id = "client_id"
+    >>> mf_resp = mfsdk.certs.view_by_client(client_id)
     >>> mf_resp
 
 

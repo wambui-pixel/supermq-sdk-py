@@ -1,4 +1,4 @@
-ThingPrefix = "Thing "
+ClientPrefix = "Client "
 BearerPrefix = "Bearer "
 # CTJSON represents JSON content type.
 CTJSON = "application/json"
@@ -10,7 +10,7 @@ CTJSONSenML = "application/senml+json"
 def construct_header(token: str, content_type: str):
     headers = dict()
     if token != "":
-        if not token.__contains__(ThingPrefix):
+        if not token.__contains__(ClientPrefix):
             token = BearerPrefix + token
         headers["Authorization"] = token
     if content_type != "":

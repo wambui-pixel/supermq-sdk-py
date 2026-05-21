@@ -43,16 +43,16 @@ class Bootstrap:
         using the provided access token.
         
         Some of the key data needed include the external_key and external_id which must be
-        specific to the thing provided with the thing_id. Mind that every configuration 
-        must have a specific thing_id.
+        specific to the client provided with the client_id. Mind that every configuration 
+        must have a specific client_id.
         
         params:
             config (dict): Configuration data for example: 
                 {  
                     "external_id": "123",
                     "external_key": "456",
-                    "thing_id": "fdb1057c-2905-4f71-9a80-e0ce9191e667",
-                    "name": "thing_name"
+                    "client_id": "fdb1057c-2905-4f71-9a80-e0ce9191e667",
+                    "name": "client_name"
                 }
             token (str): Authorization token.
             
@@ -66,8 +66,8 @@ class Bootstrap:
             >>> config = {
             ... "external_id": "123",
             ... "external_key": "456",
-            ... "thing_id": "fdb1057c-2905-4f71-9a80-e0ce9191e667",
-            ... "name": "thing_name"
+            ... "client_id": "fdb1057c-2905-4f71-9a80-e0ce9191e667",
+            ... "name": "client_name"
             ... }
             >>> mf_resp = mfsdk.bootstrap.add(config, token)
             >>> mf_resp
@@ -89,7 +89,7 @@ class Bootstrap:
 
     def whitelist(self, config: dict, token: str):
         """Updating state represents enabling/disabling Config,
-        i.e.connecting and disconnecting corresponding Magistrala Thing to the
+        i.e.connecting and disconnecting corresponding Magistrala Client to the
         list of Channels.
         
         params:
@@ -97,8 +97,8 @@ class Bootstrap:
                 {  
                     "external_id": "123",
                     "external_key": "456",
-                    "thing_id": "fdb1057c-2905-4f71-9a80-e0ce9191e667",
-                    "name": "thing_name"
+                    "client_id": "fdb1057c-2905-4f71-9a80-e0ce9191e667",
+                    "name": "client_name"
                 }
             token (str): Authorization token.
             
@@ -112,18 +112,18 @@ class Bootstrap:
             >>> config = {
             ... "external_id": "123",
             ... "external_key": "456",
-            ... "thing_id": "fdb1057c-2905-4f71-9a80-e0ce9191e667",
-            ... "name": "thing_name"
+            ... "client_id": "fdb1057c-2905-4f71-9a80-e0ce9191e667",
+            ... "name": "client_name"
             ... }
             >>> mf_resp = mfsdk.bootstrap.whitelist(config, token)
             >>> mf_resp        
         """
         mf_resp = response.Response()
-        if config["thing_id"] == "":
+        if config["client_id"] == "":
             mf_resp.error.status = 1
             mf_resp.error.message = "parameter not found in the query"
         http_resp = requests.put(
-            self.url + "/" + self.WHITELIST_ENDPOINT + "/" + config["thing_id"],
+            self.url + "/" + self.WHITELIST_ENDPOINT + "/" + config["client_id"],
             json=config,
             headers=utils.construct_header(token, utils.CTJSON),
         )
@@ -136,13 +136,13 @@ class Bootstrap:
             mf_resp.value = "Configuration Updated"
         return mf_resp
 
-    def view(self, thing_id: str, token: str):
+    def view(self, client_id: str, token: str):
         """Retrieves a configuration with given config id
         
         Provides a configuration with given config id.
         
         params:
-            thing_id (str): Thing ID.
+            client_id (str): Client ID.
             token (str): Authorization token.
             
         returns:
@@ -152,13 +152,13 @@ class Bootstrap:
         
             >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(bootstrap_url="http://localhost:9013")
-            >>> thing_id = "thing_id"
-            >>> mf_resp = mfsdk.bootstrap.view(thing_id, token)
+            >>> client_id = "client_id"
+            >>> mf_resp = mfsdk.bootstrap.view(client_id, token)
             >>> mf_resp
         """
         mf_resp = response.Response()
         http_resp = requests.get(
-            self.url + "/clients" + "/" + self.CONFIGS_ENDPOINT + "/" + thing_id,
+            self.url + "/clients" + "/" + self.CONFIGS_ENDPOINT + "/" + client_id,
             headers=utils.construct_header(token, utils.CTJSON),
         )
         if http_resp.status_code != 200:
@@ -173,7 +173,7 @@ class Bootstrap:
     def update(self, config: dict, token: str):
         """Update is performed by replacing the current resource data with
         values provided in a request payload. Note that the owner, ID,
-        external ID, external key, Magistrala Thing ID and key cannot be
+        external ID, external key, Magistrala Client ID and key cannot be
         changed.
         
         params:
@@ -181,8 +181,8 @@ class Bootstrap:
                 {  
                     "external_id": "123",
                     "external_key": "456",
-                    "thing_id": "fdb1057c-2905-4f71-9a80-e0ce9191e667",
-                    "name": "thing_name"
+                    "client_id": "fdb1057c-2905-4f71-9a80-e0ce9191e667",
+                    "name": "client_name"
                 }
             token (str): Authorization token.
             
@@ -197,18 +197,18 @@ class Bootstrap:
             >>> config = {
             ... "external_id": "123",
             ... "external_key": "456",
-            ... "thing_id": "fdb1057c-2905-4f71-9a80-e0ce9191e667",
-            ... "name": "thing_name"
+            ... "client_id": "fdb1057c-2905-4f71-9a80-e0ce9191e667",
+            ... "name": "client_name"
             ... }
             >>> mf_resp = mfsdk.bootstrap.update(config, token)
             >>> mf_resp
         """
         mf_resp = response.Response()
-        if config["thing_id"] == "":
+        if config["client_id"] == "":
             mf_resp.error.status = 1
             mf_resp.error.message = "parameter not found in the query"
         http_resp = requests.put(
-            self.url + "/clients/" + self.CONFIGS_ENDPOINT + "/" + config["thing_id"],
+            self.url + "/clients/" + self.CONFIGS_ENDPOINT + "/" + config["client_id"],
             headers=utils.construct_header(token, utils.CTJSON),
             json=config,
         )
@@ -320,7 +320,7 @@ class Bootstrap:
         mf_resp = response.Response()
         http_resp = requests.get(
             self.url + "/clients/bootstrap" + "/" + external_id,
-            headers=utils.construct_header(utils.ThingPrefix+external_key, utils.CTJSON),
+            headers=utils.construct_header(utils.ClientPrefix+external_key, utils.CTJSON),
         )
         if http_resp.status_code != 200:
             mf_resp.error.status = 1

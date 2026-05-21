@@ -9,7 +9,7 @@ class Clients:
     
     Clients API is used for creating and managing clients.
     It is used for creating new clients, creating multiple clients
-    getting thing information, updating thing information, disabling 
+    getting client information, updating client information, disabling 
     and enabling clients ,and connecting and disconnecting clients.
     
     Attributes:
@@ -31,18 +31,18 @@ class Clients:
         raises:
             None
     """
-    def create(self, thing: dict, token: str):
-        """Creates thing entity in the database.
+    def create(self, client: dict, token: str):
+        """Creates client entity in the database.
                 
-        Creates a new thing with provided thing information.
-        If token is provided, it will be used to create a new thing
+        Creates a new client with provided client information.
+        If token is provided, it will be used to create a new client
 
         params:
-            thing: dict - thing information for example:
+            client: dict - client information for example:
             {
-                "name": "thing1"
+                "name": "client1"
             }
-            token: str - token used for creating a new thing
+            token: str - token used for creating a new client
             
         returns:
             mf_resp: response.Response - response object
@@ -51,16 +51,16 @@ class Clients:
             
             >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
-            >>> thing = {
-            ...     "name": "thing1",
+            >>> client = {
+            ...     "name": "client1",
             ...  }
-            >>> mf_resp = mfsdk.clients.create(thing)
+            >>> mf_resp = mfsdk.clients.create(client)
             >>> mf_resp            
         """
         mf_resp = response.Response()
         http_resp = requests.post(
             self.URL + "/" + self.CLIENTS_ENDPOINT,
-            json=thing,
+            json=client,
             headers=utils.construct_header(token, utils.CTJSON),
         )
         if http_resp.status_code != 201:
@@ -81,9 +81,9 @@ class Clients:
         params:
             clients: list - a list of clients with theri information for example:
                 [
-                    {"name": "thing2"}, 
-                    {"name": "thing3"}, 
-                    {"name": "thing4"}
+                    {"name": "client2"}, 
+                    {"name": "client3"}, 
+                    {"name": "client4"}
                 ]
             token: str - token used for creating the new clients.
             
@@ -95,9 +95,9 @@ class Clients:
             >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
             >>> clients = [
-            ...     {"name": "thing2"}, 
-            ...     {"name": "thing3"}, 
-            ...     {"name": "thing4"}
+            ...     {"name": "client2"}, 
+            ...     {"name": "client3"}, 
+            ...     {"name": "client4"}
             ... ]
             >>> mf_resp = mfsdk.clients.create_bulk(clients)
             >>> mf_resp            
@@ -117,16 +117,16 @@ class Clients:
             mf_resp.value = http_resp.json()
         return mf_resp
 
-    def get(self, thing_id: str, token: str):
-        """Gets a thing entity.
+    def get(self, client_id: str, token: str):
+        """Gets a client entity.
         
-        Provides information about a thing with provided thing ID and token.
-        Information about a thing is provided in a JSON format and includes the name
+        Provides information about a client with provided client ID and token.
+        Information about a client is provided in a JSON format and includes the name
         its owner, secret,tags and status.
         
         params:
-            thing_id: str - ID of the thing
-            token: str - token used for getting thing information
+            client_id: str - ID of the client
+            token: str - token used for getting client information
         
         returns:
             mf_resp: response.Response - response object.
@@ -135,13 +135,13 @@ class Clients:
                 
             >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
-            >>> thing_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
-            >>> mf_resp = mfsdk.clients.get(thing_id)
+            >>> client_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
+            >>> mf_resp = mfsdk.clients.get(client_id)
             >>> mf_resp        
         """
         mf_resp = response.Response()
         http_resp = requests.get(
-            self.URL + "/" + self.CLIENTS_ENDPOINT + "/" + thing_id,
+            self.URL + "/" + self.CLIENTS_ENDPOINT + "/" + client_id,
             headers=utils.construct_header(token, utils.CTJSON),
         )
         if http_resp.status_code != 200:
@@ -198,7 +198,7 @@ class Clients:
         return mf_resp
 
     def get_by_channel(self, channel_id: str, query_params: dict, token: str):
-        """Gets all clients to which a specific thing is connected to.
+        """Gets all clients to which a specific client is connected to.
         
         Provides a list of all clients that are connected to a specific channel when
         given a channel ID and valid token.
@@ -243,20 +243,20 @@ class Clients:
             mf_resp.value = http_resp.json()
         return mf_resp
 
-    def update(self, thing_id: str, thing: dict, token: str):
-        """Updates thing entity.
+    def update(self, client_id: str, client: dict, token: str):
+        """Updates client entity.
         
-        Allows a logged in user to make changes and update a thing's
-        information with provided thing ID and valid token. Information 
+        Allows a logged in user to make changes and update a client's
+        information with provided client ID and valid token. Information 
         such as the metadata and name can be updated. 
         
         params:
-            thing_id: str - ID of the thing
-            thing: dict - thing information for example:
+            client_id: str - ID of the client
+            client: dict - client information for example:
                 {
-                    "name": "thing1"
+                    "name": "client1"
                 }
-            token: str - token used for updating thing information 
+            token: str - token used for updating client information 
             
         returns:
             mf_resp: response.Response - response object.
@@ -265,16 +265,16 @@ class Clients:
                                 
             >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
-            >>> thing_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
-            >>> thing = {
-            ...     "name": "thing2",
+            >>> client_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
+            >>> client = {
+            ...     "name": "client2",
             ...  }
-            >>> mf_resp = mfsdk.clients.update(thing_id, thing)
+            >>> mf_resp = mfsdk.clients.update(client_id, client)
             >>> mf_resp            
         """
         http_resp = requests.patch(
-            self.URL + "/" + self.CLIENTS_ENDPOINT + "/" + thing_id,
-            json=thing,
+            self.URL + "/" + self.CLIENTS_ENDPOINT + "/" + client_id,
+            json=client,
             headers=utils.construct_header(token, utils.CTJSON),
         )
         mf_resp = response.Response()
@@ -287,20 +287,20 @@ class Clients:
             mf_resp.value = http_resp.json()
         return mf_resp
     
-    def update_thing_secret(self, thing_id: str, thing: dict, token: str):
-        """Updates thing secret.
+    def update_client_secret(self, client_id: str, client: dict, token: str):
+        """Updates client secret.
         
-        Allows a logged in user to make changes and update a thing's
-        information with provided thing ID and valid token. The thing's 
+        Allows a logged in user to make changes and update a client's
+        information with provided client ID and valid token. The client's 
         secret can be updated.
         
         params:
-            thing_id: str - ID of the thing
-            thing: dict - thing information for example:
+            client_id: str - ID of the client
+            client: dict - client information for example:
                 {
-                    "key": "thing1"
+                    "key": "client1"
                 }
-            token: str - token used for updating thing information
+            token: str - token used for updating client information
             
         returns:
             mf_resp: response.Response - response object.
@@ -309,42 +309,42 @@ class Clients:
 
             >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
-            >>> thing_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
-            >>> thing = {
-            ...     "key": "thing2",
+            >>> client_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
+            >>> client = {
+            ...     "key": "client2",
             ...  }
-            >>> mf_resp = mfsdk.clients.update_thing_secret(thing_id, thing)
+            >>> mf_resp = mfsdk.clients.update_client_secret(client_id, client)
             >>> mf_resp
         """
         http_resp = requests.patch(
-            self.URL + "/" + self.CLIENTS_ENDPOINT + "/" + thing_id + "/secret",
-            json=thing,
+            self.URL + "/" + self.CLIENTS_ENDPOINT + "/" + client_id + "/secret",
+            json=client,
             headers=utils.construct_header(token, utils.CTJSON),
         )
         mf_resp = response.Response()
         if http_resp.status_code != 200:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.clients["update_thing_secret"], http_resp.status_code
+                errors.clients["update_client_secret"], http_resp.status_code
             )
         else:
             mf_resp.value = http_resp.json()
         return mf_resp
     
-    def update_thing_tags(self, thing_id: str, thing: dict, token: str):
-        """Updates thing tags.
+    def update_client_tags(self, client_id: str, client: dict, token: str):
+        """Updates client tags.
         
-        Allows a logged in user to make changes and update a thing's
-        information with provided thing ID and valid token. The thing's
+        Allows a logged in user to make changes and update a client's
+        information with provided client ID and valid token. The client's
         tags can be updated.
         
         params:
-            thing_id: str - ID of the thing
-            thing: dict - thing information for example:
+            client_id: str - ID of the client
+            client: dict - client information for example:
                 {
                     "tags": ["tag1", "tag2"]
                 }
-            token: str - token used for updating thing information
+            token: str - token used for updating client information
             
         returns:
             mf_resp: response.Response - response object.
@@ -353,42 +353,42 @@ class Clients:
         
             >>> from magistrala import sdk   
             >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
-            >>> thing_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
-            >>> thing = {
+            >>> client_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
+            >>> client = {
             ...     "tags": ["tag1", "tag2"]
             ...  }
-            >>> mf_resp = mfsdk.clients.update_thing_tags(thing_id, thing)
+            >>> mf_resp = mfsdk.clients.update_client_tags(client_id, client)
             >>> mf_resp
         """
         http_resp = requests.patch(
-            self.URL + "/" + self.CLIENTS_ENDPOINT + "/" + thing_id + "/tags",
-            json=thing,
+            self.URL + "/" + self.CLIENTS_ENDPOINT + "/" + client_id + "/tags",
+            json=client,
             headers=utils.construct_header(token, utils.CTJSON),
         )
         mf_resp = response.Response()
         if http_resp.status_code != 200:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.clients["update_thing_tags"], http_resp.status_code
+                errors.clients["update_client_tags"], http_resp.status_code
             )
         else:
             mf_resp.value = http_resp.json()
         return mf_resp
     
-    def update_thing_owner(self, thing_id: str, thing: dict, token: str):
-        """Updates thing owner.
+    def update_client_owner(self, client_id: str, client: dict, token: str):
+        """Updates client owner.
         
-        Allows a logged in user to make changes and update a thing's
-            information with provided thing ID and valid token. The thing
+        Allows a logged in user to make changes and update a client's
+            information with provided client ID and valid token. The client
             owner can be updated.
         
         params:
-            thing_id: str - ID of the thing
-            thing: dict - thing information for example:
+            client_id: str - ID of the client
+            client: dict - client information for example:
                 {
                     "owner": "user1"
                 }
-            token: str - token used for updating thing information
+            token: str - token used for updating client information
             
         returns:
             mf_resp: response.Response - response object.
@@ -397,36 +397,36 @@ class Clients:
 
             >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
-            >>> thing_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
-            >>> thing = {
+            >>> client_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
+            >>> client = {
             ...     "owner": "user1"
             ...  }
-            >>> mf_resp = mfsdk.clients.update_thing_owner(thing_id, thing)
+            >>> mf_resp = mfsdk.clients.update_client_owner(client_id, client)
             >>> mf_resp
         """
         http_resp = requests.patch(
-            self.URL + "/" + self.CLIENTS_ENDPOINT + "/" + thing_id + "/owner",
-            json=thing,
+            self.URL + "/" + self.CLIENTS_ENDPOINT + "/" + client_id + "/owner",
+            json=client,
             headers=utils.construct_header(token, utils.CTJSON),
         )
         mf_resp = response.Response()
         if http_resp.status_code != 200:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.clients["update_thing_owner"], http_resp.status_code
+                errors.clients["update_client_owner"], http_resp.status_code
             )
         else:
             mf_resp.value = http_resp.json()
         return mf_resp
 
-    def disable(self, thing_id: str, token: str):
-        """Deletes a thing entity from the database.
+    def disable(self, client_id: str, token: str):
+        """Deletes a client entity from the database.
         
-        Deletes a thing with provided thing ID and valid token.
+        Deletes a client with provided client ID and valid token.
         
         params:
-            thing_id: str - ID of the thing
-            token: str - token used for deleting thing
+            client_id: str - ID of the client
+            token: str - token used for deleting client
             
         returns:
             mf_resp: response.Response - response object.
@@ -435,12 +435,12 @@ class Clients:
                         
             >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
-            >>> thing_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
-            >>> mf_resp = mfsdk.clients.disable(thing_id)
+            >>> client_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
+            >>> mf_resp = mfsdk.clients.disable(client_id)
             >>> mf_resp        
         """
         http_resp = requests.post(
-            self.URL + "/" + self.CLIENTS_ENDPOINT + "/" + thing_id + "/disable",
+            self.URL + "/" + self.CLIENTS_ENDPOINT + "/" + client_id + "/disable",
             headers=utils.construct_header(token, utils.CTJSON),
         )
         mf_resp = response.Response()
@@ -451,15 +451,15 @@ class Clients:
             )
         return mf_resp
 
-    def connects(self, thing_ids: list, channel_ids: list, actions: list, token: str):
+    def connects(self, client_ids: list, channel_ids: list, actions: list, token: str):
         """Connects clients and channels. 
         
-        Connects multiple clients and channels with provided thing IDs 
+        Connects multiple clients and channels with provided client IDs 
         as the subjects, channel IDs as the objects, actions that the 
-        thing can partake in and a valid token.
+        client can partake in and a valid token.
         
         params:
-            thing_ids: list - list of thing IDs
+            client_ids: list - list of client IDs
             channel_ids: list - list of channel IDs
             actions: list - list of actions for example: 
                 ["m_write", "m_read"]
@@ -472,13 +472,13 @@ class Clients:
         
             >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
-            >>> thing_ids = ["fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"]
+            >>> client_ids = ["fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"]
             >>> channel_ids = ["567f7da5-b7bf-49b7-bf2f-99995e78afd9"]
             >>> actions = ["m_write", "m_read"]
-            >>> mf_resp = mfsdk.clients.connects(thing_ids, channel_ids, actions)
+            >>> mf_resp = mfsdk.clients.connects(client_ids, channel_ids, actions)
             >>> mf_resp            
         """
-        payload = {"subjects": thing_ids, "objects": channel_ids, "actions": actions}
+        payload = {"subjects": client_ids, "objects": channel_ids, "actions": actions}
         http_resp = requests.post(
             self.URL + "/connect",
             headers=utils.construct_header(token, utils.CTJSON),
@@ -494,14 +494,14 @@ class Clients:
             mf_resp.value = http_resp.json()
         return mf_resp
 
-    def disconnects(self, thing_ids: list, channel_ids: list, token: str):
+    def disconnects(self, client_ids: list, channel_ids: list, token: str):
         """Disconnect clients and channels.
         
-        Disconnects multiple clients and channels with provided thing IDs 
+        Disconnects multiple clients and channels with provided client IDs 
         as the subjects, channel IDs as the objects and a valid token.
         
         params:
-            thing_ids: list - list of thing IDs
+            client_ids: list - list of client IDs
             channel_ids: list - list of channel IDs
             token: str - token used for disconnecting clients and channels
         
@@ -512,12 +512,12 @@ class Clients:
         
             >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
-            >>> thing_ids = ["fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"]
+            >>> client_ids = ["fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"]
             >>> channel_ids = ["567f7da5-b7bf-49b7-bf2f-99995e78afd9"]
-            >>> mf_resp = mfsdk.clients.disconnects(thing_ids, channel_ids)
+            >>> mf_resp = mfsdk.clients.disconnects(client_ids, channel_ids)
             >>> mf_resp
         """
-        payload = {"subjects": thing_ids, "objects": channel_ids}
+        payload = {"subjects": client_ids, "objects": channel_ids}
         http_resp = requests.post(
             self.URL + "/disconnect",
             headers=utils.construct_header(token, utils.CTJSON),
@@ -531,18 +531,18 @@ class Clients:
             )
         return mf_resp
 
-    def connect(self, thing_id: str, channel_id: str, action: str, token: str):
-        """Connects thing and channel.
+    def connect(self, client_id: str, channel_id: str, action: str, token: str):
+        """Connects client and channel.
         
-        Connects a thing and channel with provided thing ID as the subject,
-        channel ID as the object, action that the thing can partake in and a
+        Connects a client and channel with provided client ID as the subject,
+        channel ID as the object, action that the client can partake in and a
         valid token.
         
         params:
-            thing_id: str - ID of the thing
+            client_id: str - ID of the client
             channel_id: str - ID of the channel
             action: str - action for example: "m_write"
-            token: str - token used for connecting thing and channel
+            token: str - token used for connecting client and channel
             
         returns:
             mf_resp: "connected"
@@ -551,13 +551,13 @@ class Clients:
         
             >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
-            >>> thing_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
+            >>> client_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
             >>> channel_id = "567f7da5-b7bf-49b7-bf2f-99995e78afd9"
             >>> action = "m_write"
-            >>> mf_resp = mfsdk.clients.connect(thing_id, channel_id, action)
+            >>> mf_resp = mfsdk.clients.connect(client_id, channel_id, action)
             >>> mf_resp
         """
-        payload= {"subject": thing_id, "object": channel_id, "action": action}
+        payload= {"subject": client_id, "object": channel_id, "action": action}
         http_resp = requests.post(
             self.URL + "/policies",
             headers=utils.construct_header(token, utils.CTJSON),
@@ -573,16 +573,16 @@ class Clients:
             mf_resp.value = "connected"
         return mf_resp
 
-    def disconnect(self, thing_id: str, channel_id: str, token: str):
-        """Disconnects thing and channel.
+    def disconnect(self, client_id: str, channel_id: str, token: str):
+        """Disconnects client and channel.
         
-        Disconnects a thing and channel with provided thing ID as the subject,  
+        Disconnects a client and channel with provided client ID as the subject,  
         channel ID as the object and a valid token.
         
         params:
-            thing_id: str - ID of the thing
+            client_id: str - ID of the client
             channel_id: str - ID of the channel
-            token: str - token used for disconnecting thing and channel
+            token: str - token used for disconnecting client and channel
             
         returns:
             mf_resp: response.Response - response object.
@@ -591,14 +591,14 @@ class Clients:
 
             >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")
-            >>> thing_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
+            >>> client_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
             >>> channel_id = "567f7da5-b7bf-49b7-bf2f-99995e78afd9"
-            >>> mf_resp = mfsdk.clients.disconnect(thing_id, channel_id)
+            >>> mf_resp = mfsdk.clients.disconnect(client_id, channel_id)
             >>> mf_resp
         """
-        payload = {"subject": thing_id, "object": channel_id}
+        payload = {"subject": client_id, "object": channel_id}
         http_resp = requests.delete(
-            self.URL + "/policies" + "/" + thing_id + "/" + channel_id,
+            self.URL + "/policies" + "/" + client_id + "/" + channel_id,
             headers=utils.construct_header(token, utils.CTJSON),
             json=payload,
         )
@@ -612,11 +612,11 @@ class Clients:
             mf_resp.value = "Disconnected"
         return mf_resp
     
-    def share_thing(self, user_id: str, channel_id: str, actions: list, token: str):
-        """Shares thing.
+    def share_client(self, user_id: str, channel_id: str, actions: list, token: str):
+        """Shares client.
         
-        Allows a logged in user to create new policies for a thing over a channel
-        provided with a user ID, channel ID, actions that the thing can partake in
+        Allows a logged in user to create new policies for a client over a channel
+        provided with a user ID, channel ID, actions that the client can partake in
         and a valid token.
         
         params:
@@ -624,7 +624,7 @@ class Clients:
             channel_id: str - ID of the channel
             actions: list - list of actions for example: 
                 ["m_write", "m_read"]
-            token: str - token used for sharing thing
+            token: str - token used for sharing client
             
         returns:
             mf_resp: "OK"
@@ -636,7 +636,7 @@ class Clients:
             >>> user_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
             >>> channel_id = "567f7da5-b7bf-49b7-bf2f-99995e78afd9"
             >>> actions = ["m_write", "m_read"]
-            >>> mf_resp = mfsdk.clients.share_thing(user_id, channel_id, actions)
+            >>> mf_resp = mfsdk.clients.share_client(user_id, channel_id, actions)
             >>> mf_resp
         """
         payload = {"object": channel_id, "subject": user_id, "actions": actions, "external": True}
@@ -649,17 +649,17 @@ class Clients:
         if http_resp.status_code != 201:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.clients["share_thing"], http_resp.status_code
+                errors.clients["share_client"], http_resp.status_code
             )
         else:
             mf_resp.value = "OK"
         return mf_resp
     
-    def authorise_thing(self,access_request: dict, token: str):
-        """Authorises thing.
+    def authorise_client(self,access_request: dict, token: str):
+        """Authorises client.
         
-        Creates policies for a thing as a subject over a channel which is the object. 
-        It authorizes the thing to perform some actions over the channel.
+        Creates policies for a client as a subject over a channel which is the object. 
+        It authorizes the client to perform some actions over the channel.
         
         params:
         
@@ -670,7 +670,7 @@ class Clients:
                     "actions": "m_write"
                     "entity_type": "group"
                 }
-            token: str - token used for authorising thing
+            token: str - token used for authorising client
             
         returns:
             mf_resp: "True"
@@ -685,7 +685,7 @@ class Clients:
             ...     "actions": "m_write"
             ...     "entity_type": "group"
             ... }
-            >>> mf_resp = mfsdk.clients.authorise_thing(access_request)
+            >>> mf_resp = mfsdk.clients.authorise_client(access_request)
             >>> mf_resp
         """
         mf_resp = response.Response()
@@ -697,7 +697,7 @@ class Clients:
         if http_resp.status_code != 200:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.clients["authorise_thing"], http_resp.status_code
+                errors.clients["authorise_client"], http_resp.status_code
             )
         else:
             mf_resp.value = "True"

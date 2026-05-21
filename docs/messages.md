@@ -79,14 +79,14 @@ usage:
 ### <kbd>method</kbd> `send`
 
 ```python
-send(channel_id: str, msg: str, thing_key: str)
+send(channel_id: str, msg: str, client_key: str)
 ```
 
 Sends message via HTTP protocol 
 
-Sends message to a given channel via HTTP protocol. Message is sent through a writer add-on such as timescale. Message is sent to a http port specific to the writer add-on. The thing and channel must be created before sending the message and connected.  
+Sends message to a given channel via HTTP protocol. Message is sent through a writer add-on such as timescale. Message is sent to a http port specific to the writer add-on. The client and channel must be created before sending the message and connected.  
 
-params:  channel_id: ID of the channel to send message to  msg: message to send to the channel that should be in encoded into  bytes format for example:   [{"bn":"demo", "bu":"V", "n":"voltage", "u":"V", "v":5}]  thing_key: secret of the thing sending the message 
+params:  channel_id: ID of the channel to send message to  msg: message to send to the channel that should be in encoded into  bytes format for example:   [{"bn":"demo", "bu":"V", "n":"voltage", "u":"V", "v":5}]  client_key: secret of the client sending the message 
 
 
 
@@ -102,8 +102,8 @@ usage:
     >>> channel_id = "2b86beba-83dd-4b39-8165-4dda4e6eb4ad"
 
  - <b>`    >>> msg = '[{"bn"`</b>: "demo", "bu":"V", "n":"voltage", "u":"V", "v":5}]'
-    >>> thing_key = "fc68b31b-d7fd-4879-b3a7-0baf4580c5b1"
-    >>> mf_resp = mfsdk.messages.send(channel_id, msg, thing_key)
+    >>> client_key = "fc68b31b-d7fd-4879-b3a7-0baf4580c5b1"
+    >>> mf_resp = mfsdk.messages.send(channel_id, msg, client_key)
     >>> mf_resp
 
 

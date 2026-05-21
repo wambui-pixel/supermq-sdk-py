@@ -19,8 +19,8 @@ password = "<password>",
 user_id =  "<user_id>",
 token =  "<access_token>",
 refresh_token = "<refresh_token>",
-thing_id = "<thing_id>",
-thing_id2 = "<thing_id2>",
+client_id = "<client_id>",
+client_id2 = "<client_id2>",
 channel_id = "<channel_id>",
 channel_id2 = "<channel_id2>",
 group_id = "<group_id>",
@@ -181,22 +181,22 @@ if mf_resp.error.status == 0:
 else:
     print(mf_resp.error.message)
 
-"""Authorising a Thing"""
+"""Authorising a Client"""
 access_request = {
-    "subject": thing_id,
+    "subject": client_id,
     "object": channel_id,
     "action": "<action>",
     "entity_type": "<entity_type>"
 }
-mf_resp = mfsdk.clients.authorise_thing(access_request=access_request, token= token)
+mf_resp = mfsdk.clients.authorise_client(access_request=access_request, token= token)
 if mf_resp.error.status == 0:
     print(mf_resp.value)
 else:
     print(mf_resp.error.message)
 
-"""To create a thing, you need the thing name and a user token"""
+"""To create a client, you need the client name and a user token"""
 mf_resp = mfsdk.clients.create(
-    thing={"name": "<thing_name>"}, token= token)
+    client={"name": "<client_name>"}, token= token)
 if mf_resp.error.status == 0:
     print(mf_resp.value)
 else:
@@ -205,7 +205,7 @@ else:
 """You can create multiple clients at once
 by entering a series of clients structures and a user token"""
 mf_resp = mfsdk.clients.create_bulk(
-    clients=[{"name": "<thing_name>"}, {"name": "<thing_name>"}, {"name": "<thing_name>"}],
+    clients=[{"name": "<client_name>"}, {"name": "<client_name>"}, {"name": "<client_name>"}],
     token= token,
 )
 if mf_resp.error.status == 0:
@@ -213,8 +213,8 @@ if mf_resp.error.status == 0:
 else:
     print(mf_resp.error.message)
 
-"""You can get thing information by entering the thing ID and user token"""
-mf_resp = mfsdk.clients.get(thing_id= thing_id, token= token)
+"""You can get client information by entering the client ID and user token"""
+mf_resp = mfsdk.clients.get(client_id= client_id, token= token)
 if mf_resp.error.status == 0:
     print(mf_resp.value)
 else:
@@ -229,55 +229,55 @@ if mf_resp.error.status == 0:
 else:
     print(mf_resp.error.message)
 
-"""Updates a thing entity in a database"""
+"""Updates a client entity in a database"""
 mf_resp = mfsdk.clients.update(
-    thing_id=thing_id, token= token, thing={"name": "<thing_name>"}
+    client_id=client_id, token= token, client={"name": "<client_name>"}
 )
 if mf_resp.error.status == 0:
     print(mf_resp.value)
 else:
     print(mf_resp.error.message)
 
-"""Updates a thing secret in a database"""
-mf_resp = mfsdk.clients.update_thing_secret(
-    thing_id=thing_id, token= token, thing={"secret": password}
+"""Updates a client secret in a database"""
+mf_resp = mfsdk.clients.update_client_secret(
+    client_id=client_id, token= token, client={"secret": password}
 )
 if mf_resp.error.status == 0:
     print(mf_resp.value)
 else:
     print(mf_resp.error.message)
 
-"""Updates a thing's tags in a database"""
-thing=  {
-    "id": thing_id,
-    "name": "<thing_name>",
+"""Updates a client's tags in a database"""
+client=  {
+    "id": client_id,
+    "name": "<client_name>",
     "tags": [
     "dev","back"
     ]
   }
-mf_resp = mfsdk.clients.update_thing_tags(
-    thing_id=thing_id, token= token, thing=thing
+mf_resp = mfsdk.clients.update_client_tags(
+    client_id=client_id, token= token, client=client
 )
 if mf_resp.error.status == 0:
     print(mf_resp.value)
 else:
     print(mf_resp.error.message)
 
-"""Updates a thing's owner"""
-thing=  {
-    "id": thing_id,
-    "name": "<thing_name>",
+"""Updates a client's owner"""
+client=  {
+    "id": client_id,
+    "name": "<client_name>",
     "owner": "<owner_id>",
 }
-mf_resp = mfsdk.clients.update_thing_owner(
-    thing_id=thing_id, token= token, thing=thing
+mf_resp = mfsdk.clients.update_client_owner(
+    client_id=client_id, token= token, client=client
 )
 if mf_resp.error.status == 0:
     print(mf_resp.value)
 else:
     print(mf_resp.error.message)
 
-"""You can get all thing connected to channel"""
+"""You can get all client connected to channel"""
 mf_resp = mfsdk.clients.get_by_channel(
     channel_id=channel_id,
     query_params={"offset": 1, "limit": 5},
@@ -288,25 +288,25 @@ if mf_resp.error.status == 0:
 else:
     print(mf_resp.error.message)
 
-"""To disable a thing you need a thing ID and a user token"""
-mf_resp = mfsdk.clients.disable(thing_id=thing_id, token= token)
+"""To disable a client you need a client ID and a user token"""
+mf_resp = mfsdk.clients.disable(client_id=client_id, token= token)
 if mf_resp.error.status == 0:
     print(mf_resp.value)
 else:
     print(mf_resp.error.message)
 
-"""Connect thing to channel"""
+"""Connect client to channel"""
 mf_resp = mfsdk.clients.connect(
-    channel_id=channel_id, thing_id=thing_id, action="<action>", token= token
+    channel_id=channel_id, client_id=client_id, action="<action>", token= token
 )
 if mf_resp.error.status == 0:
     print(mf_resp.value)
 else:
     print(mf_resp.error.message)
 
-"""Disconnect thing from channel"""
+"""Disconnect client from channel"""
 mf_resp = mfsdk.clients.disconnect(
-    channel_id=channel_id, thing_id=thing_id, token= token
+    channel_id=channel_id, client_id=client_id, token= token
 )
 if mf_resp.error.status == 0:
     print(mf_resp.value)
@@ -315,7 +315,7 @@ else:
 
 """Connect clients to channels"""
 mf_resp = mfsdk.clients.connects(
-    thing_ids=[thing_id, thing_id2],
+    client_ids=[client_id, client_id2],
     channel_ids=[channel_id, channel_id2],
     actions="<action>",
     token= token,
@@ -328,7 +328,7 @@ else:
 
 """Disconnect clients from channels"""
 mf_resp = mfsdk.clients.disconnects(
-    thing_ids=[thing_id, thing_id2],
+    client_ids=[client_id, client_id2],
     channel_ids=[channel_id, channel_id2],
     token=token,
 )
@@ -337,8 +337,8 @@ if mf_resp.error.status == 0:
 else:
     print(mf_resp.error.message)
 
-"""Share thing"""
-mf_resp = mfsdk.clients.share_thing(
+"""Share client"""
+mf_resp = mfsdk.clients.share_client(
     channel_id= channel_id, 
     user_id=  user_id, 
     actions= ["<actions>"], 
@@ -395,9 +395,9 @@ if mf_resp.error.status == 0:
 else:
     print(mf_resp.error.message)
 
-"""A list of all the channels to which a given thing is connected"""
-mf_resp = mfsdk.channels.get_by_thing(
-    thing_id=thing_id, query_params={"offset": 0, "limit": 5},
+"""A list of all the channels to which a given client is connected"""
+mf_resp = mfsdk.channels.get_by_client(
+    client_id=client_id, query_params={"offset": 0, "limit": 5},
     token= token
 )
 if mf_resp.error.status == 0:
@@ -405,8 +405,8 @@ if mf_resp.error.status == 0:
 else:
     print(mf_resp.error.message)
 
-"""Identifies thing when given thing key"""
-mf_resp = mfsdk.channels.identify_thing(thing_key="<thing_secret>")
+"""Identifies client when given client key"""
+mf_resp = mfsdk.channels.identify_client(client_key="<client_secret>")
 if mf_resp.error.status == 0:
     print(mf_resp.value)
 else:
@@ -533,7 +533,7 @@ else:
 
 """Sends message via HTTP protocol"""
 mf_resp = mfsdk.messages.send(
-    channel_id=channel_id, msg='[<message>]', thing_key="<thing_secret>"
+    channel_id=channel_id, msg='[<message>]', client_key="<client_secret>"
 )
 if mf_resp.error.status == 0:
     print(mf_resp.value)
@@ -548,14 +548,14 @@ else:
     print(mf_resp.error.message)
 
 """Issue certs"""
-mf_resp = mfsdk.certs.issue(thing_id=thing_id,valid="<time_limit>", token= token)
+mf_resp = mfsdk.certs.issue(client_id=client_id,valid="<time_limit>", token= token)
 if mf_resp.error.status == 0:
     print(mf_resp.value)
 else:
     print(mf_resp.error.message)
  
 """View Certs"""
-mf_resp = mfsdk.certs.view_by_thing(thing_id=thing_id, token= token)
+mf_resp = mfsdk.certs.view_by_client(client_id=client_id, token= token)
 if mf_resp.error.status == 0:
     print(mf_resp.value)
 else:
@@ -569,7 +569,7 @@ else:
     print(mf_resp.error.message)
 
 """Revoke Certs"""
-mf_resp = mfsdk.certs.revoke(thing_id=thing_id, token= token)
+mf_resp = mfsdk.certs.revoke(client_id=client_id, token= token)
 if mf_resp.error.status == 0:
     print(mf_resp.value)
 else:
@@ -579,7 +579,7 @@ else:
 config = {
    "external_id": "<external_id>",
   "external_key": "<external_key>",
-  "thing_id": thing_id,
+  "client_id": client_id,
   "name": "<name>"
 }
 mf_resp = mfsdk.bootstrap.add(config=config, token= token)
@@ -588,11 +588,11 @@ if mf_resp.error.status == 0:
 else:
     print(mf_resp.error.message)
 
-"""Updating state represents enabling/disabling Config, i.e.connecting and disconnecting corresponding Magistrala Thing to the list of Channels."""
+"""Updating state represents enabling/disabling Config, i.e.connecting and disconnecting corresponding Magistrala Client to the list of Channels."""
 config = {
    "external_id": "<external_id>",
   "external_key": "<external_key>",
-  "thing_id": thing_id,
+  "client_id": client_id,
   "name": "<name>"
 }
 mf_resp = mfsdk.bootstrap.whitelist(config=config, token= token)
@@ -602,17 +602,17 @@ else:
     print(mf_resp.error.message) 
  
 """Retrieves a configuration with given config id"""
-mf_resp = mfsdk.bootstrap.view(thing_id= thing_id, token= token)
+mf_resp = mfsdk.bootstrap.view(client_id= client_id, token= token)
 if mf_resp.error.status == 0:
     print(mf_resp.value)
 else:
     print(mf_resp.error.message)  
   
-"""Update is performed by replacing the current resource data with values provided in a request payload. Note that the owner, ID, external ID, external key, Magistrala Thing ID and key cannot be changed."""
+"""Update is performed by replacing the current resource data with values provided in a request payload. Note that the owner, ID, external ID, external key, Magistrala Client ID and key cannot be changed."""
 config = {
  "external_id": "<external_id>",
   "external_key": "<external_key>",
-  "thing_id": thing_id,
+  "client_id": client_id,
   "name": "<name>"
 }
 mf_resp = mfsdk.bootstrap.update(config=config, token= token)

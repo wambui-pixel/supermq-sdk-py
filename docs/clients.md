@@ -16,7 +16,7 @@
 ## <kbd>class</kbd> `Clients`
 Clients API client. 
 
-Clients API is used for creating and managing clients. It is used for creating new clients, creating multiple clients getting thing information, updating thing information, disabling  and enabling clients ,and connecting and disconnecting clients. 
+Clients API is used for creating and managing clients. It is used for creating new clients, creating multiple clients getting client information, updating client information, disabling  and enabling clients ,and connecting and disconnecting clients. 
 
 
 
@@ -44,19 +44,19 @@ __init__(url: str)
 
 <a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/clients.py#L658"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
-### <kbd>method</kbd> `authorise_thing`
+### <kbd>method</kbd> `authorise_client`
 
 ```python
-authorise_thing(access_request: dict, token: str)
+authorise_client(access_request: dict, token: str)
 ```
 
-Authorises thing. 
+Authorises client. 
 
-Creates policies for a thing as a subject over a channel which is the object.  It authorizes the thing to perform some actions over the channel. 
+Creates policies for a client as a subject over a channel which is the object.  It authorizes the client to perform some actions over the channel. 
 
 params: 
 
- access_request: dict - access request information for example:  {  "subject": "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9",  "object": "567f7da5-b7bf-49b7-bf2f-99995e78afd9",  "actions": "m_write"  "entity_type": "group"  }  token: str - token used for authorising thing  
+ access_request: dict - access request information for example:  {  "subject": "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9",  "object": "567f7da5-b7bf-49b7-bf2f-99995e78afd9",  "actions": "m_write"  "entity_type": "group"  }  token: str - token used for authorising client  
 
 
 
@@ -67,7 +67,7 @@ params:
 Usage:
 ``` 
 
-    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> access_request = {     ...     "subject": "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9",     ...     "object": "567f7da5-b7bf-49b7-bf2f-99995e78afd9",     ...     "actions": "m_write"     ...     "entity_type": "group"     ... }     >>> mf_resp = mfsdk.clients.authorise_thing(access_request)     >>> mf_resp 
+    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> access_request = {     ...     "subject": "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9",     ...     "object": "567f7da5-b7bf-49b7-bf2f-99995e78afd9",     ...     "actions": "m_write"     ...     "entity_type": "group"     ... }     >>> mf_resp = mfsdk.clients.authorise_client(access_request)     >>> mf_resp 
 
 ---
 
@@ -76,14 +76,14 @@ Usage:
 ### <kbd>method</kbd> `connect`
 
 ```python
-connect(thing_id: str, channel_id: str, action: str, token: str)
+connect(client_id: str, channel_id: str, action: str, token: str)
 ```
 
-Connects thing and channel. 
+Connects client and channel. 
 
-Connects a thing and channel with provided thing ID as the subject, channel ID as the object, action that the thing can partake in and a valid token. 
+Connects a client and channel with provided client ID as the subject, channel ID as the object, action that the client can partake in and a valid token. 
 
-params:  thing_id: str - ID of the thing  channel_id: str - ID of the channel  action: str - action for example: "m_write"  token: str - token used for connecting thing and channel  
+params:  client_id: str - ID of the client  channel_id: str - ID of the channel  action: str - action for example: "m_write"  token: str - token used for connecting client and channel  
 
 
 
@@ -94,7 +94,7 @@ params:  thing_id: str - ID of the thing  channel_id: str - ID of the channel  a
 Usage:
 ``` 
 
-    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> thing_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> channel_id = "567f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> action = "m_write"     >>> mf_resp = mfsdk.clients.connect(thing_id, channel_id, action)     >>> mf_resp 
+    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> client_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> channel_id = "567f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> action = "m_write"     >>> mf_resp = mfsdk.clients.connect(client_id, channel_id, action)     >>> mf_resp 
 
 ---
 
@@ -103,14 +103,14 @@ Usage:
 ### <kbd>method</kbd> `connects`
 
 ```python
-connects(thing_ids: list, channel_ids: list, actions: list, token: str)
+connects(client_ids: list, channel_ids: list, actions: list, token: str)
 ```
 
 Connects clients and channels.  
 
-Connects multiple clients and channels with provided thing IDs  as the subjects, channel IDs as the objects, actions that the  thing can partake in and a valid token. 
+Connects multiple clients and channels with provided client IDs  as the subjects, channel IDs as the objects, actions that the  client can partake in and a valid token. 
 
-params:  thing_ids: list - list of thing IDs  channel_ids: list - list of channel IDs  actions: list - list of actions for example:   ["m_write", "m_read"]  token: str - token used for connecting clients and channels  
+params:  client_ids: list - list of client IDs  channel_ids: list - list of channel IDs  actions: list - list of actions for example:   ["m_write", "m_read"]  token: str - token used for connecting clients and channels  
 
 
 
@@ -121,7 +121,7 @@ params:  thing_ids: list - list of thing IDs  channel_ids: list - list of channe
 Usage:
 ``` 
 
-    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> thing_ids = ["fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"]     >>> channel_ids = ["567f7da5-b7bf-49b7-bf2f-99995e78afd9"]     >>> actions = ["m_write", "m_read"]     >>> mf_resp = mfsdk.clients.connects(thing_ids, channel_ids, actions)     >>> mf_resp             
+    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> client_ids = ["fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"]     >>> channel_ids = ["567f7da5-b7bf-49b7-bf2f-99995e78afd9"]     >>> actions = ["m_write", "m_read"]     >>> mf_resp = mfsdk.clients.connects(client_ids, channel_ids, actions)     >>> mf_resp             
 
 ---
 
@@ -130,14 +130,14 @@ Usage:
 ### <kbd>method</kbd> `create`
 
 ```python
-create(thing: dict, token: str)
+create(client: dict, token: str)
 ```
 
-Creates thing entity in the database.  
+Creates client entity in the database.  
 
-Creates a new thing with provided thing information. If token is provided, it will be used to create a new thing 
+Creates a new client with provided client information. If token is provided, it will be used to create a new client 
 
-params:  thing: dict - thing information for example:  {  "name": "thing1"  }  token: str - token used for creating a new thing  
+params:  client: dict - client information for example:  {  "name": "client1"  }  token: str - token used for creating a new client  
 
 
 
@@ -146,7 +146,7 @@ params:  thing: dict - thing information for example:  {  "name": "thing1"  }  t
  - <b>`mf_resp`</b>:  response.Response - response object 
 
 Usage:
-```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> thing = {     ...     "name": "thing1",     ...  }     >>> mf_resp = mfsdk.clients.create(thing)     >>> mf_resp             
+```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> client = {     ...     "name": "client1",     ...  }     >>> mf_resp = mfsdk.clients.create(client)     >>> mf_resp             
 
 ---
 
@@ -162,7 +162,7 @@ Creates multiple clients in bulk.
 
 Creates multiple new clients with provided clients information. If a token is provided, it will be used to create the new clients. 
 
-params:  clients: list - a list of clients with theri information for example:  [  {"name": "thing2"},   {"name": "thing3"},   {"name": "thing4"}  ]  token: str - token used for creating the new clients.  
+params:  clients: list - a list of clients with theri information for example:  [  {"name": "client2"},   {"name": "client3"},   {"name": "client4"}  ]  token: str - token used for creating the new clients.  
 
 
 
@@ -171,7 +171,7 @@ params:  clients: list - a list of clients with theri information for example:  
  - <b>`mf_resp`</b>:  response.Response - response object 
 
 Usage:
-```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> clients = [     ...     {"name": "thing2"},      ...     {"name": "thing3"},      ...     {"name": "thing4"}     ... ]     >>> mf_resp = mfsdk.clients.create_bulk(clients)     >>> mf_resp             
+```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> clients = [     ...     {"name": "client2"},      ...     {"name": "client3"},      ...     {"name": "client4"}     ... ]     >>> mf_resp = mfsdk.clients.create_bulk(clients)     >>> mf_resp             
 
 ---
 
@@ -180,14 +180,14 @@ Usage:
 ### <kbd>method</kbd> `disable`
 
 ```python
-disable(thing_id: str, token: str)
+disable(client_id: str, token: str)
 ```
 
-Deletes a thing entity from the database. 
+Deletes a client entity from the database. 
 
-Deletes a thing with provided thing ID and valid token. 
+Deletes a client with provided client ID and valid token. 
 
-params:  thing_id: str - ID of the thing  token: str - token used for deleting thing  
+params:  client_id: str - ID of the client  token: str - token used for deleting client  
 
 
 
@@ -196,7 +196,7 @@ params:  thing_id: str - ID of the thing  token: str - token used for deleting t
  - <b>`mf_resp`</b>:  response.Response - response object. 
 
 Usage:
-```                       >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> thing_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> mf_resp = mfsdk.clients.disable(thing_id)     >>> mf_resp         
+```                       >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> client_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> mf_resp = mfsdk.clients.disable(client_id)     >>> mf_resp         
 
 ---
 
@@ -205,14 +205,14 @@ Usage:
 ### <kbd>method</kbd> `disconnect`
 
 ```python
-disconnect(thing_id: str, channel_id: str, token: str)
+disconnect(client_id: str, channel_id: str, token: str)
 ```
 
-Disconnects thing and channel. 
+Disconnects client and channel. 
 
-Disconnects a thing and channel with provided thing ID as the subject,   channel ID as the object and a valid token. 
+Disconnects a client and channel with provided client ID as the subject,   channel ID as the object and a valid token. 
 
-params:  thing_id: str - ID of the thing  channel_id: str - ID of the channel  token: str - token used for disconnecting thing and channel  
+params:  client_id: str - ID of the client  channel_id: str - ID of the channel  token: str - token used for disconnecting client and channel  
 
 
 
@@ -223,7 +223,7 @@ params:  thing_id: str - ID of the thing  channel_id: str - ID of the channel  t
 Usage:
 ``` 
 
-    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> thing_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> channel_id = "567f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> mf_resp = mfsdk.clients.disconnect(thing_id, channel_id)     >>> mf_resp 
+    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> client_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> channel_id = "567f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> mf_resp = mfsdk.clients.disconnect(client_id, channel_id)     >>> mf_resp 
 
 ---
 
@@ -232,14 +232,14 @@ Usage:
 ### <kbd>method</kbd> `disconnects`
 
 ```python
-disconnects(thing_ids: list, channel_ids: list, token: str)
+disconnects(client_ids: list, channel_ids: list, token: str)
 ```
 
 Disconnect clients and channels. 
 
-Disconnects multiple clients and channels with provided thing IDs  as the subjects, channel IDs as the objects and a valid token. 
+Disconnects multiple clients and channels with provided client IDs  as the subjects, channel IDs as the objects and a valid token. 
 
-params:  thing_ids: list - list of thing IDs  channel_ids: list - list of channel IDs  token: str - token used for disconnecting clients and channels 
+params:  client_ids: list - list of client IDs  channel_ids: list - list of channel IDs  token: str - token used for disconnecting clients and channels 
 
 
 
@@ -250,7 +250,7 @@ params:  thing_ids: list - list of thing IDs  channel_ids: list - list of channe
 Usage:
 ``` 
 
-    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> thing_ids = ["fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"]     >>> channel_ids = ["567f7da5-b7bf-49b7-bf2f-99995e78afd9"]     >>> mf_resp = mfsdk.clients.disconnects(thing_ids, channel_ids)     >>> mf_resp 
+    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> client_ids = ["fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"]     >>> channel_ids = ["567f7da5-b7bf-49b7-bf2f-99995e78afd9"]     >>> mf_resp = mfsdk.clients.disconnects(client_ids, channel_ids)     >>> mf_resp 
 
 ---
 
@@ -259,14 +259,14 @@ Usage:
 ### <kbd>method</kbd> `get`
 
 ```python
-get(thing_id: str, token: str)
+get(client_id: str, token: str)
 ```
 
-Gets a thing entity. 
+Gets a client entity. 
 
-Provides information about a thing with provided thing ID and token. Information about a thing is provided in a JSON format and includes the name its owner, secret,tags and status. 
+Provides information about a client with provided client ID and token. Information about a client is provided in a JSON format and includes the name its owner, secret,tags and status. 
 
-params:  thing_id: str - ID of the thing  token: str - token used for getting thing information 
+params:  client_id: str - ID of the client  token: str - token used for getting client information 
 
 
 
@@ -275,7 +275,7 @@ params:  thing_id: str - ID of the thing  token: str - token used for getting th
  - <b>`mf_resp`</b>:  response.Response - response object. 
 
 Usage:
-```               >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> thing_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> mf_resp = mfsdk.clients.get(thing_id)     >>> mf_resp         
+```               >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> client_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> mf_resp = mfsdk.clients.get(client_id)     >>> mf_resp         
 
 ---
 
@@ -312,7 +312,7 @@ Usage:
 get_by_channel(channel_id: str, query_params: dict, token: str)
 ```
 
-Gets all clients to which a specific thing is connected to. 
+Gets all clients to which a specific client is connected to. 
 
 Provides a list of all clients that are connected to a specific channel when given a channel ID and valid token. 
 
@@ -327,17 +327,17 @@ Usage:
 
 <a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/clients.py#L615"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
-### <kbd>method</kbd> `share_thing`
+### <kbd>method</kbd> `share_client`
 
 ```python
-share_thing(user_id: str, channel_id: str, actions: list, token: str)
+share_client(user_id: str, channel_id: str, actions: list, token: str)
 ```
 
-Shares thing. 
+Shares client. 
 
-Allows a logged in user to create new policies for a thing over a channel provided with a user ID, channel ID, actions that the thing can partake in and a valid token. 
+Allows a logged in user to create new policies for a client over a channel provided with a user ID, channel ID, actions that the client can partake in and a valid token. 
 
-params:  user_id: str - ID of the user  channel_id: str - ID of the channel  actions: list - list of actions for example:   ["m_write", "m_read"]  token: str - token used for sharing thing  
+params:  user_id: str - ID of the user  channel_id: str - ID of the channel  actions: list - list of actions for example:   ["m_write", "m_read"]  token: str - token used for sharing client  
 
 
 
@@ -348,7 +348,7 @@ params:  user_id: str - ID of the user  channel_id: str - ID of the channel  act
 Usage:
 ``` 
 
-    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> user_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> channel_id = "567f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> actions = ["m_write", "m_read"]     >>> mf_resp = mfsdk.clients.share_thing(user_id, channel_id, actions)     >>> mf_resp 
+    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> user_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> channel_id = "567f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> actions = ["m_write", "m_read"]     >>> mf_resp = mfsdk.clients.share_client(user_id, channel_id, actions)     >>> mf_resp 
 
 ---
 
@@ -357,14 +357,14 @@ Usage:
 ### <kbd>method</kbd> `update`
 
 ```python
-update(thing_id: str, thing: dict, token: str)
+update(client_id: str, client: dict, token: str)
 ```
 
-Updates thing entity. 
+Updates client entity. 
 
-Allows a logged in user to make changes and update a thing's information with provided thing ID and valid token. Information  such as the metadata and name can be updated.  
+Allows a logged in user to make changes and update a client's information with provided client ID and valid token. Information  such as the metadata and name can be updated.  
 
-params:  thing_id: str - ID of the thing  thing: dict - thing information for example:  {  "name": "thing1"  }  token: str - token used for updating thing information   
+params:  client_id: str - ID of the client  client: dict - client information for example:  {  "name": "client1"  }  token: str - token used for updating client information   
 
 
 
@@ -373,23 +373,23 @@ params:  thing_id: str - ID of the thing  thing: dict - thing information for ex
  - <b>`mf_resp`</b>:  response.Response - response object. 
 
 Usage:
-```                               >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> thing_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> thing = {     ...     "name": "thing2",     ...  }     >>> mf_resp = mfsdk.clients.update(thing_id, thing)     >>> mf_resp             
+```                               >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> client_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> client = {     ...     "name": "client2",     ...  }     >>> mf_resp = mfsdk.clients.update(client_id, client)     >>> mf_resp             
 
 ---
 
 <a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/clients.py#L378"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
-### <kbd>method</kbd> `update_thing_owner`
+### <kbd>method</kbd> `update_client_owner`
 
 ```python
-update_thing_owner(thing_id: str, thing: dict, token: str)
+update_client_owner(client_id: str, client: dict, token: str)
 ```
 
-Updates thing owner. 
+Updates client owner. 
 
-Allows a logged in user to make changes and update a thing's  information with provided thing ID and valid token. The thing  owner can be updated. 
+Allows a logged in user to make changes and update a client's  information with provided client ID and valid token. The client  owner can be updated. 
 
-params:  thing_id: str - ID of the thing  thing: dict - thing information for example:  {  "owner": "user1"  }  token: str - token used for updating thing information  
+params:  client_id: str - ID of the client  client: dict - client information for example:  {  "owner": "user1"  }  token: str - token used for updating client information  
 
 
 
@@ -400,23 +400,23 @@ params:  thing_id: str - ID of the thing  thing: dict - thing information for ex
 Usage:
 ``` 
 
-    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> thing_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> thing = {     ...     "owner": "user1"     ...  }     >>> mf_resp = mfsdk.clients.update_thing_owner(thing_id, thing)     >>> mf_resp 
+    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> client_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> client = {     ...     "owner": "user1"     ...  }     >>> mf_resp = mfsdk.clients.update_client_owner(client_id, client)     >>> mf_resp 
 
 ---
 
 <a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/clients.py#L290"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
-### <kbd>method</kbd> `update_thing_secret`
+### <kbd>method</kbd> `update_client_secret`
 
 ```python
-update_thing_secret(thing_id: str, thing: dict, token: str)
+update_client_secret(client_id: str, client: dict, token: str)
 ```
 
-Updates thing secret. 
+Updates client secret. 
 
-Allows a logged in user to make changes and update a thing's information with provided thing ID and valid token. The thing's  secret can be updated. 
+Allows a logged in user to make changes and update a client's information with provided client ID and valid token. The client's  secret can be updated. 
 
-params:  thing_id: str - ID of the thing  thing: dict - thing information for example:  {  "key": "thing1"  }  token: str - token used for updating thing information  
+params:  client_id: str - ID of the client  client: dict - client information for example:  {  "key": "client1"  }  token: str - token used for updating client information  
 
 
 
@@ -427,23 +427,23 @@ params:  thing_id: str - ID of the thing  thing: dict - thing information for ex
 Usage:
 ``` 
 
-    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> thing_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> thing = {     ...     "key": "thing2",     ...  }     >>> mf_resp = mfsdk.clients.update_thing_secret(thing_id, thing)     >>> mf_resp 
+    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> client_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> client = {     ...     "key": "client2",     ...  }     >>> mf_resp = mfsdk.clients.update_client_secret(client_id, client)     >>> mf_resp 
 
 ---
 
 <a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/clients.py#L334"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
-### <kbd>method</kbd> `update_thing_tags`
+### <kbd>method</kbd> `update_client_tags`
 
 ```python
-update_thing_tags(thing_id: str, thing: dict, token: str)
+update_client_tags(client_id: str, client: dict, token: str)
 ```
 
-Updates thing tags. 
+Updates client tags. 
 
-Allows a logged in user to make changes and update a thing's information with provided thing ID and valid token. The thing's tags can be updated. 
+Allows a logged in user to make changes and update a client's information with provided client ID and valid token. The client's tags can be updated. 
 
-params:  thing_id: str - ID of the thing  thing: dict - thing information for example:  {  "tags": ["tag1", "tag2"]  }  token: str - token used for updating thing information  
+params:  client_id: str - ID of the client  client: dict - client information for example:  {  "tags": ["tag1", "tag2"]  }  token: str - token used for updating client information  
 
 
 
@@ -454,7 +454,7 @@ params:  thing_id: str - ID of the thing  thing: dict - thing information for ex
 Usage:
 ``` 
 
-    >>> from magistrala import sdk        >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> thing_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> thing = {     ...     "tags": ["tag1", "tag2"]     ...  }     >>> mf_resp = mfsdk.clients.update_thing_tags(thing_id, thing)     >>> mf_resp 
+    >>> from magistrala import sdk        >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> client_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> client = {     ...     "tags": ["tag1", "tag2"]     ...  }     >>> mf_resp = mfsdk.clients.update_client_tags(client_id, client)     >>> mf_resp 
 
 
 

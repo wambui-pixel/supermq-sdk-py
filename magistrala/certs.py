@@ -28,12 +28,12 @@ class Certs:
         """
         self.url = url
 
-    def issue(self, thing_id: str, valid: str, token: str):
+    def issue(self, client_id: str, valid: str, token: str):
         """
-        Issues a certificate for a given thing ID.
+        Issues a certificate for a given client ID.
         
         Args:
-            thing_id (str): Thing ID.
+            client_id (str): Client ID.
             valid (str): Certificate validity period.
             token (str): Authorization token.
             
@@ -43,13 +43,13 @@ class Certs:
         Usage:
             >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(certs_url="http://localhost:9019")
-            >>> thing_id = "thing_id"
+            >>> client_id = "client_id"
             >>> valid = "1h"
-            >>> mf_resp = mfsdk.certs.issue(thing_id, valid)
+            >>> mf_resp = mfsdk.certs.issue(client_id, valid)
             >>> mf_resp
         """ 
         payload = {
-            "thing_id": thing_id,
+            "client_id": client_id,
             "ttl": valid,
         }
         mf_resp = response.Response()
@@ -67,13 +67,13 @@ class Certs:
             mf_resp.value = http_resp.json()
         return mf_resp
 
-    def view_by_thing(self, thing_id: str, token: str):
-        """Retrieves a list of certificates' serial IDs for a given thing ID.
+    def view_by_client(self, client_id: str, token: str):
+        """Retrieves a list of certificates' serial IDs for a given client ID.
         
-        Provides a list of certificates' serial IDs for a given thing ID.
+        Provides a list of certificates' serial IDs for a given client ID.
         
         Params:
-            thing_id (str): Thing ID.
+            client_id (str): Client ID.
             token (str): Authorization token.
             
         Returns:
@@ -83,19 +83,19 @@ class Certs:
         
             >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(certs_url="http://localhost:9019")
-            >>> thing_id = "thing_id"
-            >>> mf_resp = mfsdk.certs.view_by_thing(thing_id)
+            >>> client_id = "client_id"
+            >>> mf_resp = mfsdk.certs.view_by_client(client_id)
             >>> mf_resp
         """
         mf_resp = response.Response()
         http_resp = requests.get(
-            self.url + "/serials" + "/" + thing_id,
+            self.url + "/serials" + "/" + client_id,
             headers=utils.construct_header(token, utils.CTJSON),
         )
         if http_resp.status_code != 200:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.certs["view_by_thing"], http_resp.status_code
+                errors.certs["view_by_client"], http_resp.status_code
             )
         else:
             mf_resp.value = http_resp.json()
@@ -136,13 +136,13 @@ class Certs:
             mf_resp.value = http_resp.json()
         return mf_resp
 
-    def revoke(self, thing_id: str, token: str):
-        """Revokes a certificate for a given thing ID.
+    def revoke(self, client_id: str, token: str):
+        """Revokes a certificate for a given client ID.
         
-        Deletes a certificate for a given thing ID and valid token.
+        Deletes a certificate for a given client ID and valid token.
 
         params:
-            thing_id (str): thing id
+            client_id (str): client id
             token (str): valid authorization token used to delete the certificate
 
         Returns:
@@ -152,13 +152,13 @@ class Certs:
         
             >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(certs_url="http://localhost:9019")
-            >>> thing_id = "thing_id"
-            >>> mf_resp = mfsdk.certs.revoke(thing_id)
+            >>> client_id = "client_id"
+            >>> mf_resp = mfsdk.certs.revoke(client_id)
             >>> mf_resp
         """
         mf_resp = response.Response()
         http_resp = requests.delete(
-            self.url + "/" + self.CERTS_ENDPOINT + "/" + thing_id,
+            self.url + "/" + self.CERTS_ENDPOINT + "/" + client_id,
             headers=utils.construct_header(token, utils.CTJSON),
         )
         if http_resp.status_code != 200:

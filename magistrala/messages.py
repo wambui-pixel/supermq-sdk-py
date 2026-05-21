@@ -30,12 +30,12 @@ class Messages:
         raises:
             None
         """
-    def send(self, channel_id: str, msg: str, thing_key: str):
+    def send(self, channel_id: str, msg: str, client_key: str):
         """Sends message via HTTP protocol
         
         Sends message to a given channel via HTTP protocol. Message is sent
         through a writer add-on such as timescale. Message is sent to a
-        http port specific to the writer add-on. The thing and channel must be
+        http port specific to the writer add-on. The client and channel must be
         created before sending the message and connected. 
         
         params:
@@ -43,7 +43,7 @@ class Messages:
             msg: message to send to the channel that should be in encoded into
                 bytes format for example: 
                 [{"bn":"demo", "bu":"V", "n":"voltage", "u":"V", "v":5}]
-            thing_key: secret of the thing sending the message
+            client_key: secret of the client sending the message
         
         returns:
             mf_resp: response object
@@ -54,8 +54,8 @@ class Messages:
             >>> mfsdk = sdk.Sdk("http://localhost:9011")
             >>> channel_id = "2b86beba-83dd-4b39-8165-4dda4e6eb4ad"
             >>> msg = '[{"bn":"demo", "bu":"V", "n":"voltage", "u":"V", "v":5}]'
-            >>> thing_key = "fc68b31b-d7fd-4879-b3a7-0baf4580c5b1"
-            >>> mf_resp = mfsdk.messages.send(channel_id, msg, thing_key)
+            >>> client_key = "fc68b31b-d7fd-4879-b3a7-0baf4580c5b1"
+            >>> mf_resp = mfsdk.messages.send(channel_id, msg, client_key)
             >>> mf_resp
         """
         chan_name_parts = channel_id.split(".", 2)
@@ -69,7 +69,7 @@ class Messages:
             subtopic,
             data=bytes(msg, 'utf-8'),
             headers=utils.construct_header(
-                utils.ThingPrefix + thing_key, utils.CTJSON),
+                utils.ClientPrefix + client_key, utils.CTJSON),
         )
         print(http_resp)
         if http_resp.status_code != 202:

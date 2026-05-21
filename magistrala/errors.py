@@ -71,40 +71,40 @@ clients = {
     },
     "get": {
         400: "Failed due to malformed query parameters.",
-        404: "Thing does not exist.",
+        404: "Client does not exist.",
     },
     "get_all": {
-        404: "Thing does not exist.",
+        404: "Client does not exist.",
     },
     "get_by_channel": {
         400: "Failed due to malformed query parameters.",
     },
     "update": {
-        404: "Thing does not exist.",
+        404: "Client does not exist.",
     },
-    "update_thing_secret": {
+    "update_client_secret": {
         401: "Missing or invalid access token provided.",
     },
-    "update_thing_tags": {
+    "update_client_tags": {
         401: "Missing or invalid access token provided.",
     },
-    "update_thing_owner": {
+    "update_client_owner": {
         401: "Missing or invalid access token provided.",
     },
     "delete": {
-        400: "Failed due to malformed thing's ID.",
+        400: "Failed due to malformed client's ID.",
     },
     "connect": {
         400: "A non-existent entity request."
     },
     "disconnect": {
         400: "Failed due to malformed query parameters.",
-        404: "Channel or thing does not exist.",
+        404: "Channel or client does not exist.",
     },
-    "share_thing": {
+    "share_client": {
         400: "A non-existent entity request."
     },
-    "authorise_thing":{
+    "authorise_client":{
         403: "False",
     },
 }
@@ -123,9 +123,9 @@ channels = {
         400: "Failed due to malformed channel's ID.",
         404: "Channel does not exist.",
     },
-    "get_by_thing": {
+    "get_by_client": {
         400: "Failed due to malformed query parameters.",
-        404: "Thing does not exist.",
+        404: "Client does not exist.",
     },
     "update": {
         404: "Channel does not exist."
@@ -133,8 +133,8 @@ channels = {
     "delete": {
         400: "Failed due to malformed channel's ID."
     },
-    "identify_thing":{
-        401: "Thing and channel are not connected, or thing with specified key doesn't exist."
+    "identify_client":{
+        401: "Client and channel are not connected, or client with specified key doesn't exist."
     },
 }
 
@@ -216,7 +216,7 @@ certs = {
     "issue": {
         401: "Missing or invalid access token provided.",
     },
-    "view_by_thing": {
+    "view_by_client": {
         404: "Failed to retrieve corresponding certificate.",
     },
     "view_by_serial": {

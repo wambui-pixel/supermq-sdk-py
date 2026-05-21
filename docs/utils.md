@@ -9,7 +9,7 @@
 
 **Global Variables**
 ---------------
-- **ThingPrefix**
+- **ClientPrefix**
 - **BearerPrefix**
 - **CTJSON**
 - **CTJSONSenML**

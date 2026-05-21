@@ -14,10 +14,10 @@ class Channels:
         - create multiple channels in a bulk
         - get channel
         - get all channels
-        - get all channels to which a specific thing is connected to
+        - get all channels to which a specific client is connected to
         - update channel
         - delete channel
-        - identify thing
+        - identify client
         
     Attributes: 
         CHANNELS_ENDPOINT (str): Channels API endpoint
@@ -220,14 +220,14 @@ class Channels:
             mf_resp.value = http_resp.json()
         return mf_resp
 
-    def get_by_thing(self, thing_id: str, query_params: dict, token: str):
-        """Gets all channels to which a specific thing is connected to.
+    def get_by_client(self, client_id: str, query_params: dict, token: str):
+        """Gets all channels to which a specific client is connected to.
         
-        Provides a list of all the channels a thing is connected to when provided with a valid
-        token and thing ID.
+        Provides a list of all the channels a client is connected to when provided with a valid
+        token and client ID.
         
         params:
-            thing_id (str): Thing ID
+            client_id (str): Client ID
             query_params (dict): Query parameters for example:
                 {
                     "offset": 0,
@@ -242,24 +242,24 @@ class Channels:
 
             >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(channels_url="http://localhost:9000")
-            >>> thing_id = "thing_id"
+            >>> client_id = "client_id"
             >>> query_params = {
             ...    "offset": 0,
             ...    "limit": 10
             ... }
-            >>> mf_resp = mfsdk.channels.get_by_thing(thing_id, query_params, token)
+            >>> mf_resp = mfsdk.channels.get_by_client(client_id, query_params, token)
             >>> mf_resp
         """
         mf_resp = response.Response()
         http_resp = requests.get(
-            self.url + "/" + self.CLIENTS_ENDPOINT + "/" + thing_id + "/" + self.CHANNELS_ENDPOINT,
+            self.url + "/" + self.CLIENTS_ENDPOINT + "/" + client_id + "/" + self.CHANNELS_ENDPOINT,
             headers=utils.construct_header(token, utils.CTJSON),
             params=query_params,
         )
         if http_resp.status_code != 200:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.channels["get_by_thing"], http_resp.status_code
+                errors.channels["get_by_client"], http_resp.status_code
             )
         else:
             mf_resp.value = http_resp.json()
@@ -346,13 +346,13 @@ class Channels:
             )
         return mf_resp
 
-    def identify_thing(self, thing_key: str):
-        """Validates thing's key and returns it's ID if key is valid
+    def identify_client(self, client_key: str):
+        """Validates client's key and returns it's ID if key is valid
         
-        Uses a thing_key or secret to validate a thing and provide its information.
+        Uses a client_key or secret to validate a client and provide its information.
         
         params:
-            thing_key (str): Thing's key
+            client_key (str): Client's key
             
         returns:
             mf_resp: response.Response -response object
@@ -361,19 +361,19 @@ class Channels:
         
             >>> from magistrala import sdk    
             >>> mfsdk = sdk.SDK(channels_url="http://localhost:9000")
-            >>> thing_key = "thing_key"
-            >>> mf_resp = mfsdk.channels.identify_thing(thing_key)
+            >>> client_key = "client_key"
+            >>> mf_resp = mfsdk.channels.identify_client(client_key)
             >>> mf_resp
         """
         http_resp = requests.post(
             self.url + "/" + self.IDENTIFY_ENDPOINT,
-            headers=utils.construct_header(utils.ThingPrefix + thing_key, utils.CTJSON),
+            headers=utils.construct_header(utils.ClientPrefix + client_key, utils.CTJSON),
         )
         mf_resp = response.Response()
         if http_resp.status_code != 200:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.channels["identify_thing"], http_resp.status_code
+                errors.channels["identify_client"], http_resp.status_code
             )
         else:
             mf_resp.value = http_resp.json()

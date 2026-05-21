@@ -21,10 +21,10 @@ Channels are used to connect clients and users. They are used to send messages t
     - create multiple channels in a bulk 
     - get channel 
     - get all channels 
-    - get all channels to which a specific thing is connected to 
+    - get all channels to which a specific client is connected to 
     - update channel 
     - delete channel 
-    - identify thing  
+    - identify client  
 
 
 
@@ -253,17 +253,17 @@ Usage:
 
 <a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/channels.py#L223"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
-### <kbd>method</kbd> `get_by_thing`
+### <kbd>method</kbd> `get_by_client`
 
 ```python
-get_by_thing(thing_id: str, query_params: dict, token: str)
+get_by_client(client_id: str, query_params: dict, token: str)
 ```
 
-Gets all channels to which a specific thing is connected to. 
+Gets all channels to which a specific client is connected to. 
 
-Provides a list of all the channels a thing is connected to when provided with a valid token and thing ID. 
+Provides a list of all the channels a client is connected to when provided with a valid token and client ID. 
 
-params:  thing_id (str): Thing ID  query_params (dict): Query parameters for example:  {  "offset": 0,  "limit": 10  }  token (str): User's token  
+params:  client_id (str): Client ID  query_params (dict): Query parameters for example:  {  "offset": 0,  "limit": 10  }  token (str): User's token  
 
 
 
@@ -276,14 +276,14 @@ Usage:
 ``` from magistrala import sdk```
 
  - <b>`    >>> mfsdk = sdk.SDK(channels_url="http`</b>: //localhost:9000")
-    >>> thing_id = "thing_id"
+    >>> client_id = "client_id"
     >>> query_params = {
 
  - <b>`    ...    "offset"`</b>:  0,
 
  - <b>`    ...    "limit"`</b>:  10
     ... }
-    >>> mf_resp = mfsdk.channels.get_by_thing(thing_id, query_params, token)
+    >>> mf_resp = mfsdk.channels.get_by_client(client_id, query_params, token)
     >>> mf_resp
 
 
@@ -291,17 +291,17 @@ Usage:
 
 <a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/channels.py#L349"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
-### <kbd>method</kbd> `identify_thing`
+### <kbd>method</kbd> `identify_client`
 
 ```python
-identify_thing(thing_key: str)
+identify_client(client_key: str)
 ```
 
-Validates thing's key and returns it's ID if key is valid 
+Validates client's key and returns it's ID if key is valid 
 
-Uses a thing_key or secret to validate a thing and provide its information. 
+Uses a client_key or secret to validate a client and provide its information. 
 
-params:  thing_key (str): Thing's key  
+params:  client_key (str): Client's key  
 
 
 
@@ -314,8 +314,8 @@ Usage:
 ``` from magistrala import sdk    ```
 
  - <b>`    >>> mfsdk = sdk.SDK(channels_url="http`</b>: //localhost:9000")
-    >>> thing_key = "thing_key"
-    >>> mf_resp = mfsdk.channels.identify_thing(thing_key)
+    >>> client_key = "client_key"
+    >>> mf_resp = mfsdk.channels.identify_client(client_key)
     >>> mf_resp
 
 

@@ -10,7 +10,7 @@ channel_id = "224-335-668"
 
 def test_send(requests_mock):
     requests_mock.register_uri("POST", url + "/http/channels/" + channel_id + "/messages/", status_code=202)
-    r = s.messages.send(channel_id=channel_id, msg=msg, thing_key=token)
+    r = s.messages.send(channel_id=channel_id, msg=msg, client_key=token)
     assert r.error.status == 0
 
 
@@ -22,7 +22,7 @@ def test_read(requests_mock):
     
 def test_send_malformed_channel_id(requests_mock):
     requests_mock.register_uri("POST", url + "/http/channels/" + channel_id + "/messages/", status_code=400)
-    r = s.messages.send(channel_id=channel_id, msg=msg, thing_key=token)
+    r = s.messages.send(channel_id=channel_id, msg=msg, client_key=token)
     assert r.error.status == 1
     assert r.error.message == "Message discarded due to its malformed content."
 

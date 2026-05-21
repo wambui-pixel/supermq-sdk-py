@@ -68,9 +68,9 @@ add(config: dict, token: str)
 
 Adds new config to the list of config owned by user identified using the provided access token. 
 
-Some of the key data needed include the external_key and external_id which must be specific to the thing provided with the thing_id. Mind that every configuration  must have a specific thing_id. 
+Some of the key data needed include the external_key and external_id which must be specific to the client provided with the client_id. Mind that every configuration  must have a specific client_id. 
 
-params:  config (dict): Configuration data for example:   {    "external_id": "123",  "external_key": "456",  "thing_id": "fdb1057c-2905-4f71-9a80-e0ce9191e667",  "name": "thing_name"  }  token (str): Authorization token.  
+params:  config (dict): Configuration data for example:   {    "external_id": "123",  "external_key": "456",  "client_id": "fdb1057c-2905-4f71-9a80-e0ce9191e667",  "name": "client_name"  }  token (str): Authorization token.  
 
 
 
@@ -89,9 +89,9 @@ Usage:
 
  - <b>`    ... "external_key"`</b>:  "456",
 
- - <b>`    ... "thing_id"`</b>:  "fdb1057c-2905-4f71-9a80-e0ce9191e667",
+ - <b>`    ... "client_id"`</b>:  "fdb1057c-2905-4f71-9a80-e0ce9191e667",
 
- - <b>`    ... "name"`</b>:  "thing_name"
+ - <b>`    ... "name"`</b>:  "client_name"
     ... }
     >>> mf_resp = mfsdk.bootstrap.add(config, token)
     >>> mf_resp
@@ -168,9 +168,9 @@ Usage:
 update(config: dict, token: str)
 ```
 
-Update is performed by replacing the current resource data with values provided in a request payload. Note that the owner, ID, external ID, external key, Magistrala Thing ID and key cannot be changed. 
+Update is performed by replacing the current resource data with values provided in a request payload. Note that the owner, ID, external ID, external key, Magistrala Client ID and key cannot be changed. 
 
-params:  config (dict): Configuration data for example:   {    "external_id": "123",  "external_key": "456",  "thing_id": "fdb1057c-2905-4f71-9a80-e0ce9191e667",  "name": "thing_name"  }  token (str): Authorization token.  
+params:  config (dict): Configuration data for example:   {    "external_id": "123",  "external_key": "456",  "client_id": "fdb1057c-2905-4f71-9a80-e0ce9191e667",  "name": "client_name"  }  token (str): Authorization token.  
 
 
 
@@ -191,9 +191,9 @@ Usage:
 
  - <b>`    ... "external_key"`</b>:  "456",
 
- - <b>`    ... "thing_id"`</b>:  "fdb1057c-2905-4f71-9a80-e0ce9191e667",
+ - <b>`    ... "client_id"`</b>:  "fdb1057c-2905-4f71-9a80-e0ce9191e667",
 
- - <b>`    ... "name"`</b>:  "thing_name"
+ - <b>`    ... "name"`</b>:  "client_name"
     ... }
     >>> mf_resp = mfsdk.bootstrap.update(config, token)
     >>> mf_resp
@@ -245,14 +245,14 @@ Usage:
 ### <kbd>method</kbd> `view`
 
 ```python
-view(thing_id: str, token: str)
+view(client_id: str, token: str)
 ```
 
 Retrieves a configuration with given config id 
 
 Provides a configuration with given config id. 
 
-params:  thing_id (str): Thing ID.  token (str): Authorization token.  
+params:  client_id (str): Client ID.  token (str): Authorization token.  
 
 
 
@@ -265,8 +265,8 @@ Usage:
 ``` from magistrala import sdk```
 
  - <b>`    >>> mfsdk = sdk.SDK(bootstrap_url="http`</b>: //localhost:9013")
-    >>> thing_id = "thing_id"
-    >>> mf_resp = mfsdk.bootstrap.view(thing_id, token)
+    >>> client_id = "client_id"
+    >>> mf_resp = mfsdk.bootstrap.view(client_id, token)
     >>> mf_resp
 
 
@@ -280,9 +280,9 @@ Usage:
 whitelist(config: dict, token: str)
 ```
 
-Updating state represents enabling/disabling Config, i.e.connecting and disconnecting corresponding Magistrala Thing to the list of Channels. 
+Updating state represents enabling/disabling Config, i.e.connecting and disconnecting corresponding Magistrala Client to the list of Channels. 
 
-params:  config (dict): Configuration data for example:   {    "external_id": "123",  "external_key": "456",  "thing_id": "fdb1057c-2905-4f71-9a80-e0ce9191e667",  "name": "thing_name"  }  token (str): Authorization token.  
+params:  config (dict): Configuration data for example:   {    "external_id": "123",  "external_key": "456",  "client_id": "fdb1057c-2905-4f71-9a80-e0ce9191e667",  "name": "client_name"  }  token (str): Authorization token.  
 
 
 
@@ -301,9 +301,9 @@ Usage:
 
  - <b>`    ... "external_key"`</b>:  "456",
 
- - <b>`    ... "thing_id"`</b>:  "fdb1057c-2905-4f71-9a80-e0ce9191e667",
+ - <b>`    ... "client_id"`</b>:  "fdb1057c-2905-4f71-9a80-e0ce9191e667",
 
- - <b>`    ... "name"`</b>:  "thing_name"
+ - <b>`    ... "name"`</b>:  "client_name"
     ... }
     >>> mf_resp = mfsdk.bootstrap.whitelist(config, token)
     >>> mf_resp        

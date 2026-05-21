@@ -29,7 +29,7 @@ query_params= {
 }
 group_id = "888-888-888"
 group_id1 = "989-787-686"
-thing_group_id = "868-464-262"
+client_group_id = "868-464-262"
 token = "9a8b7c6d5e4f3g21"
 url = "http://localhost"
 
