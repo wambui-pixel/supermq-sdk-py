@@ -3,6 +3,7 @@ import requests
 from magistrala import response
 from magistrala import errors
 from magistrala import utils
+from magistrala.roles import Roles
 
 
 class Channels:
@@ -42,6 +43,7 @@ class Channels:
                 None
         """
         self.url = url
+        self.__roles = Roles()
 
     def create(self, channel: dict, token: str):
         """Creates channel entity in the database
@@ -220,7 +222,7 @@ class Channels:
             mf_resp.value = http_resp.json()
         return mf_resp
 
-    def get_by_client(self, client_id: str, query_params: dict, token: str):
+    def get_by_thing(self, client_id: str, query_params: dict, token: str):
         """Gets all channels to which a specific client is connected to.
         
         Provides a list of all the channels a client is connected to when provided with a valid
@@ -247,7 +249,7 @@ class Channels:
             ...    "offset": 0,
             ...    "limit": 10
             ... }
-            >>> mf_resp = mfsdk.channels.get_by_client(client_id, query_params, token)
+            >>> mf_resp = mfsdk.channels.get_by_thing(client_id, query_params, token)
             >>> mf_resp
         """
         mf_resp = response.Response()
@@ -259,7 +261,7 @@ class Channels:
         if http_resp.status_code != 200:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.channels["get_by_client"], http_resp.status_code
+                errors.channels["get_by_thing"], http_resp.status_code
             )
         else:
             mf_resp.value = http_resp.json()
@@ -346,7 +348,7 @@ class Channels:
             )
         return mf_resp
 
-    def identify_client(self, client_key: str):
+    def identify_thing(self, client_key: str):
         """Validates client's key and returns it's ID if key is valid
         
         Uses a client_key or secret to validate a client and provide its information.
@@ -362,19 +364,370 @@ class Channels:
             >>> from magistrala import sdk    
             >>> mfsdk = sdk.SDK(channels_url="http://localhost:9000")
             >>> client_key = "client_key"
-            >>> mf_resp = mfsdk.channels.identify_client(client_key)
+            >>> mf_resp = mfsdk.channels.identify_thing(client_key)
             >>> mf_resp
         """
         http_resp = requests.post(
             self.url + "/" + self.IDENTIFY_ENDPOINT,
-            headers=utils.construct_header(utils.ClientPrefix + client_key, utils.CTJSON),
+            headers=utils.construct_header(utils.ThingPrefix + client_key, utils.CTJSON),
         )
         mf_resp = response.Response()
         if http_resp.status_code != 200:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.channels["identify_client"], http_resp.status_code
+                errors.channels["identify_thing"], http_resp.status_code
             )
         else:
             mf_resp.value = http_resp.json()
         return mf_resp
+
+    def enable(self, channel_id: str, domain_id: str, token: str):
+        mf_resp = response.Response()
+        http_resp = requests.post(
+            self.url
+            + "/"
+            + domain_id
+            + "/"
+            + self.CHANNELS_ENDPOINT
+            + "/"
+            + channel_id
+            + "/enable",
+            headers=utils.construct_header(token, utils.CTJSON),
+        )
+        if http_resp.status_code != 200:
+            mf_resp.error.status = 1
+            mf_resp.error.message = errors.handle_error(
+                errors.channels["enable"], http_resp.status_code
+            )
+        else:
+            mf_resp.value = http_resp.json()
+        return mf_resp
+
+    def delete(self, channel_id: str, domain_id: str, token: str):
+        mf_resp = response.Response()
+        http_resp = requests.delete(
+            self.url
+            + "/"
+            + domain_id
+            + "/"
+            + self.CHANNELS_ENDPOINT
+            + "/"
+            + channel_id,
+            headers=utils.construct_header(token, utils.CTJSON),
+        )
+        if http_resp.status_code != 204:
+            mf_resp.error.status = 1
+            mf_resp.error.message = errors.handle_error(
+                errors.channels["delete"], http_resp.status_code
+            )
+        else:
+            mf_resp.value = "Channel deleted successfully"
+        return mf_resp
+
+    def update_tags(self, channel_id: str, channel: dict, domain_id: str, token: str):
+        mf_resp = response.Response()
+        http_resp = requests.patch(
+            self.url
+            + "/"
+            + domain_id
+            + "/"
+            + self.CHANNELS_ENDPOINT
+            + "/"
+            + channel_id
+            + "/tags",
+            headers=utils.construct_header(token, utils.CTJSON),
+            json=channel,
+        )
+        if http_resp.status_code != 200:
+            mf_resp.error.status = 1
+            mf_resp.error.message = errors.handle_error(
+                errors.channels["update"], http_resp.status_code
+            )
+        else:
+            mf_resp.value = http_resp.json()
+        return mf_resp
+
+    def connect_client(
+        self,
+        client_ids: list,
+        channel_id: str,
+        connection_types: list,
+        domain_id: str,
+        token: str,
+    ):
+        """Connects clients to a single channel."""
+        mf_resp = response.Response()
+        http_resp = requests.post(
+            self.url
+            + "/"
+            + domain_id
+            + "/"
+            + self.CHANNELS_ENDPOINT
+            + "/"
+            + channel_id
+            + "/connect",
+            headers=utils.construct_header(token, utils.CTJSON),
+            json={"client_ids": client_ids, "types": connection_types},
+        )
+        if http_resp.status_code != 201:
+            mf_resp.error.status = 1
+            mf_resp.error.message = errors.handle_error(
+                errors.channels["connect"], http_resp.status_code
+            )
+        else:
+            mf_resp.value = "connected"
+        return mf_resp
+
+    def disconnect_client(
+        self,
+        client_ids: list,
+        channel_id: str,
+        connection_types: list,
+        domain_id: str,
+        token: str,
+    ):
+        """Disconnects clients from a single channel."""
+        mf_resp = response.Response()
+        http_resp = requests.delete(
+            self.url
+            + "/"
+            + domain_id
+            + "/"
+            + self.CHANNELS_ENDPOINT
+            + "/"
+            + channel_id
+            + "/disconnect",
+            headers=utils.construct_header(token, utils.CTJSON),
+            json={"client_ids": client_ids, "types": connection_types},
+        )
+        if http_resp.status_code != 204:
+            mf_resp.error.status = 1
+            mf_resp.error.message = errors.handle_error(
+                errors.channels["disconnect"], http_resp.status_code
+            )
+        else:
+            mf_resp.value = "Disconnected"
+        return mf_resp
+
+    def set_parent_group(
+        self, domain_id: str, channel_id: str, parent_group_id: str, token: str
+    ):
+        mf_resp = response.Response()
+        http_resp = requests.post(
+            self.url
+            + "/"
+            + domain_id
+            + "/"
+            + self.CHANNELS_ENDPOINT
+            + "/"
+            + channel_id
+            + "/parent",
+            headers=utils.construct_header(token, utils.CTJSON),
+            json={"parent_group_id": parent_group_id},
+        )
+        if http_resp.status_code != 200:
+            mf_resp.error.status = 1
+            mf_resp.error.message = errors.handle_error(
+                errors.channels["set_parent_group"], http_resp.status_code
+            )
+        else:
+            mf_resp.value = "Parent group set successfully"
+        return mf_resp
+
+    def delete_parent_group(self, domain_id: str, channel_id: str, token: str):
+        mf_resp = response.Response()
+        http_resp = requests.delete(
+            self.url
+            + "/"
+            + domain_id
+            + "/"
+            + self.CHANNELS_ENDPOINT
+            + "/"
+            + channel_id
+            + "/parent",
+            headers=utils.construct_header(token, utils.CTJSON),
+        )
+        if http_resp.status_code != 204:
+            mf_resp.error.status = 1
+            mf_resp.error.message = errors.handle_error(
+                errors.channels["delete_parent_group"], http_resp.status_code
+            )
+        else:
+            mf_resp.value = "Parent group removed successfully"
+        return mf_resp
+
+    # Role management
+
+    def list_available_actions(self, domain_id: str, token: str):
+        return self.__roles.list_available_actions(
+            self.url + "/" + domain_id, self.CHANNELS_ENDPOINT, token
+        )
+
+    def create_role(
+        self,
+        domain_id: str,
+        channel_id: str,
+        role_name: str,
+        token: str,
+        optional_actions: list = None,
+        optional_members: list = None,
+    ):
+        return self.__roles.create_role(
+            self.url + "/" + domain_id,
+            self.CHANNELS_ENDPOINT,
+            channel_id,
+            role_name,
+            token,
+            optional_actions,
+            optional_members,
+        )
+
+    def list_roles(
+        self, domain_id: str, channel_id: str, query_params: dict, token: str
+    ):
+        return self.__roles.list_roles(
+            self.url + "/" + domain_id,
+            self.CHANNELS_ENDPOINT,
+            channel_id,
+            query_params,
+            token,
+        )
+
+    def get_role(self, domain_id: str, channel_id: str, role_id: str, token: str):
+        return self.__roles.get_role(
+            self.url + "/" + domain_id,
+            self.CHANNELS_ENDPOINT,
+            channel_id,
+            role_id,
+            token,
+        )
+
+    def update_role(
+        self, domain_id: str, channel_id: str, role_id: str, role: dict, token: str
+    ):
+        return self.__roles.update_role(
+            self.url + "/" + domain_id,
+            self.CHANNELS_ENDPOINT,
+            channel_id,
+            role_id,
+            role,
+            token,
+        )
+
+    def delete_role(self, domain_id: str, channel_id: str, role_id: str, token: str):
+        return self.__roles.delete_role(
+            self.url + "/" + domain_id,
+            self.CHANNELS_ENDPOINT,
+            channel_id,
+            role_id,
+            token,
+        )
+
+    def add_role_actions(
+        self, domain_id: str, channel_id: str, role_id: str, actions: list, token: str
+    ):
+        return self.__roles.add_role_actions(
+            self.url + "/" + domain_id,
+            self.CHANNELS_ENDPOINT,
+            channel_id,
+            role_id,
+            actions,
+            token,
+        )
+
+    def list_role_actions(
+        self, domain_id: str, channel_id: str, role_id: str, token: str
+    ):
+        return self.__roles.list_role_actions(
+            self.url + "/" + domain_id,
+            self.CHANNELS_ENDPOINT,
+            channel_id,
+            role_id,
+            token,
+        )
+
+    def delete_role_actions(
+        self, domain_id: str, channel_id: str, role_id: str, actions: list, token: str
+    ):
+        return self.__roles.delete_role_actions(
+            self.url + "/" + domain_id,
+            self.CHANNELS_ENDPOINT,
+            channel_id,
+            role_id,
+            actions,
+            token,
+        )
+
+    def delete_all_role_actions(
+        self, domain_id: str, channel_id: str, role_id: str, token: str
+    ):
+        return self.__roles.delete_all_role_actions(
+            self.url + "/" + domain_id,
+            self.CHANNELS_ENDPOINT,
+            channel_id,
+            role_id,
+            token,
+        )
+
+    def add_role_members(
+        self, domain_id: str, channel_id: str, role_id: str, members: list, token: str
+    ):
+        return self.__roles.add_role_members(
+            self.url + "/" + domain_id,
+            self.CHANNELS_ENDPOINT,
+            channel_id,
+            role_id,
+            members,
+            token,
+        )
+
+    def list_role_members(
+        self,
+        domain_id: str,
+        channel_id: str,
+        role_id: str,
+        query_params: dict,
+        token: str,
+    ):
+        return self.__roles.list_role_members(
+            self.url + "/" + domain_id,
+            self.CHANNELS_ENDPOINT,
+            channel_id,
+            role_id,
+            query_params,
+            token,
+        )
+
+    def delete_role_members(
+        self, domain_id: str, channel_id: str, role_id: str, members: list, token: str
+    ):
+        return self.__roles.delete_role_members(
+            self.url + "/" + domain_id,
+            self.CHANNELS_ENDPOINT,
+            channel_id,
+            role_id,
+            members,
+            token,
+        )
+
+    def delete_all_role_members(
+        self, domain_id: str, channel_id: str, role_id: str, token: str
+    ):
+        return self.__roles.delete_all_role_members(
+            self.url + "/" + domain_id,
+            self.CHANNELS_ENDPOINT,
+            channel_id,
+            role_id,
+            token,
+        )
+
+    def list_members(
+        self, domain_id: str, channel_id: str, query_params: dict, token: str
+    ):
+        return self.__roles.list_entity_members(
+            self.url + "/" + domain_id,
+            self.CHANNELS_ENDPOINT,
+            channel_id,
+            query_params,
+            token,
+        )

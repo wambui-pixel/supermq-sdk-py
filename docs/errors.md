@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/errors.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/errors.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `errors`
 
@@ -20,7 +20,7 @@
 
 ---
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/errors.py#L1"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/errors.py#L1"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `handle_error`
 

@@ -12,7 +12,7 @@
 - [`messages`](./messages.md#module-messages)
 - [`response`](./response.md#module-response)
 - [`sdk`](./sdk.md#module-sdk)
-- [`clients`](./clients.md#module-clients)
+- [`things`](./clients.md#module-things)
 - [`users`](./users.md#module-users)
 - [`utils`](./utils.md#module-utils)
 

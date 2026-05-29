@@ -101,10 +101,10 @@ clients = {
         400: "Failed due to malformed query parameters.",
         404: "Channel or client does not exist.",
     },
-    "share_client": {
+    "share_thing": {
         400: "A non-existent entity request."
     },
-    "authorise_client":{
+    "authorise_thing":{
         403: "False",
     },
 }
@@ -123,7 +123,7 @@ channels = {
         400: "Failed due to malformed channel's ID.",
         404: "Channel does not exist.",
     },
-    "get_by_client": {
+    "get_by_thing": {
         400: "Failed due to malformed query parameters.",
         404: "Client does not exist.",
     },
@@ -133,7 +133,7 @@ channels = {
     "delete": {
         400: "Failed due to malformed channel's ID."
     },
-    "identify_client":{
+    "identify_thing":{
         401: "Client and channel are not connected, or client with specified key doesn't exist."
     },
 }
@@ -216,7 +216,7 @@ certs = {
     "issue": {
         401: "Missing or invalid access token provided.",
     },
-    "view_by_client": {
+    "view_by_thing": {
         404: "Failed to retrieve corresponding certificate.",
     },
     "view_by_serial": {
@@ -229,3 +229,263 @@ certs = {
         404: "Failed to retrieve corresponding certificates.",
     },
 }
+
+domains = {
+    "create": {
+        409: "Failed due to using an existing domain name.",
+    },
+    "get": {
+        404: "Domain does not exist.",
+    },
+    "list": {
+        400: "Failed due to malformed query parameters.",
+    },
+    "update": {
+        404: "Domain does not exist.",
+    },
+    "enable": {
+        404: "Domain does not exist.",
+    },
+    "disable": {
+        404: "Domain does not exist.",
+    },
+    "freeze": {
+        404: "Domain does not exist.",
+    },
+    "send_invitation": {
+        400: "Failed due to malformed JSON.",
+    },
+    "get_invitation": {
+        404: "Invitation does not exist.",
+    },
+    "list_invitations": {
+        400: "Failed due to malformed query parameters.",
+    },
+    "accept_invitation": {
+        404: "Invitation does not exist.",
+    },
+    "reject_invitation": {
+        404: "Invitation does not exist.",
+    },
+    "delete_invitation": {
+        404: "Invitation does not exist.",
+    },
+}
+
+health = {
+    "check": {
+        500: "Service is not healthy.",
+    },
+}
+
+journal = {
+    "list_by_entity": {
+        400: "Failed due to malformed query parameters.",
+        404: "Entity does not exist.",
+    },
+    "list_by_user": {
+        400: "Failed due to malformed query parameters.",
+        404: "User does not exist.",
+    },
+    "client_telemetry": {
+        404: "Client does not exist.",
+    },
+}
+
+pats = {
+    "create": {
+        400: "Failed due to malformed JSON.",
+    },
+    "get": {
+        404: "PAT does not exist.",
+    },
+    "list": {
+        400: "Failed due to malformed query parameters.",
+    },
+    "update_name": {
+        404: "PAT does not exist.",
+    },
+    "update_description": {
+        404: "PAT does not exist.",
+    },
+    "delete": {
+        404: "PAT does not exist.",
+    },
+    "delete_all": {
+        401: "Missing or invalid access token provided.",
+    },
+    "reset_secret": {
+        404: "PAT does not exist.",
+    },
+    "revoke": {
+        404: "PAT does not exist.",
+    },
+    "add_scope": {
+        400: "Failed due to malformed JSON.",
+    },
+    "list_scopes": {
+        400: "Failed due to malformed query parameters.",
+    },
+    "delete_scopes": {
+        404: "Scope does not exist.",
+    },
+    "delete_all_scopes": {
+        404: "PAT does not exist.",
+    },
+}
+
+alarms = {
+    "list": {
+        400: "Failed due to malformed query parameters.",
+    },
+    "view": {
+        404: "Alarm does not exist.",
+    },
+    "update": {
+        404: "Alarm does not exist.",
+    },
+    "delete": {
+        404: "Alarm does not exist.",
+    },
+}
+
+rules = {
+    "create": {
+        400: "Failed due to malformed JSON.",
+        422: "Unprocessable Entity.",
+    },
+    "view": {
+        404: "Rule does not exist.",
+    },
+    "list": {
+        400: "Failed due to malformed query parameters.",
+    },
+    "update": {
+        404: "Rule does not exist.",
+    },
+    "update_tags": {
+        404: "Rule does not exist.",
+    },
+    "update_schedule": {
+        404: "Rule does not exist.",
+    },
+    "enable": {
+        404: "Rule does not exist.",
+    },
+    "disable": {
+        404: "Rule does not exist.",
+    },
+    "delete": {
+        404: "Rule does not exist.",
+    },
+}
+
+reports = {
+    "generate": {
+        400: "Failed due to malformed JSON.",
+    },
+    "add_config": {
+        400: "Failed due to malformed JSON.",
+        409: "Report config already exists.",
+    },
+    "get_config": {
+        404: "Report config does not exist.",
+    },
+    "list_configs": {
+        400: "Failed due to malformed query parameters.",
+    },
+    "update_config": {
+        404: "Report config does not exist.",
+    },
+    "update_schedule": {
+        404: "Report config does not exist.",
+    },
+    "delete_config": {
+        404: "Report config does not exist.",
+    },
+    "enable_config": {
+        404: "Report config does not exist.",
+    },
+    "disable_config": {
+        404: "Report config does not exist.",
+    },
+    "update_template": {
+        404: "Report config does not exist.",
+    },
+    "get_template": {
+        404: "Report config does not exist.",
+    },
+    "delete_template": {
+        404: "Report config does not exist.",
+    },
+}
+
+roles = {
+    "list_available_actions": {
+        401: "Missing or invalid access token provided.",
+    },
+    "create_role": {
+        400: "Failed due to malformed JSON.",
+        409: "Role already exists.",
+    },
+    "list_roles": {
+        400: "Failed due to malformed query parameters.",
+    },
+    "get_role": {
+        404: "Role does not exist.",
+    },
+    "update_role": {
+        404: "Role does not exist.",
+    },
+    "delete_role": {
+        404: "Role does not exist.",
+    },
+    "add_role_actions": {
+        400: "Failed due to malformed JSON.",
+    },
+    "list_role_actions": {
+        404: "Role does not exist.",
+    },
+    "delete_role_actions": {
+        404: "Role does not exist.",
+    },
+    "delete_all_role_actions": {
+        404: "Role does not exist.",
+    },
+    "add_role_members": {
+        400: "Failed due to malformed JSON.",
+    },
+    "list_role_members": {
+        404: "Role does not exist.",
+    },
+    "delete_role_members": {
+        404: "Role does not exist.",
+    },
+    "delete_all_role_members": {
+        404: "Role does not exist.",
+    },
+    "list_entity_members": {
+        400: "Failed due to malformed query parameters.",
+    },
+}
+
+# Additional entries for new methods on existing modules
+users["delete"] = {404: "User does not exist."}
+users["send_verification"] = {400: "Failed due to malformed JSON."}
+users["verify_email"] = {400: "Failed due to malformed JSON."}
+
+clients["enable"] = {404: "Client does not exist."}
+clients["set_parent_group"] = {400: "Failed due to malformed JSON."}
+clients["delete_parent_group"] = {400: "Failed due to malformed query parameters."}
+
+channels["enable"] = {404: "Channel does not exist."}
+channels["connect"] = {400: "A non-existent entity request."}
+channels["disconnect"] = {
+    400: "Failed due to malformed query parameters.",
+    404: "Channel or client does not exist.",
+}
+channels["set_parent_group"] = {400: "Failed due to malformed JSON."}
+channels["delete_parent_group"] = {400: "Failed due to malformed query parameters."}
+
+groups["enable"] = {404: "Group does not exist."}
+groups["delete"] = {404: "Group does not exist."}

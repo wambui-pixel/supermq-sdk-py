@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `users`
 
@@ -11,7 +11,7 @@
 
 ---
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L9"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L9"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `Users`
 Users API client. 
@@ -25,7 +25,7 @@ Users API is used for creating and managing users. It is used for creating new u
  - <b>`URL`</b>:  str - URL of the Users API 
  - <b>`USERS_ENDPOINT`</b>:  str - Users API endpoint 
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L23"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L23"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -42,7 +42,7 @@ __init__(url: str)
 
 ---
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L635"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L635"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `authorise_user`
 
@@ -60,14 +60,14 @@ params:  access_request = {  "subject": "<user_id>",  "object": "<group_id>",  "
 
 **returns:**
  
- - <b>`mf_resp`</b>:  "True" 
+ - <b>`resp`</b>:  "True" 
 
 Usage:
-```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> access_request = {     ...     "subject": "<user_id>",     ...     "object": "<group_id>",     ...     "action": "<action>",     ...     "entity_type": "<entity_type>"     ...     }     >>> mf_resp = mfsdk.users.authorise_user(access_request, token)     >>> mf_resp             
+```          >>> from magistrala import sdk     >>> mgsdk = sdk.SDK(users_url="http://localhost:9002")     >>> access_request = {     ...     "subject": "<user_id>",     ...     "object": "<group_id>",     ...     "action": "<action>",     ...     "entity_type": "<entity_type>"     ...     }     >>> resp = mgsdk.users.authorise_user(access_request, token)     >>> resp             
 
 ---
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L36"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L36"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `create`
 
@@ -85,14 +85,14 @@ params:  user: dict - user information for example:  {  "name": "example",  "cre
 
 **returns:**
  
- - <b>`mf_resp`</b>:  response.Response - response object 
+ - <b>`resp`</b>:  response.Response - response object 
 
 Usage:
-```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user = {     ...     "name": "example",     ...     "credentials": {     ...         "identity": "example@mail.com",     ...         "secret": "12345678"     ...     }     ... }     >>> mf_resp = mfsdk.users.create(user)     >>> mf_resp             
+```          >>> from magistrala import sdk     >>> mgsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user = {     ...     "name": "example",     ...     "credentials": {     ...         "identity": "example@mail.com",     ...         "secret": "12345678"     ...     }     ... }     >>> resp = mgsdk.users.create(user)     >>> resp             
 
 ---
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L603"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L603"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `disable`
 
@@ -108,14 +108,14 @@ params:  user_id: str - the user's given ID.  token: str - token used for enabli
 
 **returns:**
  
- - <b>`mf_resp`</b>:  response.Response - response object 
+ - <b>`resp`</b>:  response.Response - response object 
 
 Usage:
-```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user_id= "886b4266-77d1-4258-abae-2931fb4f16de"     >>> mf_resp = mfsdk.users.disable(user_id, user_token)     >>> mf_resp             
+```          >>> from magistrala import sdk     >>> mgsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user_id= "886b4266-77d1-4258-abae-2931fb4f16de"     >>> resp = mgsdk.users.disable(user_id, user_token)     >>> resp             
 
 ---
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L569"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L569"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `enable`
 
@@ -133,14 +133,14 @@ params:  user_id: str - the user's given ID.  token: str - token used for enabli
 
 **returns:**
  
- - <b>`mf_resp`</b>:  response.Response - response object 
+ - <b>`resp`</b>:  response.Response - response object 
 
 Usage:
-```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user_id= "886b4266-77d1-4258-abae-2931fb4f16de"     >>> mf_resp = mfsdk.users.enable(user_id, user_token)     >>> mf_resp             
+```          >>> from magistrala import sdk     >>> mgsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user_id= "886b4266-77d1-4258-abae-2931fb4f16de"     >>> resp = mgsdk.users.enable(user_id, user_token)     >>> resp             
 
 ---
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L157"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L157"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get`
 
@@ -158,14 +158,14 @@ params:  user_id: str - user information eg "886b4266-77d1-4258-abae-2931fb4f16d
 
 **returns:**
  
- - <b>`mf_resp`</b>:  response.Response - response object 
+ - <b>`resp`</b>:  response.Response - response object 
 
 Usage:
-```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user_id = "886b4266-77d1-4258-abae-2931fb4f16de"     >>> token = ""     >>> mf_resp = mfsdk.users.get(user_id, token)     >>> mf_resp             
+```          >>> from magistrala import sdk     >>> mgsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user_id = "886b4266-77d1-4258-abae-2931fb4f16de"     >>> token = ""     >>> resp = mgsdk.users.get(user_id, token)     >>> resp             
 
 ---
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L193"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L193"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get_all`
 
@@ -183,16 +183,16 @@ params:   user_token: str - token used for creating a new user  query_params: di
 
 **returns:**
  
- - <b>`mf_resp`</b>:  response.Response - response object 
+ - <b>`resp`</b>:  response.Response - response object 
 
 Usage:
 ``` 
 
-    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> query_params = {     ...     "offset" : 0, "limit" : 10     ...     }     >>> mf_resp = mfsdk.users.get(query_params, user_token)     >>> mf_resp         
+    >>> from magistrala import sdk     >>> mgsdk = sdk.SDK(users_url="http://localhost:9002")     >>> query_params = {     ...     "offset" : 0, "limit" : 10     ...     }     >>> resp = mgsdk.users.get(query_params, user_token)     >>> resp         
 
 ---
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L85"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L85"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `login`
 
@@ -208,16 +208,16 @@ params:   user: a dict with the user information and password for example:   {"c
 
 **returns:**
  
- - <b>`mf_resp`</b>:  response.Response - response object 
+ - <b>`resp`</b>:  response.Response - response object 
 
 Usage:
 ```  
 
-    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> credentials= {     ...         "identity": "user@magistrala.com",     ...         "secret": "12345678"     ... }     >>> mf_resp = mfsdk.users.login(credentials)     >>> mf_resp                 
+    >>> from magistrala import sdk     >>> mgsdk = sdk.SDK(users_url="http://localhost:9002")     >>> credentials= {     ...         "identity": "user@magistrala.com",     ...         "secret": "12345678"     ... }     >>> resp = mgsdk.users.login(credentials)     >>> resp                 
 
 ---
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L123"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L123"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `refresh_token`
 
@@ -235,16 +235,16 @@ params:   refresh_token: str - token used to refresh access.
 
 **returns:**
  
- - <b>`mf_resp`</b>:  response.Response - response object 
+ - <b>`resp`</b>:  response.Response - response object 
 
 Usage:
 ```  
 
-    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> mf_resp = mfsdk.users.refresh_token(refresh_token)     >>> mf_resp 
+    >>> from magistrala import sdk     >>> mgsdk = sdk.SDK(users_url="http://localhost:9002")     >>> resp = mgsdk.users.refresh_token(refresh_token)     >>> resp 
 
 ---
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L525"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L525"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `reset_password`
 
@@ -262,14 +262,14 @@ params:   passwor: str - the user's new password.  confirm_password: str - a rec
 
 **returns:**
  
- - <b>`mf_resp`</b>:  "OK" 
+ - <b>`resp`</b>:  "OK" 
 
 Usage:
-```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     ... password = 234567     ... confirm_password = 234567     >>> mf_resp = mfsdk.users.reset_password(password, confirm_password, token)     >>> mf_resp 
+```          >>> from magistrala import sdk     >>> mgsdk = sdk.SDK(users_url="http://localhost:9002")     ... password = 234567     ... confirm_password = 234567     >>> resp = mgsdk.users.reset_password(password, confirm_password, token)     >>> resp 
 
 ---
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L485"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L485"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `reset_password_request`
 
@@ -287,14 +287,14 @@ params:  referrer email: str - this is the host being sent by the browser.  The 
 
 **returns:**
  
- - <b>`mf_resp`</b>:  response.Response - response object 
+ - <b>`resp`</b>:  response.Response - response object 
 
 Usage:
-```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     ... email = admin@example.com     ... url = stp@gmail.com     >>> mf_resp = mfsdk.users.reset_password_request(email, url)     >>> mf_resp 
+```          >>> from magistrala import sdk     >>> mgsdk = sdk.SDK(users_url="http://localhost:9002")     ... email = admin@example.com     ... url = stp@gmail.com     >>> resp = mgsdk.users.reset_password_request(email, url)     >>> resp 
 
 ---
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L236"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L236"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update`
 
@@ -312,14 +312,14 @@ params:  user: dict - user information for example:  {  "name": "example",  "id"
 
 **returns:**
  
- - <b>`mf_resp`</b>:  response.Response - response object 
+ - <b>`resp`</b>:  response.Response - response object 
 
 Usage:
-```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user = {     ...     "name": "example",     ...     "id": "886b4266-77d1-4258-abae-2931fb4f16de"     ...     "metadata": {     ...            "foo": "bar"     ...        }     ... }     >>> mf_resp = mfsdk.users.update(user, token)     >>> mf_resp             
+```          >>> from magistrala import sdk     >>> mgsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user = {     ...     "name": "example",     ...     "id": "886b4266-77d1-4258-abae-2931fb4f16de"     ...     "metadata": {     ...            "foo": "bar"     ...        }     ... }     >>> resp = mgsdk.users.update(user, token)     >>> resp             
 
 ---
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L446"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L446"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update_password`
 
@@ -337,14 +337,14 @@ params:  old_secret: str - the logged in user's current secret.  new_secret: str
 
 **returns:**
  
- - <b>`mf_resp`</b>:  response.Response - response object 
+ - <b>`resp`</b>:  response.Response - response object 
 
 Usage:
-```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     ... old_secret = 12345678     ... new_secret = 87654321     >>> mf_resp = mfsdk.users.update(old_secret, new_secret, user_token)     >>> mf_resp             
+```          >>> from magistrala import sdk     >>> mgsdk = sdk.SDK(users_url="http://localhost:9002")     ... old_secret = 12345678     ... new_secret = 87654321     >>> resp = mgsdk.users.update(old_secret, new_secret, user_token)     >>> resp             
 
 ---
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L288"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L288"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update_user_identity`
 
@@ -364,14 +364,14 @@ params:  user: dict - user information for example:
 
 **returns:**
  
- - <b>`mf_resp`</b>:  response.Response - response object 
+ - <b>`resp`</b>:  response.Response - response object 
 
 Usage:
-```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user = {     ...    "name": "example",     ...    "id": "886b4266-77d1-4258-abae-2931fb4f16de"     ...    "credentials": {     ...        "identity": "example@main.com",     ...        "secret": "12345678"     ...    },     ...    "metadata": {     ...        "foo": "bar"     ...     }     ... }     >>> mf_resp = mfsdk.users.update_user_identity(user, user_token)     >>> mf_resp             
+```          >>> from magistrala import sdk     >>> mgsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user = {     ...    "name": "example",     ...    "id": "886b4266-77d1-4258-abae-2931fb4f16de"     ...    "credentials": {     ...        "identity": "example@main.com",     ...        "secret": "12345678"     ...    },     ...    "metadata": {     ...        "foo": "bar"     ...     }     ... }     >>> resp = mgsdk.users.update_user_identity(user, user_token)     >>> resp             
 
 ---
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L400"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L400"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update_user_owner`
 
@@ -391,14 +391,14 @@ params:  user: dict - user information for example:
 
 **returns:**
  
- - <b>`mf_resp`</b>:  response.Response - response object 
+ - <b>`resp`</b>:  response.Response - response object 
 
 Usage:
-```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user = {     ...     "name": "example",     ...     "id": "886b4266-77d1-4258-abae-2931fb4f16de",     ...     "owner": "c52d-3b0d-43b9-8c3e-275c087d875af"     ... }     >>> mf_resp = mfsdk.users.update_user_owner(user, user_token)     >>> mf_resp             
+```          >>> from magistrala import sdk     >>> mgsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user = {     ...     "name": "example",     ...     "id": "886b4266-77d1-4258-abae-2931fb4f16de",     ...     "owner": "c52d-3b0d-43b9-8c3e-275c087d875af"     ... }     >>> resp = mgsdk.users.update_user_owner(user, user_token)     >>> resp             
 
 ---
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/users.py#L345"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L345"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update_user_tags`
 
@@ -418,10 +418,10 @@ params:  user: dict - user information for example:
 
 **returns:**
  
- - <b>`mf_resp`</b>:  response.Response - response object 
+ - <b>`resp`</b>:  response.Response - response object 
 
 Usage:
-```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user = {     ...     "name": "example",     ...     "id": "886b4266-77d1-4258-abae-2931fb4f16de"     ...     "tags": [     ...        "back",     ...        "end"     ...     ]     ... }     >>> mf_resp = mfsdk.users.update_user_tags(user, user_token)     >>> mf_resp             
+```          >>> from magistrala import sdk     >>> mgsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user = {     ...     "name": "example",     ...     "id": "886b4266-77d1-4258-abae-2931fb4f16de"     ...     "tags": [     ...        "back",     ...        "end"     ...     ]     ... }     >>> resp = mgsdk.users.update_user_tags(user, user_token)     >>> resp             
 
 
 

@@ -679,3 +679,207 @@ class Users:
         else:
             mf_resp.value = "True"
         return mf_resp
+
+    def get_profile(self, token: str):
+        mf_resp = response.Response()
+        http_resp = requests.get(
+            self.URL + "/" + self.USERS_ENDPOINT + "/profile",
+            headers=utils.construct_header(token, utils.CTJSON),
+        )
+        if http_resp.status_code != 200:
+            mf_resp.error.status = 1
+            mf_resp.error.message = errors.handle_error(
+                errors.users["get"], http_resp.status_code
+            )
+        else:
+            mf_resp.value = http_resp.json()
+        return mf_resp
+
+    def search(self, query_params: dict, token: str):
+        mf_resp = response.Response()
+        http_resp = requests.get(
+            self.URL + "/" + self.USERS_ENDPOINT + "/search",
+            headers=utils.construct_header(token, utils.CTJSON),
+            params=query_params,
+        )
+        if http_resp.status_code != 200:
+            mf_resp.error.status = 1
+            mf_resp.error.message = errors.handle_error(
+                errors.users["get_all"], http_resp.status_code
+            )
+        else:
+            mf_resp.value = http_resp.json()
+        return mf_resp
+
+    def delete(self, user_id: str, token: str):
+        mf_resp = response.Response()
+        http_resp = requests.delete(
+            self.URL + "/" + self.USERS_ENDPOINT + "/" + user_id,
+            headers=utils.construct_header(token, utils.CTJSON),
+        )
+        if http_resp.status_code != 204:
+            mf_resp.error.status = 1
+            mf_resp.error.message = errors.handle_error(
+                errors.users["delete"], http_resp.status_code
+            )
+        else:
+            mf_resp.value = "User deleted successfully"
+        return mf_resp
+
+    def update_username(self, user: dict, token: str):
+        http_resp = requests.patch(
+            self.URL + "/" + self.USERS_ENDPOINT + "/" + user["id"] + "/username",
+            headers=utils.construct_header(token, utils.CTJSON),
+            json=user,
+        )
+        mf_resp = response.Response()
+        if http_resp.status_code != 200:
+            mf_resp.error.status = 1
+            mf_resp.error.message = errors.handle_error(
+                errors.users["update"], http_resp.status_code
+            )
+        else:
+            mf_resp.value = http_resp.json()
+        return mf_resp
+
+    def update_profile_picture(self, user: dict, token: str):
+        http_resp = requests.patch(
+            self.URL
+            + "/"
+            + self.USERS_ENDPOINT
+            + "/"
+            + user["id"]
+            + "/profile-picture",
+            headers=utils.construct_header(token, utils.CTJSON),
+            json=user,
+        )
+        mf_resp = response.Response()
+        if http_resp.status_code != 200:
+            mf_resp.error.status = 1
+            mf_resp.error.message = errors.handle_error(
+                errors.users["update"], http_resp.status_code
+            )
+        else:
+            mf_resp.value = http_resp.json()
+        return mf_resp
+
+    def update_role(self, user: dict, token: str):
+        http_resp = requests.patch(
+            self.URL + "/" + self.USERS_ENDPOINT + "/" + user["id"] + "/role",
+            headers=utils.construct_header(token, utils.CTJSON),
+            json=user,
+        )
+        mf_resp = response.Response()
+        if http_resp.status_code != 200:
+            mf_resp.error.status = 1
+            mf_resp.error.message = errors.handle_error(
+                errors.users["update"], http_resp.status_code
+            )
+        else:
+            mf_resp.value = http_resp.json()
+        return mf_resp
+
+    def send_verification(self, token: str):
+        mf_resp = response.Response()
+        http_resp = requests.post(
+            self.URL + "/" + self.USERS_ENDPOINT + "/emails/verification-request",
+            headers=utils.construct_header(token, utils.CTJSON),
+        )
+        if http_resp.status_code != 204:
+            mf_resp.error.status = 1
+            mf_resp.error.message = errors.handle_error(
+                errors.users["send_verification"], http_resp.status_code
+            )
+        else:
+            mf_resp.value = "Verification email sent"
+        return mf_resp
+
+    def verify_email(self, token: str):
+        mf_resp = response.Response()
+        http_resp = requests.post(
+            self.URL + "/" + self.USERS_ENDPOINT + "/emails/verify",
+            headers=utils.construct_header(token, utils.CTJSON),
+        )
+        if http_resp.status_code != 200:
+            mf_resp.error.status = 1
+            mf_resp.error.message = errors.handle_error(
+                errors.users["verify_email"], http_resp.status_code
+            )
+        else:
+            mf_resp.value = http_resp.json()
+        return mf_resp
+
+    def list_groups(
+        self, user_id: str, domain_id: str, query_params: dict, token: str
+    ):
+        mf_resp = response.Response()
+        http_resp = requests.get(
+            self.URL
+            + "/"
+            + domain_id
+            + "/"
+            + self.USERS_ENDPOINT
+            + "/"
+            + user_id
+            + "/groups",
+            headers=utils.construct_header(token, utils.CTJSON),
+            params=query_params,
+        )
+        if http_resp.status_code != 200:
+            mf_resp.error.status = 1
+            mf_resp.error.message = errors.handle_error(
+                errors.users["get_all"], http_resp.status_code
+            )
+        else:
+            mf_resp.value = http_resp.json()
+        return mf_resp
+
+    def list_clients(
+        self, user_id: str, domain_id: str, query_params: dict, token: str
+    ):
+        mf_resp = response.Response()
+        http_resp = requests.get(
+            self.URL
+            + "/"
+            + domain_id
+            + "/"
+            + self.USERS_ENDPOINT
+            + "/"
+            + user_id
+            + "/clients",
+            headers=utils.construct_header(token, utils.CTJSON),
+            params=query_params,
+        )
+        if http_resp.status_code != 200:
+            mf_resp.error.status = 1
+            mf_resp.error.message = errors.handle_error(
+                errors.users["get_all"], http_resp.status_code
+            )
+        else:
+            mf_resp.value = http_resp.json()
+        return mf_resp
+
+    def list_channels(
+        self, user_id: str, domain_id: str, query_params: dict, token: str
+    ):
+        mf_resp = response.Response()
+        http_resp = requests.get(
+            self.URL
+            + "/"
+            + domain_id
+            + "/"
+            + self.USERS_ENDPOINT
+            + "/"
+            + user_id
+            + "/channels",
+            headers=utils.construct_header(token, utils.CTJSON),
+            params=query_params,
+        )
+        if http_resp.status_code != 200:
+            mf_resp.error.status = 1
+            mf_resp.error.message = errors.handle_error(
+                errors.users["get_all"], http_resp.status_code
+            )
+        else:
+            mf_resp.value = http_resp.json()
+        return mf_resp

@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/channels.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/channels.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `channels`
 
@@ -11,7 +11,7 @@
 
 ---
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/channels.py#L8"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/channels.py#L8"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `Channels`
 Channels class provides the abstraction of the Magistrala Channels API. 
@@ -36,7 +36,7 @@ Channels are used to connect clients and users. They are used to send messages t
 
 
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/channels.py#L32"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/channels.py#L32"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -68,7 +68,7 @@ Initializes Channels class with the provided url
 
 ---
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/channels.py#L46"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/channels.py#L46"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `create`
 
@@ -92,18 +92,18 @@ Usage:
 
 ``` from magistrala import sdk```
 
- - <b>`    >>> mfsdk = sdk.SDK(channels_url="http`</b>: //localhost:9000")
+ - <b>`    >>> mgsdk = sdk.SDK(channels_url="http`</b>: //localhost:9000")
     >>> channel = {
 
  - <b>`    ...    "name"`</b>:  "channel_name"
     ... }
-    >>> mf_resp = mfsdk.channels.create(channel, token)
-    >>> mf_resp
+    >>> resp = mgsdk.channels.create(channel, token)
+    >>> resp
 
 
 ---
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/channels.py#L89"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/channels.py#L89"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `create_bulk`
 
@@ -129,7 +129,7 @@ Usage:
 
 ``` from magistrala import sdk```
 
- - <b>`    >>> mfsdk = sdk.SDK(channels_url="http`</b>: //localhost:9000")
+ - <b>`    >>> mgsdk = sdk.SDK(channels_url="http`</b>: //localhost:9000")
     >>> channels = [
     ...    {
 
@@ -140,13 +140,13 @@ Usage:
  - <b>`    ...        "name"`</b>:  "channel_name"
     ...    }
     ... ]
-    >>> mf_resp = mfsdk.channels.create_bulk(channels, token)
-    >>> mf_resp
+    >>> resp = mgsdk.channels.create_bulk(channels, token)
+    >>> resp
 
 
 ---
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/channels.py#L314"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/channels.py#L314"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `disable`
 
@@ -168,21 +168,21 @@ params:
  
 
 
- - <b>`mf_resp`</b>:  response.Response -response object 
+ - <b>`resp`</b>:  response.Response -response object 
 
 Usage: 
 
 ``` from magistrala import sdk```
 
- - <b>`        >>> mfsdk = sdk.SDK(channels_url="http`</b>: //localhost:9000")
+ - <b>`        >>> mgsdk = sdk.SDK(channels_url="http`</b>: //localhost:9000")
         >>> channel_id = "channel_id"
-        >>> mf_resp = mfsdk.channels.disable(channel_id, token)
-        >>> mf_resp
+        >>> resp = mgsdk.channels.disable(channel_id, token)
+        >>> resp
 
 
 ---
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/channels.py#L147"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/channels.py#L147"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get`
 
@@ -206,15 +206,15 @@ Usage:
 
 ``` from magistrala import sdk```
 
- - <b>`    >>> mfsdk = sdk.SDK(channels_url="http`</b>: //localhost:9000")
+ - <b>`    >>> mgsdk = sdk.SDK(channels_url="http`</b>: //localhost:9000")
     >>> channel_id = "channel_id"
-    >>> mf_resp = mfsdk.channels.get(channel_id, token)
-    >>> mf_resp
+    >>> resp = mgsdk.channels.get(channel_id, token)
+    >>> resp
 
 
 ---
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/channels.py#L181"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/channels.py#L181"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get_all`
 
@@ -232,50 +232,50 @@ params:  query_params (dict): Query parameters for example:  {  "offset": 0,  "l
 
 **returns:**
  
- - <b>`mf_resp`</b>:  response.Response -response object 
+ - <b>`resp`</b>:  response.Response -response object 
 
 Usage: 
 
 ``` from magistrala import sdk```
 
- - <b>`    >>> mfsdk = sdk.SDK(channels_url="http`</b>: //localhost:9000")
+ - <b>`    >>> mgsdk = sdk.SDK(channels_url="http`</b>: //localhost:9000")
     >>> query_params = {
 
  - <b>`    ...    "offset"`</b>:  0,
 
  - <b>`    ...    "limit"`</b>:  10
     ... }
-    >>> mf_resp = mfsdk.channels.get_all(query_params, token)
-    >>> mf_resp
+    >>> resp = mgsdk.channels.get_all(query_params, token)
+    >>> resp
 
 
 ---
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/channels.py#L223"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/channels.py#L223"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get_by_client`
 
 ```python
-get_by_client(client_id: str, query_params: dict, token: str)
+get_by_thing(client_id: str, query_params: dict, token: str)
 ```
 
 Gets all channels to which a specific client is connected to. 
 
 Provides a list of all the channels a client is connected to when provided with a valid token and client ID. 
 
-params:  client_id (str): Client ID  query_params (dict): Query parameters for example:  {  "offset": 0,  "limit": 10  }  token (str): User's token  
+params:  client_id (str): Thing ID  query_params (dict): Query parameters for example:  {  "offset": 0,  "limit": 10  }  token (str): User's token  
 
 
 
 **returns:**
  
- - <b>`mf_resp`</b>:  response.Response -response object 
+ - <b>`resp`</b>:  response.Response -response object 
 
 Usage: 
 
 ``` from magistrala import sdk```
 
- - <b>`    >>> mfsdk = sdk.SDK(channels_url="http`</b>: //localhost:9000")
+ - <b>`    >>> mgsdk = sdk.SDK(channels_url="http`</b>: //localhost:9000")
     >>> client_id = "client_id"
     >>> query_params = {
 
@@ -283,45 +283,45 @@ Usage:
 
  - <b>`    ...    "limit"`</b>:  10
     ... }
-    >>> mf_resp = mfsdk.channels.get_by_client(client_id, query_params, token)
-    >>> mf_resp
+    >>> resp = mgsdk.channels.get_by_thing(client_id, query_params, token)
+    >>> resp
 
 
 ---
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/channels.py#L349"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/channels.py#L349"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `identify_client`
 
 ```python
-identify_client(client_key: str)
+identify_thing(client_key: str)
 ```
 
 Validates client's key and returns it's ID if key is valid 
 
-Uses a client_key or secret to validate a client and provide its information. 
+Uses a client_key or secret to validate a thing and provide its information. 
 
-params:  client_key (str): Client's key  
+params:  client_key (str): Thing's key  
 
 
 
 **returns:**
  
- - <b>`mf_resp`</b>:  response.Response -response object 
+ - <b>`resp`</b>:  response.Response -response object 
 
 Usage: 
 
 ``` from magistrala import sdk    ```
 
- - <b>`    >>> mfsdk = sdk.SDK(channels_url="http`</b>: //localhost:9000")
+ - <b>`    >>> mgsdk = sdk.SDK(channels_url="http`</b>: //localhost:9000")
     >>> client_key = "client_key"
-    >>> mf_resp = mfsdk.channels.identify_client(client_key)
-    >>> mf_resp
+    >>> resp = mgsdk.channels.identify_thing(client_key)
+    >>> resp
 
 
 ---
 
-<a href="https://github.com/magistrala/sdk-py/blob/main/magistrala/channels.py#L268"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/channels.py#L268"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update`
 
@@ -339,20 +339,20 @@ params:  channel_id (str): Channel ID  channel (dict): Channel entity to be upda
 
 **returns:**
  
- - <b>`mf_resp`</b>:  response.Response -response object 
+ - <b>`resp`</b>:  response.Response -response object 
 
 Usage: 
 
 ``` from magistrala import sdk```
 
- - <b>`    >>> mfsdk = sdk.SDK(channels_url="http`</b>: //localhost:9000")
+ - <b>`    >>> mgsdk = sdk.SDK(channels_url="http`</b>: //localhost:9000")
     >>> channel_id = "channel_id"
     >>> channel = {
 
  - <b>`    ...    "name"`</b>:  "channel_name"
     ... }
-    >>> mf_resp = mfsdk.channels.update(channel_id, channel, token)
-    >>> mf_resp
+    >>> resp = mgsdk.channels.update(channel_id, channel, token)
+    >>> resp
 
 
 

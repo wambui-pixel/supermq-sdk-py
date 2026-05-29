@@ -2,6 +2,7 @@ import requests
 from magistrala import response
 from magistrala import errors
 from magistrala import utils
+from magistrala.roles import Roles
 
 
 class Clients:
@@ -20,6 +21,7 @@ class Clients:
 
     def __init__(self, url: str):
         self.URL = url
+        self.__roles = Roles()
     """Initializes Clients API client.
         
         params:
@@ -612,7 +614,7 @@ class Clients:
             mf_resp.value = "Disconnected"
         return mf_resp
     
-    def share_client(self, user_id: str, channel_id: str, actions: list, token: str):
+    def share_thing(self, user_id: str, channel_id: str, actions: list, token: str):
         """Shares client.
         
         Allows a logged in user to create new policies for a client over a channel
@@ -636,7 +638,7 @@ class Clients:
             >>> user_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"
             >>> channel_id = "567f7da5-b7bf-49b7-bf2f-99995e78afd9"
             >>> actions = ["m_write", "m_read"]
-            >>> mf_resp = mfsdk.clients.share_client(user_id, channel_id, actions)
+            >>> mf_resp = mfsdk.clients.share_thing(user_id, channel_id, actions)
             >>> mf_resp
         """
         payload = {"object": channel_id, "subject": user_id, "actions": actions, "external": True}
@@ -649,13 +651,13 @@ class Clients:
         if http_resp.status_code != 201:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.clients["share_client"], http_resp.status_code
+                errors.clients["share_thing"], http_resp.status_code
             )
         else:
             mf_resp.value = "OK"
         return mf_resp
     
-    def authorise_client(self,access_request: dict, token: str):
+    def authorise_thing(self,access_request: dict, token: str):
         """Authorises client.
         
         Creates policies for a client as a subject over a channel which is the object. 
@@ -685,7 +687,7 @@ class Clients:
             ...     "actions": "m_write"
             ...     "entity_type": "group"
             ... }
-            >>> mf_resp = mfsdk.clients.authorise_client(access_request)
+            >>> mf_resp = mfsdk.clients.authorise_thing(access_request)
             >>> mf_resp
         """
         mf_resp = response.Response()
@@ -697,8 +699,267 @@ class Clients:
         if http_resp.status_code != 200:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.clients["authorise_client"], http_resp.status_code
+                errors.clients["authorise_thing"], http_resp.status_code
             )
         else:
             mf_resp.value = "True"
         return mf_resp
+
+    def enable(self, client_id: str, domain_id: str, token: str):
+        mf_resp = response.Response()
+        http_resp = requests.post(
+            self.URL
+            + "/"
+            + domain_id
+            + "/"
+            + self.CLIENTS_ENDPOINT
+            + "/"
+            + client_id
+            + "/enable",
+            headers=utils.construct_header(token, utils.CTJSON),
+        )
+        if http_resp.status_code != 200:
+            mf_resp.error.status = 1
+            mf_resp.error.message = errors.handle_error(
+                errors.clients["enable"], http_resp.status_code
+            )
+        else:
+            mf_resp.value = http_resp.json()
+        return mf_resp
+
+    def delete(self, client_id: str, domain_id: str, token: str):
+        mf_resp = response.Response()
+        http_resp = requests.delete(
+            self.URL
+            + "/"
+            + domain_id
+            + "/"
+            + self.CLIENTS_ENDPOINT
+            + "/"
+            + client_id,
+            headers=utils.construct_header(token, utils.CTJSON),
+        )
+        if http_resp.status_code != 204:
+            mf_resp.error.status = 1
+            mf_resp.error.message = errors.handle_error(
+                errors.clients["delete"], http_resp.status_code
+            )
+        else:
+            mf_resp.value = "Client deleted successfully"
+        return mf_resp
+
+    def set_parent_group(
+        self, domain_id: str, client_id: str, parent_group_id: str, token: str
+    ):
+        mf_resp = response.Response()
+        http_resp = requests.post(
+            self.URL
+            + "/"
+            + domain_id
+            + "/"
+            + self.CLIENTS_ENDPOINT
+            + "/"
+            + client_id
+            + "/parent",
+            headers=utils.construct_header(token, utils.CTJSON),
+            json={"parent_group_id": parent_group_id},
+        )
+        if http_resp.status_code != 200:
+            mf_resp.error.status = 1
+            mf_resp.error.message = errors.handle_error(
+                errors.clients["set_parent_group"], http_resp.status_code
+            )
+        else:
+            mf_resp.value = "Parent group set successfully"
+        return mf_resp
+
+    def delete_parent_group(self, domain_id: str, client_id: str, token: str):
+        mf_resp = response.Response()
+        http_resp = requests.delete(
+            self.URL
+            + "/"
+            + domain_id
+            + "/"
+            + self.CLIENTS_ENDPOINT
+            + "/"
+            + client_id
+            + "/parent",
+            headers=utils.construct_header(token, utils.CTJSON),
+        )
+        if http_resp.status_code != 204:
+            mf_resp.error.status = 1
+            mf_resp.error.message = errors.handle_error(
+                errors.clients["delete_parent_group"], http_resp.status_code
+            )
+        else:
+            mf_resp.value = "Parent group removed successfully"
+        return mf_resp
+
+    # Role management
+
+    def list_available_actions(self, domain_id: str, token: str):
+        return self.__roles.list_available_actions(
+            self.URL + "/" + domain_id, self.CLIENTS_ENDPOINT, token
+        )
+
+    def create_role(
+        self,
+        domain_id: str,
+        client_id: str,
+        role_name: str,
+        token: str,
+        optional_actions: list = None,
+        optional_members: list = None,
+    ):
+        return self.__roles.create_role(
+            self.URL + "/" + domain_id,
+            self.CLIENTS_ENDPOINT,
+            client_id,
+            role_name,
+            token,
+            optional_actions,
+            optional_members,
+        )
+
+    def list_roles(self, domain_id: str, client_id: str, query_params: dict, token: str):
+        return self.__roles.list_roles(
+            self.URL + "/" + domain_id,
+            self.CLIENTS_ENDPOINT,
+            client_id,
+            query_params,
+            token,
+        )
+
+    def get_role(self, domain_id: str, client_id: str, role_id: str, token: str):
+        return self.__roles.get_role(
+            self.URL + "/" + domain_id,
+            self.CLIENTS_ENDPOINT,
+            client_id,
+            role_id,
+            token,
+        )
+
+    def update_role(
+        self, domain_id: str, client_id: str, role_id: str, role: dict, token: str
+    ):
+        return self.__roles.update_role(
+            self.URL + "/" + domain_id,
+            self.CLIENTS_ENDPOINT,
+            client_id,
+            role_id,
+            role,
+            token,
+        )
+
+    def delete_role(self, domain_id: str, client_id: str, role_id: str, token: str):
+        return self.__roles.delete_role(
+            self.URL + "/" + domain_id,
+            self.CLIENTS_ENDPOINT,
+            client_id,
+            role_id,
+            token,
+        )
+
+    def add_role_actions(
+        self, domain_id: str, client_id: str, role_id: str, actions: list, token: str
+    ):
+        return self.__roles.add_role_actions(
+            self.URL + "/" + domain_id,
+            self.CLIENTS_ENDPOINT,
+            client_id,
+            role_id,
+            actions,
+            token,
+        )
+
+    def list_role_actions(
+        self, domain_id: str, client_id: str, role_id: str, token: str
+    ):
+        return self.__roles.list_role_actions(
+            self.URL + "/" + domain_id,
+            self.CLIENTS_ENDPOINT,
+            client_id,
+            role_id,
+            token,
+        )
+
+    def delete_role_actions(
+        self, domain_id: str, client_id: str, role_id: str, actions: list, token: str
+    ):
+        return self.__roles.delete_role_actions(
+            self.URL + "/" + domain_id,
+            self.CLIENTS_ENDPOINT,
+            client_id,
+            role_id,
+            actions,
+            token,
+        )
+
+    def delete_all_role_actions(
+        self, domain_id: str, client_id: str, role_id: str, token: str
+    ):
+        return self.__roles.delete_all_role_actions(
+            self.URL + "/" + domain_id,
+            self.CLIENTS_ENDPOINT,
+            client_id,
+            role_id,
+            token,
+        )
+
+    def add_role_members(
+        self, domain_id: str, client_id: str, role_id: str, members: list, token: str
+    ):
+        return self.__roles.add_role_members(
+            self.URL + "/" + domain_id,
+            self.CLIENTS_ENDPOINT,
+            client_id,
+            role_id,
+            members,
+            token,
+        )
+
+    def list_role_members(
+        self, domain_id: str, client_id: str, role_id: str, query_params: dict, token: str
+    ):
+        return self.__roles.list_role_members(
+            self.URL + "/" + domain_id,
+            self.CLIENTS_ENDPOINT,
+            client_id,
+            role_id,
+            query_params,
+            token,
+        )
+
+    def delete_role_members(
+        self, domain_id: str, client_id: str, role_id: str, members: list, token: str
+    ):
+        return self.__roles.delete_role_members(
+            self.URL + "/" + domain_id,
+            self.CLIENTS_ENDPOINT,
+            client_id,
+            role_id,
+            members,
+            token,
+        )
+
+    def delete_all_role_members(
+        self, domain_id: str, client_id: str, role_id: str, token: str
+    ):
+        return self.__roles.delete_all_role_members(
+            self.URL + "/" + domain_id,
+            self.CLIENTS_ENDPOINT,
+            client_id,
+            role_id,
+            token,
+        )
+
+    def list_members(
+        self, domain_id: str, client_id: str, query_params: dict, token: str
+    ):
+        return self.__roles.list_entity_members(
+            self.URL + "/" + domain_id,
+            self.CLIENTS_ENDPOINT,
+            client_id,
+            query_params,
+            token,
+        )

@@ -84,7 +84,7 @@ class Certs:
             >>> from magistrala import sdk
             >>> mfsdk = sdk.SDK(certs_url="http://localhost:9019")
             >>> client_id = "client_id"
-            >>> mf_resp = mfsdk.certs.view_by_client(client_id)
+            >>> mf_resp = mfsdk.certs.view_by_thing(client_id)
             >>> mf_resp
         """
         mf_resp = response.Response()

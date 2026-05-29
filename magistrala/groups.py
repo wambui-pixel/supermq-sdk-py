@@ -4,6 +4,7 @@ import json
 from magistrala import response
 from magistrala import errors
 from magistrala import utils
+from magistrala.roles import Roles
 
 
 class Groups:
@@ -21,6 +22,7 @@ class Groups:
 
     def __init__(self, url: str):
         self.URL = url
+        self.__roles = Roles()
         """Initializes Groups API client with the provided URL.
         
            params:
@@ -500,3 +502,133 @@ class Groups:
                 errors.groups["disable"], http_resp.status_code
             )
         return mf_resp
+
+    def enable(self, group_id: str, token: str):
+        mf_resp = response.Response()
+        http_resp = requests.post(
+            self.URL + "/" + self.GROUPS_ENDPOINT + "/" + group_id + "/enable",
+            headers=utils.construct_header(token, utils.CTJSON),
+        )
+        if http_resp.status_code != 200:
+            mf_resp.error.status = 1
+            mf_resp.error.message = errors.handle_error(
+                errors.groups["enable"], http_resp.status_code
+            )
+        else:
+            mf_resp.value = http_resp.json()
+        return mf_resp
+
+    def delete(self, group_id: str, token: str):
+        mf_resp = response.Response()
+        http_resp = requests.delete(
+            self.URL + "/" + self.GROUPS_ENDPOINT + "/" + group_id,
+            headers=utils.construct_header(token, utils.CTJSON),
+        )
+        if http_resp.status_code != 204:
+            mf_resp.error.status = 1
+            mf_resp.error.message = errors.handle_error(
+                errors.groups["delete"], http_resp.status_code
+            )
+        else:
+            mf_resp.value = "Group deleted successfully"
+        return mf_resp
+
+    # Role management
+
+    def list_available_actions(self, token: str):
+        return self.__roles.list_available_actions(
+            self.URL, self.GROUPS_ENDPOINT, token
+        )
+
+    def create_role(
+        self,
+        group_id: str,
+        role_name: str,
+        token: str,
+        optional_actions: list = None,
+        optional_members: list = None,
+    ):
+        return self.__roles.create_role(
+            self.URL,
+            self.GROUPS_ENDPOINT,
+            group_id,
+            role_name,
+            token,
+            optional_actions,
+            optional_members,
+        )
+
+    def list_roles(self, group_id: str, query_params: dict, token: str):
+        return self.__roles.list_roles(
+            self.URL, self.GROUPS_ENDPOINT, group_id, query_params, token
+        )
+
+    def get_role(self, group_id: str, role_id: str, token: str):
+        return self.__roles.get_role(
+            self.URL, self.GROUPS_ENDPOINT, group_id, role_id, token
+        )
+
+    def update_role(self, group_id: str, role_id: str, role: dict, token: str):
+        return self.__roles.update_role(
+            self.URL, self.GROUPS_ENDPOINT, group_id, role_id, role, token
+        )
+
+    def delete_role(self, group_id: str, role_id: str, token: str):
+        return self.__roles.delete_role(
+            self.URL, self.GROUPS_ENDPOINT, group_id, role_id, token
+        )
+
+    def add_role_actions(
+        self, group_id: str, role_id: str, actions: list, token: str
+    ):
+        return self.__roles.add_role_actions(
+            self.URL, self.GROUPS_ENDPOINT, group_id, role_id, actions, token
+        )
+
+    def list_role_actions(self, group_id: str, role_id: str, token: str):
+        return self.__roles.list_role_actions(
+            self.URL, self.GROUPS_ENDPOINT, group_id, role_id, token
+        )
+
+    def delete_role_actions(
+        self, group_id: str, role_id: str, actions: list, token: str
+    ):
+        return self.__roles.delete_role_actions(
+            self.URL, self.GROUPS_ENDPOINT, group_id, role_id, actions, token
+        )
+
+    def delete_all_role_actions(self, group_id: str, role_id: str, token: str):
+        return self.__roles.delete_all_role_actions(
+            self.URL, self.GROUPS_ENDPOINT, group_id, role_id, token
+        )
+
+    def add_role_members(
+        self, group_id: str, role_id: str, members: list, token: str
+    ):
+        return self.__roles.add_role_members(
+            self.URL, self.GROUPS_ENDPOINT, group_id, role_id, members, token
+        )
+
+    def list_role_members(
+        self, group_id: str, role_id: str, query_params: dict, token: str
+    ):
+        return self.__roles.list_role_members(
+            self.URL, self.GROUPS_ENDPOINT, group_id, role_id, query_params, token
+        )
+
+    def delete_role_members(
+        self, group_id: str, role_id: str, members: list, token: str
+    ):
+        return self.__roles.delete_role_members(
+            self.URL, self.GROUPS_ENDPOINT, group_id, role_id, members, token
+        )
+
+    def delete_all_role_members(self, group_id: str, role_id: str, token: str):
+        return self.__roles.delete_all_role_members(
+            self.URL, self.GROUPS_ENDPOINT, group_id, role_id, token
+        )
+
+    def list_members(self, group_id: str, query_params: dict, token: str):
+        return self.__roles.list_entity_members(
+            self.URL, self.GROUPS_ENDPOINT, group_id, query_params, token
+        )
