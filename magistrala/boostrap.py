@@ -320,7 +320,7 @@ class Bootstrap:
         mf_resp = response.Response()
         http_resp = requests.get(
             self.url + "/clients/bootstrap" + "/" + external_id,
-            headers=utils.construct_header(utils.ThingPrefix+external_key, utils.CTJSON),
+            headers=utils.construct_header(utils.ClientPrefix+external_key, utils.CTJSON),
         )
         if http_resp.status_code != 200:
             mf_resp.error.status = 1

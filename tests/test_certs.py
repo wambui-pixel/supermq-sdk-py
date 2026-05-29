@@ -32,13 +32,13 @@ def test_issue_bad_token(requests_mock):
 
 def test_view_by_client(requests_mock):
     requests_mock.register_uri( "GET", url + "/serials" + "/" + client_id, json=certs, status_code=200)
-    r = s.certs.viewclient(client_id=client_id, token=token)
+    r = s.certs.view_by_client(client_id=client_id, token=token)
     assert r.error.status == 0
     assert certs == r.value
     
 def test_view_by_client_bad_token(requests_mock):
     requests_mock.register_uri( "GET", url + "/serials" + "/" + client_id, json=certs, status_code=404)
-    r = s.certs.viewclient(client_id=client_id, token=token)
+    r = s.certs.view_by_client(client_id=client_id, token=token)
     assert r.error.status == 1
     assert r.error.message == "Failed to retrieve corresponding certificate."
     

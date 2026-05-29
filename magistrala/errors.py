@@ -123,7 +123,7 @@ channels = {
         400: "Failed due to malformed channel's ID.",
         404: "Channel does not exist.",
     },
-    "get_by_thing": {
+    "get_by_client": {
         400: "Failed due to malformed query parameters.",
         404: "Client does not exist.",
     },
@@ -133,7 +133,7 @@ channels = {
     "delete": {
         400: "Failed due to malformed channel's ID."
     },
-    "identify_thing":{
+    "identify_client":{
         401: "Client and channel are not connected, or client with specified key doesn't exist."
     },
 }
@@ -216,7 +216,7 @@ certs = {
     "issue": {
         401: "Missing or invalid access token provided.",
     },
-    "view_by_thing": {
+    "view_by_client": {
         404: "Failed to retrieve corresponding certificate.",
     },
     "view_by_serial": {

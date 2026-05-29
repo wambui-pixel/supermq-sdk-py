@@ -222,7 +222,7 @@ class Channels:
             mf_resp.value = http_resp.json()
         return mf_resp
 
-    def get_by_thing(self, client_id: str, query_params: dict, token: str):
+    def get_by_client(self, client_id: str, query_params: dict, token: str):
         """Gets all channels to which a specific client is connected to.
         
         Provides a list of all the channels a client is connected to when provided with a valid
@@ -249,7 +249,7 @@ class Channels:
             ...    "offset": 0,
             ...    "limit": 10
             ... }
-            >>> mf_resp = mfsdk.channels.get_by_thing(client_id, query_params, token)
+            >>> mf_resp = mfsdk.channels.get_by_client(client_id, query_params, token)
             >>> mf_resp
         """
         mf_resp = response.Response()
@@ -261,7 +261,7 @@ class Channels:
         if http_resp.status_code != 200:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.channels["get_by_thing"], http_resp.status_code
+                errors.channels["get_by_client"], http_resp.status_code
             )
         else:
             mf_resp.value = http_resp.json()
@@ -348,7 +348,7 @@ class Channels:
             )
         return mf_resp
 
-    def identify_thing(self, client_key: str):
+    def identify_client(self, client_key: str):
         """Validates client's key and returns it's ID if key is valid
         
         Uses a client_key or secret to validate a client and provide its information.
@@ -364,18 +364,18 @@ class Channels:
             >>> from magistrala import sdk    
             >>> mfsdk = sdk.SDK(channels_url="http://localhost:9000")
             >>> client_key = "client_key"
-            >>> mf_resp = mfsdk.channels.identify_thing(client_key)
+            >>> mf_resp = mfsdk.channels.identify_client(client_key)
             >>> mf_resp
         """
         http_resp = requests.post(
             self.url + "/" + self.IDENTIFY_ENDPOINT,
-            headers=utils.construct_header(utils.ThingPrefix + client_key, utils.CTJSON),
+            headers=utils.construct_header(utils.ClientPrefix + client_key, utils.CTJSON),
         )
         mf_resp = response.Response()
         if http_resp.status_code != 200:
             mf_resp.error.status = 1
             mf_resp.error.message = errors.handle_error(
-                errors.channels["identify_thing"], http_resp.status_code
+                errors.channels["identify_client"], http_resp.status_code
             )
         else:
             mf_resp.value = http_resp.json()
