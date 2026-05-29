@@ -16,10 +16,10 @@
 - [`journal`](./journal.md#module-journal)
 - [`messages`](./messages.md#module-messages)
 - [`pats`](./pats.md#module-pats)
-- [`re`](./re.md#module-re)
 - [`reports`](./reports.md#module-reports)
 - [`response`](./response.md#module-response)
 - [`roles`](./roles.md#module-roles)
+- [`rules`](./rules.md#module-rules)
 - [`sdk`](./sdk.md#module-sdk)
 - [`users`](./users.md#module-users)
 - [`utils`](./utils.md#module-utils)
@@ -37,11 +37,11 @@
 - [`journal.Journal`](./journal.md#class-journal): Journal API client.
 - [`messages.Messages`](./messages.md#class-messages): Messages API client
 - [`pats.PATs`](./pats.md#class-pats): Personal Access Tokens (PATs) API client.
-- [`re.Rules`](./re.md#class-rules): Rules Engine API client.
 - [`reports.Reports`](./reports.md#class-reports): Reports API client.
 - [`response.Error`](./response.md#class-error)
 - [`response.Response`](./response.md#class-response)
 - [`roles.Roles`](./roles.md#class-roles): Shared role management helper used by Clients, Channels, Groups, Domains, and Rules.
+- [`rules.Rules`](./rules.md#class-rules): Rules Engine API client.
 - [`sdk.SDK`](./sdk.md#class-sdk)
 - [`users.Users`](./users.md#class-users): Users API client.
 

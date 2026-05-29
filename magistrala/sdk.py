@@ -10,7 +10,7 @@ from magistrala import health
 from magistrala import journal
 from magistrala import pats
 from magistrala import alarms
-from magistrala import re
+from magistrala import rules
 from magistrala import reports
 
 import requests
@@ -48,7 +48,7 @@ class SDK:
         self.journal = journal.Journal(journal_url)
         self.pats = pats.PATs(auth_url)
         self.alarms = alarms.Alarms(alarms_url)
-        self.rules = re.Rules(rules_url)
+        self.rules = rules.Rules(rules_url)
         self.reports = reports.Reports(reports_url)
         self.health = health.Health(
             users_url=users_url,
