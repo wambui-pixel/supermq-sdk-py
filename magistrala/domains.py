@@ -1,4 +1,5 @@
 import requests
+from typing import List
 
 from magistrala import response
 from magistrala import errors
@@ -288,8 +289,8 @@ class Domains:
         domain_id: str,
         role_name: str,
         token: str,
-        optional_actions: list = None,
-        optional_members: list = None,
+        optional_actions: List = None,
+        optional_members: List = None,
     ):
         return self.__roles.create_role(
             self.URL,
@@ -322,7 +323,7 @@ class Domains:
         )
 
     def add_role_actions(
-        self, domain_id: str, role_id: str, actions: list, token: str
+        self, domain_id: str, role_id: str, actions: List, token: str
     ):
         return self.__roles.add_role_actions(
             self.URL, self.DOMAINS_ENDPOINT, domain_id, role_id, actions, token
@@ -334,7 +335,7 @@ class Domains:
         )
 
     def delete_role_actions(
-        self, domain_id: str, role_id: str, actions: list, token: str
+        self, domain_id: str, role_id: str, actions: List, token: str
     ):
         return self.__roles.delete_role_actions(
             self.URL, self.DOMAINS_ENDPOINT, domain_id, role_id, actions, token
@@ -346,7 +347,7 @@ class Domains:
         )
 
     def add_role_members(
-        self, domain_id: str, role_id: str, members: list, token: str
+        self, domain_id: str, role_id: str, members: List, token: str
     ):
         return self.__roles.add_role_members(
             self.URL, self.DOMAINS_ENDPOINT, domain_id, role_id, members, token
@@ -360,7 +361,7 @@ class Domains:
         )
 
     def delete_role_members(
-        self, domain_id: str, role_id: str, members: list, token: str
+        self, domain_id: str, role_id: str, members: List, token: str
     ):
         return self.__roles.delete_role_members(
             self.URL, self.DOMAINS_ENDPOINT, domain_id, role_id, members, token

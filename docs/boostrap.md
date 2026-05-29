@@ -1,7 +1,5 @@
 <!-- markdownlint-disable -->
 
-<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/boostrap.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
-
 # <kbd>module</kbd> `boostrap`
 
 
@@ -11,12 +9,10 @@
 
 ---
 
-<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/boostrap.py#L8"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
-
 ## <kbd>class</kbd> `Bootstrap`
 Bootstrap service API client. 
 
-Bootstrap service is used to manage configurations for Magistrala Things. It provides  services such as updating, viewing, removing and adding new configurations. 
+Bootstrap service is used to manage configurations for Magistrala Clients. It provides  services such as updating, viewing, removing and adding new configurations. 
 
 
 
@@ -29,8 +25,6 @@ Bootstrap service is used to manage configurations for Magistrala Things. It pro
  - <b>`BOOTSTRAP_CERTS_ENDPOINT`</b> (str):  Bootstrap certificates API endpoint. 
 
 
-
-<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/boostrap.py#L27"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -58,8 +52,6 @@ params:  url (str): Magistrala Bootstrap API URL.
 
 ---
 
-<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/boostrap.py#L41"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
-
 ### <kbd>method</kbd> `add`
 
 ```python
@@ -68,7 +60,7 @@ add(config: dict, token: str)
 
 Adds new config to the list of config owned by user identified using the provided access token. 
 
-Some of the key data needed include the external_key and external_id which must be specific to the thing provided with the client_id. Mind that every configuration  must have a specific client_id. 
+Some of the key data needed include the external_key and external_id which must be specific to the client provided with the client_id. Mind that every configuration  must have a specific client_id. 
 
 params:  config (dict): Configuration data for example:   {    "external_id": "123",  "external_key": "456",  "client_id": "fdb1057c-2905-4f71-9a80-e0ce9191e667",  "name": "client_name"  }  token (str): Authorization token.  
 
@@ -76,13 +68,13 @@ params:  config (dict): Configuration data for example:   {    "external_id": "1
 
 **returns:**
  
- - <b>`response `</b>:  response.Response. 
+ - <b>`mf_response `</b>:  response.Response. 
 
 Usage: 
 
 ``` from magistrala import sdk```
 
- - <b>`    >>> mgsdk = sdk.SDK(bootstrap_url="http`</b>: //localhost:9013")
+ - <b>`    >>> mfsdk = sdk.SDK(bootstrap_url="http`</b>: //localhost:9013")
     >>> config = {
 
  - <b>`    ... "external_id"`</b>:  "123",
@@ -93,13 +85,11 @@ Usage:
 
  - <b>`    ... "name"`</b>:  "client_name"
     ... }
-    >>> resp = mgsdk.bootstrap.add(config, token)
-    >>> resp
+    >>> mf_resp = mfsdk.bootstrap.add(config, token)
+    >>> mf_resp
 
 
 ---
-
-<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/boostrap.py#L300"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `bootstrap`
 
@@ -115,22 +105,20 @@ params:  external_id (str): External ID.  external_key (str): External key.
 
 **returns:**
  
- - <b>`resp `</b>:  response.Response - response object. 
+ - <b>`mf_resp `</b>:  response.Response - response object. 
 
 Usage: 
 
 ``` from magistrala import sdk```
 
- - <b>`    >>> mgsdk = sdk.SDK(bootstrap_url="http`</b>: //localhost:9013")
+ - <b>`    >>> mfsdk = sdk.SDK(bootstrap_url="http`</b>: //localhost:9013")
     >>> external_id = "external_id"
     >>> external_key = "external_key"
-    >>> resp = mgsdk.bootstrap.bootstrap(external_id, external_key)
-    >>> resp
+    >>> mf_resp = mfsdk.bootstrap.bootstrap(external_id, external_key)
+    >>> mf_resp
 
 
 ---
-
-<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/boostrap.py#L266"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `remove`
 
@@ -146,21 +134,19 @@ params:  config_id (str): Configuration ID.  token (str): Authorization token.
 
 **returns:**
  
- - <b>`response `</b>:  response.Response. 
+ - <b>`mf_response `</b>:  response.Response. 
 
 Usage: 
 
 ``` from magistrala import sdk```
 
- - <b>`    >>> mgsdk = sdk.SDK(bootstrap_url="http`</b>: //localhost:9013")
+ - <b>`    >>> mfsdk = sdk.SDK(bootstrap_url="http`</b>: //localhost:9013")
     >>> config_id = "config_id"
-    >>> resp = mgsdk.bootstrap.remove(config_id, token)
-    >>> resp
+    >>> mf_resp = mfsdk.bootstrap.remove(config_id, token)
+    >>> mf_resp
 
 
 ---
-
-<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/boostrap.py#L173"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update`
 
@@ -168,7 +154,7 @@ Usage:
 update(config: dict, token: str)
 ```
 
-Update is performed by replacing the current resource data with values provided in a request payload. Note that the owner, ID, external ID, external key, Magistrala Thing ID and key cannot be changed. 
+Update is performed by replacing the current resource data with values provided in a request payload. Note that the owner, ID, external ID, external key, Magistrala Client ID and key cannot be changed. 
 
 params:  config (dict): Configuration data for example:   {    "external_id": "123",  "external_key": "456",  "client_id": "fdb1057c-2905-4f71-9a80-e0ce9191e667",  "name": "client_name"  }  token (str): Authorization token.  
 
@@ -178,13 +164,13 @@ params:  config (dict): Configuration data for example:   {    "external_id": "1
  
 
 
- - <b>`response `</b>:  response.Response. 
+ - <b>`mf_response `</b>:  response.Response. 
 
 Usage: 
 
 ``` from magistrala import sdk```
 
- - <b>`    >>> mgsdk = sdk.SDK(bootstrap_url="http`</b>: //localhost:9013")
+ - <b>`    >>> mfsdk = sdk.SDK(bootstrap_url="http`</b>: //localhost:9013")
     >>> config = {
 
  - <b>`    ... "external_id"`</b>:  "123",
@@ -195,13 +181,11 @@ Usage:
 
  - <b>`    ... "name"`</b>:  "client_name"
     ... }
-    >>> resp = mgsdk.bootstrap.update(config, token)
-    >>> resp
+    >>> mf_resp = mfsdk.bootstrap.update(config, token)
+    >>> mf_resp
 
 
 ---
-
-<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/boostrap.py#L224"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update_certs`
 
@@ -223,24 +207,22 @@ params:   config_id (str): Configuration ID.  client_cert (str): Client certific
 
 **returns:**
  
- - <b>`response `</b>:  response.Response. 
+ - <b>`mf_response `</b>:  response.Response. 
 
 Usage: 
 
 ``` from magistrala import sdk```
 
- - <b>`    >>> mgsdk = sdk.SDK(bootstrap_url="http`</b>: //localhost:9013")
+ - <b>`    >>> mfsdk = sdk.SDK(bootstrap_url="http`</b>: //localhost:9013")
     >>> config_id = "config_id"
     >>> client_cert = "client_cert"
     >>> client_key = "client_key"
     >>> ca = "ca"
-    >>> resp = mgsdk.bootstrap.update_certs(config_id, client_cert, client_key, ca, token)
-    >>> resp
+    >>> mf_resp = mfsdk.bootstrap.update_certs(config_id, client_cert, client_key, ca, token)
+    >>> mf_resp
 
 
 ---
-
-<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/boostrap.py#L139"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `view`
 
@@ -252,27 +234,25 @@ Retrieves a configuration with given config id
 
 Provides a configuration with given config id. 
 
-params:  client_id (str): Thing ID.  token (str): Authorization token.  
+params:  client_id (str): Client ID.  token (str): Authorization token.  
 
 
 
 **returns:**
  
- - <b>`resp `</b>:  response.Response - response object. 
+ - <b>`mf_resp `</b>:  response.Response - response object. 
 
 Usage: 
 
 ``` from magistrala import sdk```
 
- - <b>`    >>> mgsdk = sdk.SDK(bootstrap_url="http`</b>: //localhost:9013")
+ - <b>`    >>> mfsdk = sdk.SDK(bootstrap_url="http`</b>: //localhost:9013")
     >>> client_id = "client_id"
-    >>> resp = mgsdk.bootstrap.view(client_id, token)
-    >>> resp
+    >>> mf_resp = mfsdk.bootstrap.view(client_id, token)
+    >>> mf_resp
 
 
 ---
-
-<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/boostrap.py#L90"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `whitelist`
 
@@ -280,7 +260,7 @@ Usage:
 whitelist(config: dict, token: str)
 ```
 
-Updating state represents enabling/disabling Config, i.e.connecting and disconnecting corresponding Magistrala Thing to the list of Channels. 
+Updating state represents enabling/disabling Config, i.e.connecting and disconnecting corresponding Magistrala Client to the list of Channels. 
 
 params:  config (dict): Configuration data for example:   {    "external_id": "123",  "external_key": "456",  "client_id": "fdb1057c-2905-4f71-9a80-e0ce9191e667",  "name": "client_name"  }  token (str): Authorization token.  
 
@@ -288,13 +268,13 @@ params:  config (dict): Configuration data for example:   {    "external_id": "1
 
 **returns:**
  
- - <b>`response `</b>:  response.Response. 
+ - <b>`mf_response `</b>:  response.Response. 
 
 Usage: 
 
 ``` from magistrala import sdk```
 
- - <b>`    >>> mgsdk = sdk.SDK(bootstrap_url="http`</b>: //localhost:9013")
+ - <b>`    >>> mfsdk = sdk.SDK(bootstrap_url="http`</b>: //localhost:9013")
     >>> config = {
 
  - <b>`    ... "external_id"`</b>:  "123",
@@ -305,8 +285,8 @@ Usage:
 
  - <b>`    ... "name"`</b>:  "client_name"
     ... }
-    >>> resp = mgsdk.bootstrap.whitelist(config, token)
-    >>> resp        
+    >>> mf_resp = mfsdk.bootstrap.whitelist(config, token)
+    >>> mf_resp        
 
 
 

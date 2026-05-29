@@ -1,4 +1,5 @@
 import requests
+from typing import List
 
 from magistrala import response
 from magistrala import errors
@@ -171,12 +172,12 @@ class PATs:
             mf_resp.value = "PAT revoked successfully"
         return mf_resp
 
-    def add_scope(self, pat_id: str, scopes: list, token: str):
+    def add_scope(self, pat_id: str, scopes: List, token: str):
         """Adds scopes to a PAT.
 
         params:
             pat_id: str - PAT ID
-            scopes: list - list of scope dicts, each with entity_type,
+            scopes: List - list of scope dicts, each with entity_type,
                 domain_id, operation, entity_id fields
             token: str - authorization token
 
@@ -214,7 +215,7 @@ class PATs:
             mf_resp.value = http_resp.json()
         return mf_resp
 
-    def delete_scopes(self, pat_id: str, scope_ids: list, token: str):
+    def delete_scopes(self, pat_id: str, scope_ids: List, token: str):
         mf_resp = response.Response()
         http_resp = requests.patch(
             self.URL + "/" + self.PATS_ENDPOINT + "/" + pat_id + "/scope/remove",

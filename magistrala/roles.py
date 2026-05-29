@@ -1,4 +1,5 @@
 import requests
+from typing import List
 
 from magistrala import response
 from magistrala import errors
@@ -30,8 +31,8 @@ class Roles:
         entity_id: str,
         role_name: str,
         token: str,
-        optional_actions: list = None,
-        optional_members: list = None,
+        optional_actions: List = None,
+        optional_members: List = None,
     ):
         payload = {"role_name": role_name}
         if optional_actions:
@@ -150,7 +151,7 @@ class Roles:
         endpoint: str,
         entity_id: str,
         role_id: str,
-        actions: list,
+        actions: List,
         token: str,
     ):
         mf_resp = response.Response()
@@ -196,7 +197,7 @@ class Roles:
         endpoint: str,
         entity_id: str,
         role_id: str,
-        actions: list,
+        actions: List,
         token: str,
     ):
         mf_resp = response.Response()
@@ -256,7 +257,7 @@ class Roles:
         endpoint: str,
         entity_id: str,
         role_id: str,
-        members: list,
+        members: List,
         token: str,
     ):
         mf_resp = response.Response()
@@ -304,7 +305,7 @@ class Roles:
         endpoint: str,
         entity_id: str,
         role_id: str,
-        members: list,
+        members: List,
         token: str,
     ):
         mf_resp = response.Response()

@@ -1,7 +1,5 @@
 <!-- markdownlint-disable -->
 
-<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
-
 # <kbd>module</kbd> `groups`
 
 
@@ -10,8 +8,6 @@
 
 
 ---
-
-<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L9"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `Groups`
 Groups class provides the abstraction of the Magistrala groups service API. 
@@ -24,8 +20,6 @@ Groups class provides the following functionality: create, get, get_all, parents
  
  - <b>`URL`</b>:  Magistrala groups service URL. 
  - <b>`GROUPS_ENDPOINT`</b>:  Magistrala groups service API endpoint.    
-
-<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L22"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -42,7 +36,29 @@ __init__(url: str)
 
 ---
 
-<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L388"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+### <kbd>method</kbd> `add_role_actions`
+
+```python
+add_role_actions(group_id: str, role_id: str, actions: list, token: str)
+```
+
+
+
+
+
+---
+
+### <kbd>method</kbd> `add_role_members`
+
+```python
+add_role_members(group_id: str, role_id: str, members: list, token: str)
+```
+
+
+
+
+
+---
 
 ### <kbd>method</kbd> `assign`
 
@@ -60,16 +76,14 @@ params:  group_id: str - group id  member_id: str - member id  member_type: list
 
 **returns:**
  
- - <b>`resp`</b>:  "Policy created" 
+ - <b>`mf_resp`</b>:  "Policy created" 
 
 Usage:
 ``` 
 
-    >>> from magistrala import sdk     >>> mgsdk = sdk.SDK(users_url="http://localhost:9002")     >>> group_id = "group_id"     >>> member_id = "member_id"     >>> member_type = [     ...     "m_read", "m_write", "m_admin"     ... ]     >>> resp = mgsdk.groups.assign(group_id, member_id, member_type)     >>> resp 
+    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> group_id = "group_id"     >>> member_id = "member_id"     >>> member_type = [     ...     "m_read", "m_write", "m_admin"     ... ]     >>> mf_resp = mfsdk.groups.assign(group_id, member_id, member_type)     >>> mf_resp 
 
 ---
-
-<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L203"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `children`
 
@@ -87,16 +101,14 @@ params:  group_id: str - group id of the parent group in question.  query_params
 
 **returns:**
  
- - <b>`resp`</b>:  response.Response - response object 
+ - <b>`mf_resp`</b>:  response.Response - response object 
 
 Usage:
 ``` 
 
-    >>> from magistrala import sdk     >>> mgsdk = sdk.SDK(users_url="http://localhost:9002")     >>> group_id = "group_id"     >>> query_params = {     ...     "offset": 0,     ...     "limit": 10,     ... }     >>> resp = mgsdk.groups.children(group_id, query_params)     >>> resp 
+    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> group_id = "group_id"     >>> query_params = {     ...     "offset": 0,     ...     "limit": 10,     ... }     >>> mf_resp = mfsdk.groups.children(group_id, query_params)     >>> mf_resp 
 
 ---
-
-<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L35"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `create`
 
@@ -114,16 +126,104 @@ params:  group: dict - group information for example:  {  "name": "groupName",  
 
 **returns:**
  
- - <b>`resp`</b>:  response.Response - response object 
+ - <b>`mf_resp`</b>:  response.Response - response object 
 
 Usage:
 ``` 
 
-    >>> from magistrala import sdk     >>> mgsdk = sdk.SDK(users_url="http://localhost:9002")     >>> group = {     ...     "name": "groupName",     ... }     >>> resp = mgsdk.groups.create(group)     >>> resp 
+    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> group = {     ...     "name": "groupName",     ... }     >>> mf_resp = mfsdk.groups.create(group)     >>> mf_resp 
 
 ---
 
-<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L471"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+### <kbd>method</kbd> `create_role`
+
+```python
+create_role(
+    group_id: str,
+    role_name: str,
+    token: str,
+    optional_actions: list = None,
+    optional_members: list = None
+)
+```
+
+
+
+
+
+---
+
+### <kbd>method</kbd> `delete`
+
+```python
+delete(group_id: str, token: str)
+```
+
+
+
+
+
+---
+
+### <kbd>method</kbd> `delete_all_role_actions`
+
+```python
+delete_all_role_actions(group_id: str, role_id: str, token: str)
+```
+
+
+
+
+
+---
+
+### <kbd>method</kbd> `delete_all_role_members`
+
+```python
+delete_all_role_members(group_id: str, role_id: str, token: str)
+```
+
+
+
+
+
+---
+
+### <kbd>method</kbd> `delete_role`
+
+```python
+delete_role(group_id: str, role_id: str, token: str)
+```
+
+
+
+
+
+---
+
+### <kbd>method</kbd> `delete_role_actions`
+
+```python
+delete_role_actions(group_id: str, role_id: str, actions: list, token: str)
+```
+
+
+
+
+
+---
+
+### <kbd>method</kbd> `delete_role_members`
+
+```python
+delete_role_members(group_id: str, role_id: str, members: list, token: str)
+```
+
+
+
+
+
+---
 
 ### <kbd>method</kbd> `disable`
 
@@ -141,14 +241,24 @@ params:  group_id: str - group id  user_token: str - token used to delete a grou
 
 **returns:**
  
- - <b>`resp`</b>:  response.Response - response object 
+ - <b>`mf_resp`</b>:  response.Response - response object 
 
 Usage:
-```               >>> from magistrala import sdk          >>> mgsdk = sdk.SDK(users_url="http://localhost:9002")          >>> group_id = "group_id"          >>> resp = mgsdk.groups.disable(group_id)          >>> resp 
+```               >>> from magistrala import sdk          >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")          >>> group_id = "group_id"          >>> mf_resp = mfsdk.groups.disable(group_id)          >>> mf_resp 
 
 ---
 
-<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L76"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+### <kbd>method</kbd> `enable`
+
+```python
+enable(group_id: str, token: str)
+```
+
+
+
+
+
+---
 
 ### <kbd>method</kbd> `get`
 
@@ -166,16 +276,14 @@ params:   group_id: str - group id  token: str - token used to get a group.
 
 **returns:**
  
- - <b>`resp`</b>:  response.Response - response object 
+ - <b>`mf_resp`</b>:  response.Response - response object 
 
 Usage:
 ``` 
 
-    >>> from magistrala import sdk     >>> mgsdk = sdk.SDK(users_url="http://localhost:9002")     >>> group_id = "group_id"     >>> resp = mgsdk.groups.get(group_id)     >>> resp 
+    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> group_id = "group_id"     >>> mf_resp = mfsdk.groups.get(group_id)     >>> mf_resp 
 
 ---
-
-<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L111"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get_all`
 
@@ -193,16 +301,86 @@ params:  query_params: dict - query parameters for example:  {  "offset": 0,  "l
 
 **returns:**
  
- - <b>`resp`</b>:  response.Response - response object 
+ - <b>`mf_resp`</b>:  response.Response - response object 
 
 Usage:
 ``` 
 
-    >>> from magistrala import sdk     >>> mgsdk = sdk.SDK(users_url="http://localhost:9002")     >>> query_params = {     ...     "offset": 0,     ...     "limit": 10,     ... }     >>> resp = mgsdk.groups.get_all(query_params)     >>> resp 
+    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> query_params = {     ...     "offset": 0,     ...     "limit": 10,     ... }     >>> mf_resp = mfsdk.groups.get_all(query_params)     >>> mf_resp 
 
 ---
 
-<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L294"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+### <kbd>method</kbd> `get_role`
+
+```python
+get_role(group_id: str, role_id: str, token: str)
+```
+
+
+
+
+
+---
+
+### <kbd>method</kbd> `list_available_actions`
+
+```python
+list_available_actions(token: str)
+```
+
+
+
+
+
+---
+
+### <kbd>method</kbd> `list_members`
+
+```python
+list_members(group_id: str, query_params: dict, token: str)
+```
+
+
+
+
+
+---
+
+### <kbd>method</kbd> `list_role_actions`
+
+```python
+list_role_actions(group_id: str, role_id: str, token: str)
+```
+
+
+
+
+
+---
+
+### <kbd>method</kbd> `list_role_members`
+
+```python
+list_role_members(group_id: str, role_id: str, query_params: dict, token: str)
+```
+
+
+
+
+
+---
+
+### <kbd>method</kbd> `list_roles`
+
+```python
+list_roles(group_id: str, query_params: dict, token: str)
+```
+
+
+
+
+
+---
 
 ### <kbd>method</kbd> `members`
 
@@ -220,16 +398,14 @@ params:   group_id: str - group id  query_params: dict - query parameters for ex
 
 **returns:**
  
- - <b>`resp`</b>:  response.Response - response object 
+ - <b>`mf_resp`</b>:  response.Response - response object 
 
 Usage:
 ``` 
 
-    >>> from magistrala import sdk     >>> mgsdk = sdk.SDK(users_url="http://localhost:9002")     >>> group_id = "group_id"     >>> query_params = {     ...     "offset": 0,     ...     "limit": 10,     ... }     >>> resp = mgsdk.groups.members(group_id, query_params)     >>> resp        
+    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> group_id = "group_id"     >>> query_params = {     ...     "offset": 0,     ...     "limit": 10,     ... }     >>> mf_resp = mfsdk.groups.members(group_id, query_params)     >>> mf_resp        
 
 ---
-
-<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L341"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `memberships`
 
@@ -247,14 +423,12 @@ params:   member_id: str - user id  query_params: dict - query parameters for ex
 
 **returns:**
  
- - <b>`resp`</b>:  response.Response - response object 
+ - <b>`mf_resp`</b>:  response.Response - response object 
 
 Usage:
-```               >>> from magistrala import sdk          >>> mgsdk = sdk.SDK(users_url="http://localhost:9002")          >>> member_id = "member_id"          >>> query_params = {          ...     "offset": 0,          ...     "limit": 10,          ... }          >>> resp = mgsdk.groups.memberships(member_id, query_params)          >>> resp     
+```               >>> from magistrala import sdk          >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")          >>> member_id = "member_id"          >>> query_params = {          ...     "offset": 0,          ...     "limit": 10,          ... }          >>> mf_resp = mfsdk.groups.memberships(member_id, query_params)          >>> mf_resp     
 
 ---
-
-<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L155"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `parents`
 
@@ -272,16 +446,14 @@ params:   group_id: str - group id of the child group in question.  query_params
 
 **returns:**
  
- - <b>`resp`</b>:  response.Response - response object 
+ - <b>`mf_resp`</b>:  response.Response - response object 
 
 Usage:
 ``` 
 
-    >>> from magistrala import sdk     >>> mgsdk = sdk.SDK(users_url="http://localhost:9002")     >>> group_id = "group_id"     >>> query_params = {     ...     "offset": 0,     ...     "limit": 10,     ... }     >>> resp = mgsdk.groups.parents(group_id, query_params)     >>> resp 
+    >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> group_id = "group_id"     >>> query_params = {     ...     "offset": 0,     ...     "limit": 10,     ... }     >>> mf_resp = mfsdk.groups.parents(group_id, query_params)     >>> mf_resp 
 
 ---
-
-<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L434"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `unassign`
 
@@ -299,14 +471,12 @@ params:  group_id: str - group id  token: str - token used to delete a user's po
 
 **returns:**
  
- - <b>`resp`</b>:  response.Response - response object 
+ - <b>`mf_resp`</b>:  response.Response - response object 
 
 Usage:
-```                        >>> from magistrala import sdk              >>> mgsdk = sdk.SDK(users_url="http://localhost:9002")              >>> group_id = "group_id"              >>> members_ids = "members_ids"              >>> resp = mgsdk.groups.unassign(group_id, members_ids)              >>> resp 
+```                        >>> from magistrala import sdk              >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")              >>> group_id = "group_id"              >>> members_ids = "members_ids"              >>> mf_resp = mfsdk.groups.unassign(group_id, members_ids)              >>> mf_resp 
 
 ---
-
-<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L250"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update`
 
@@ -326,10 +496,22 @@ params:  group_id: str - group id  group: dict - group information for example: 
  
 
 
- - <b>`resp`</b>:  response.Response - response object 
+ - <b>`mf_resp`</b>:  response.Response - response object 
 
 Usage:
-```               >>> from magistrala import sdk          >>> mgsdk = sdk.SDK(users_url="http://localhost:9002")          >>> group_id = "group_id"          >>> group = {          ...     "name": "groupName",          ... }          >>> resp = mgsdk.groups.update(group_id, group)          >>> resp 
+```               >>> from magistrala import sdk          >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")          >>> group_id = "group_id"          >>> group = {          ...     "name": "groupName",          ... }          >>> mf_resp = mfsdk.groups.update(group_id, group)          >>> mf_resp 
+
+---
+
+### <kbd>method</kbd> `update_role`
+
+```python
+update_role(group_id: str, role_id: str, role: dict, token: str)
+```
+
+
+
+
 
 
 
