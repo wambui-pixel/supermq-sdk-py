@@ -1,5 +1,7 @@
 <!-- markdownlint-disable -->
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 # <kbd>module</kbd> `clients`
 
 
@@ -8,6 +10,8 @@
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L8"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `Clients`
 Clients API client. 
@@ -20,6 +24,8 @@ Clients API is used for creating and managing clients. It is used for creating n
  
  - <b>`URL`</b>:  str - URL of the Clients API 
  - <b>`CLIENTS_ENDPOINT`</b>:  str - Clients API endpoint 
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L22"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -35,6 +41,8 @@ __init__(url: str)
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L863"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `add_role_actions`
 
@@ -54,6 +62,8 @@ add_role_actions(
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L909"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `add_role_members`
 
 ```python
@@ -71,6 +81,8 @@ add_role_members(
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L660"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `authorise_thing`
 
@@ -99,6 +111,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L536"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `connect`
 
 ```python
@@ -123,6 +137,8 @@ Usage:
     >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> client_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> channel_id = "567f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> action = "m_write"     >>> mf_resp = mfsdk.clients.connect(client_id, channel_id, action)     >>> mf_resp 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L456"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `connects`
 
@@ -149,6 +165,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L36"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `create`
 
 ```python
@@ -171,6 +189,8 @@ Usage:
 ```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> client = {     ...     "name": "client1",     ...  }     >>> mf_resp = mfsdk.clients.create(client)     >>> mf_resp             
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L77"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `create_bulk`
 
@@ -195,6 +215,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L805"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `create_role`
 
 ```python
@@ -214,6 +236,8 @@ create_role(
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L730"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `delete`
 
 ```python
@@ -225,6 +249,8 @@ delete(client_id: str, domain_id: str, token: str)
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L898"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `delete_all_role_actions`
 
@@ -243,6 +269,8 @@ delete_all_role_actions(
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L945"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `delete_all_role_members`
 
 ```python
@@ -260,6 +288,8 @@ delete_all_role_members(
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L776"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `delete_parent_group`
 
 ```python
@@ -272,6 +302,8 @@ delete_parent_group(domain_id: str, client_id: str, token: str)
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L854"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `delete_role`
 
 ```python
@@ -283,6 +315,8 @@ delete_role(domain_id: str, client_id: str, role_id: str, token: str)
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L886"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `delete_role_actions`
 
@@ -302,6 +336,8 @@ delete_role_actions(
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L933"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `delete_role_members`
 
 ```python
@@ -319,6 +355,8 @@ delete_role_members(
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L424"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `disable`
 
@@ -342,6 +380,8 @@ Usage:
 ```                       >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> client_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> mf_resp = mfsdk.clients.disable(client_id)     >>> mf_resp         
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L578"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `disconnect`
 
@@ -368,6 +408,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L499"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `disconnects`
 
 ```python
@@ -393,6 +435,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L708"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `enable`
 
 ```python
@@ -404,6 +448,8 @@ enable(client_id: str, domain_id: str, token: str)
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L122"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get`
 
@@ -428,6 +474,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L158"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `get_all`
 
 ```python
@@ -451,6 +499,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L202"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `get_by_channel`
 
 ```python
@@ -470,6 +520,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L833"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `get_role`
 
 ```python
@@ -481,6 +533,8 @@ get_role(domain_id: str, client_id: str, role_id: str, token: str)
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L800"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `list_available_actions`
 
@@ -494,6 +548,8 @@ list_available_actions(domain_id: str, token: str)
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L956"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `list_members`
 
 ```python
@@ -506,6 +562,8 @@ list_members(domain_id: str, client_id: str, query_params: dict, token: str)
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L875"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `list_role_actions`
 
 ```python
@@ -517,6 +575,8 @@ list_role_actions(domain_id: str, client_id: str, role_id: str, token: str)
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L921"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `list_role_members`
 
@@ -536,6 +596,8 @@ list_role_members(
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L824"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `list_roles`
 
 ```python
@@ -547,6 +609,8 @@ list_roles(domain_id: str, client_id: str, query_params: dict, token: str)
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L751"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `set_parent_group`
 
@@ -564,6 +628,8 @@ set_parent_group(
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L617"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `share_thing`
 
@@ -590,6 +656,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L248"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `update`
 
 ```python
@@ -612,6 +680,8 @@ Usage:
 ```                               >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> client_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> client = {     ...     "name": "client2",     ...  }     >>> mf_resp = mfsdk.clients.update(client_id, client)     >>> mf_resp             
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L380"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update_client_owner`
 
@@ -638,6 +708,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L292"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `update_client_secret`
 
 ```python
@@ -663,6 +735,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L336"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `update_client_tags`
 
 ```python
@@ -687,6 +761,8 @@ Usage:
     >>> from magistrala import sdk        >>> mfsdk = sdk.SDK(clients_url="http://localhost:9000")     >>> client_id = "fd4f7da5-b7bf-49b7-bf2f-99995e78afd9"     >>> client = {     ...     "tags": ["tag1", "tag2"]     ...  }     >>> mf_resp = mfsdk.clients.update_client_tags(client_id, client)     >>> mf_resp 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/clients.py#L842"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update_role`
 

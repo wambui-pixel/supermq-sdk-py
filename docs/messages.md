@@ -1,5 +1,7 @@
 <!-- markdownlint-disable -->
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/messages.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 # <kbd>module</kbd> `messages`
 
 
@@ -8,6 +10,8 @@
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/messages.py#L8"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `Messages`
 Messages API client 
@@ -20,6 +24,8 @@ Messages API client enables interaction with Magistrala Messages API. It provide
  
  - <b>`adapter_url`</b>:  URL of the Magistrala Messages adapter 
  - <b>`reader_url`</b>:  URL of the Magistrala Messages reader 
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/messages.py#L18"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -35,6 +41,8 @@ __init__(adapter_url: str, reader_url: str)
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/messages.py#L82"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read`
 
@@ -65,6 +73,8 @@ usage:
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/messages.py#L33"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `send`
 

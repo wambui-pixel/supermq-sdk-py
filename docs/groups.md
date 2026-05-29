@@ -1,5 +1,7 @@
 <!-- markdownlint-disable -->
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 # <kbd>module</kbd> `groups`
 
 
@@ -8,6 +10,8 @@
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L10"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `Groups`
 Groups class provides the abstraction of the Magistrala groups service API. 
@@ -20,6 +24,8 @@ Groups class provides the following functionality: create, get, get_all, parents
  
  - <b>`URL`</b>:  Magistrala groups service URL. 
  - <b>`GROUPS_ENDPOINT`</b>:  Magistrala groups service API endpoint.    
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L23"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -36,6 +42,8 @@ __init__(url: str)
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L581"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `add_role_actions`
 
 ```python
@@ -48,6 +56,8 @@ add_role_actions(group_id: str, role_id: str, actions: list, token: str)
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L605"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `add_role_members`
 
 ```python
@@ -59,6 +69,8 @@ add_role_members(group_id: str, role_id: str, members: list, token: str)
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L390"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `assign`
 
@@ -85,6 +97,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L205"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `children`
 
 ```python
@@ -109,6 +123,8 @@ Usage:
     >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> group_id = "group_id"     >>> query_params = {     ...     "offset": 0,     ...     "limit": 10,     ... }     >>> mf_resp = mfsdk.groups.children(group_id, query_params)     >>> mf_resp 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L37"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `create`
 
@@ -135,6 +151,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L543"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `create_role`
 
 ```python
@@ -153,6 +171,8 @@ create_role(
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L521"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `delete`
 
 ```python
@@ -164,6 +184,8 @@ delete(group_id: str, token: str)
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L600"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `delete_all_role_actions`
 
@@ -177,6 +199,8 @@ delete_all_role_actions(group_id: str, role_id: str, token: str)
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L626"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `delete_all_role_members`
 
 ```python
@@ -188,6 +212,8 @@ delete_all_role_members(group_id: str, role_id: str, token: str)
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L576"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `delete_role`
 
@@ -201,6 +227,8 @@ delete_role(group_id: str, role_id: str, token: str)
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L593"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `delete_role_actions`
 
 ```python
@@ -213,6 +241,8 @@ delete_role_actions(group_id: str, role_id: str, actions: list, token: str)
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L619"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `delete_role_members`
 
 ```python
@@ -224,6 +254,8 @@ delete_role_members(group_id: str, role_id: str, members: list, token: str)
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L473"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `disable`
 
@@ -248,6 +280,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L506"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `enable`
 
 ```python
@@ -259,6 +293,8 @@ enable(group_id: str, token: str)
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L78"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get`
 
@@ -285,6 +321,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L113"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `get_all`
 
 ```python
@@ -310,6 +348,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L566"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `get_role`
 
 ```python
@@ -321,6 +361,8 @@ get_role(group_id: str, role_id: str, token: str)
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L538"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `list_available_actions`
 
@@ -334,6 +376,8 @@ list_available_actions(token: str)
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L631"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `list_members`
 
 ```python
@@ -345,6 +389,8 @@ list_members(group_id: str, query_params: dict, token: str)
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L588"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `list_role_actions`
 
@@ -358,6 +404,8 @@ list_role_actions(group_id: str, role_id: str, token: str)
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L612"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `list_role_members`
 
 ```python
@@ -370,6 +418,8 @@ list_role_members(group_id: str, role_id: str, query_params: dict, token: str)
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L561"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `list_roles`
 
 ```python
@@ -381,6 +431,8 @@ list_roles(group_id: str, query_params: dict, token: str)
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L296"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `members`
 
@@ -407,6 +459,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L343"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `memberships`
 
 ```python
@@ -429,6 +483,8 @@ Usage:
 ```               >>> from magistrala import sdk          >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")          >>> member_id = "member_id"          >>> query_params = {          ...     "offset": 0,          ...     "limit": 10,          ... }          >>> mf_resp = mfsdk.groups.memberships(member_id, query_params)          >>> mf_resp     
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L157"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `parents`
 
@@ -455,6 +511,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L436"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `unassign`
 
 ```python
@@ -477,6 +535,8 @@ Usage:
 ```                        >>> from magistrala import sdk              >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")              >>> group_id = "group_id"              >>> members_ids = "members_ids"              >>> mf_resp = mfsdk.groups.unassign(group_id, members_ids)              >>> mf_resp 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L252"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update`
 
@@ -502,6 +562,8 @@ Usage:
 ```               >>> from magistrala import sdk          >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")          >>> group_id = "group_id"          >>> group = {          ...     "name": "groupName",          ... }          >>> mf_resp = mfsdk.groups.update(group_id, group)          >>> mf_resp 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/groups.py#L571"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update_role`
 

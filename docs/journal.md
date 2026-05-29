@@ -1,5 +1,7 @@
 <!-- markdownlint-disable -->
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/journal.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 # <kbd>module</kbd> `journal`
 
 
@@ -9,10 +11,14 @@
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/journal.py#L8"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ## <kbd>class</kbd> `Journal`
 Journal API client. 
 
 Retrieves audit/activity logs for entities and users, and client telemetry. 
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/journal.py#L16"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -28,6 +34,8 @@ __init__(url: str)
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/journal.py#L88"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `client_telemetry`
 
@@ -46,6 +54,8 @@ params:  client_id: str - unique client ID  domain_id: str - domain the client b
  - <b>`mf_resp`</b>:  response.Response - response object with ClientTelemetry 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/journal.py#L19"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `list_by_entity`
 
@@ -70,6 +80,8 @@ params:  entity_type: str - e.g. "client", "channel", "group"  entity_id: str - 
  - <b>`mf_resp`</b>:  response.Response - response object with JournalsPage 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/journal.py#L62"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `list_by_user`
 

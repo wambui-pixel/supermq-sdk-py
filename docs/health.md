@@ -1,5 +1,7 @@
 <!-- markdownlint-disable -->
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/health.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 # <kbd>module</kbd> `health`
 
 
@@ -9,10 +11,14 @@
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/health.py#L22"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ## <kbd>class</kbd> `Health`
 Health check API client. 
 
 Checks the health of individual Magistrala services. Each service URL is optional; only provided services can be checked. 
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/health.py#L31"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -40,6 +46,8 @@ __init__(
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/health.py#L59"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `check`
 

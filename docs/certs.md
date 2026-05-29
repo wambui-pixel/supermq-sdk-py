@@ -1,5 +1,7 @@
 <!-- markdownlint-disable -->
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/certs.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 # <kbd>module</kbd> `certs`
 
 
@@ -8,6 +10,8 @@
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/certs.py#L8"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `Certs`
 Magistrala Certificates API 
@@ -20,6 +24,8 @@ Certs is used to issue, view, and revoke certificates. It is used to issue certi
  
  - <b>`url`</b> (str):  Magistrala Certificates API URL. 
  - <b>`CERTS_ENDPOINT`</b> (str):  Certificates API endpoint. 
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/certs.py#L20"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -45,6 +51,8 @@ Initializes Certs with the provided URL.
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/certs.py#L31"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `issue`
 
@@ -79,6 +87,8 @@ Usage: ``` from magistrala import sdk```
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/certs.py#L139"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `revoke`
 
 ```python
@@ -109,6 +119,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/certs.py#L70"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `view_by_client`
 
 ```python
@@ -138,6 +150,8 @@ Usage:
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/certs.py#L104"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `view_by_serial`
 

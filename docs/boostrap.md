@@ -1,5 +1,7 @@
 <!-- markdownlint-disable -->
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/boostrap.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 # <kbd>module</kbd> `boostrap`
 
 
@@ -8,6 +10,8 @@
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/boostrap.py#L8"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `Bootstrap`
 Bootstrap service API client. 
@@ -25,6 +29,8 @@ Bootstrap service is used to manage configurations for Magistrala Clients. It pr
  - <b>`BOOTSTRAP_CERTS_ENDPOINT`</b> (str):  Bootstrap certificates API endpoint. 
 
 
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/boostrap.py#L27"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -51,6 +57,8 @@ params:  url (str): Magistrala Bootstrap API URL.
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/boostrap.py#L41"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `add`
 
@@ -91,6 +99,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/boostrap.py#L300"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `bootstrap`
 
 ```python
@@ -120,6 +130,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/boostrap.py#L266"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `remove`
 
 ```python
@@ -147,6 +159,8 @@ Usage:
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/boostrap.py#L173"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update`
 
@@ -187,6 +201,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/boostrap.py#L224"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `update_certs`
 
 ```python
@@ -224,6 +240,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/boostrap.py#L139"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `view`
 
 ```python
@@ -253,6 +271,8 @@ Usage:
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/boostrap.py#L90"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `whitelist`
 

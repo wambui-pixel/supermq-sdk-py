@@ -1,5 +1,7 @@
 <!-- markdownlint-disable -->
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 # <kbd>module</kbd> `users`
 
 
@@ -8,6 +10,8 @@
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L9"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `Users`
 Users API client. 
@@ -20,6 +24,8 @@ Users API is used for creating and managing users. It is used for creating new u
  
  - <b>`URL`</b>:  str - URL of the Users API 
  - <b>`USERS_ENDPOINT`</b>:  str - Users API endpoint 
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L23"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -35,6 +41,8 @@ __init__(url: str)
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L635"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `authorise_user`
 
@@ -59,6 +67,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L36"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `create`
 
 ```python
@@ -82,6 +92,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L714"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `delete`
 
 ```python
@@ -93,6 +105,8 @@ delete(user_id: str, token: str)
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L603"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `disable`
 
@@ -114,6 +128,8 @@ Usage:
 ```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user_id= "886b4266-77d1-4258-abae-2931fb4f16de"     >>> mf_resp = mfsdk.users.disable(user_id, user_token)     >>> mf_resp             
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L569"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `enable`
 
@@ -138,6 +154,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L157"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `get`
 
 ```python
@@ -160,6 +178,8 @@ Usage:
 ```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user_id = "886b4266-77d1-4258-abae-2931fb4f16de"     >>> token = ""     >>> mf_resp = mfsdk.users.get(user_id, token)     >>> mf_resp             
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L193"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get_all`
 
@@ -186,6 +206,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L683"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `get_profile`
 
 ```python
@@ -197,6 +219,8 @@ get_profile(token: str)
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L862"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `list_channels`
 
@@ -210,6 +234,8 @@ list_channels(user_id: str, domain_id: str, query_params: dict, token: str)
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L837"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `list_clients`
 
 ```python
@@ -222,6 +248,8 @@ list_clients(user_id: str, domain_id: str, query_params: dict, token: str)
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L812"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `list_groups`
 
 ```python
@@ -233,6 +261,8 @@ list_groups(user_id: str, domain_id: str, query_params: dict, token: str)
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L85"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `login`
 
@@ -256,6 +286,8 @@ Usage:
     >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> credentials= {     ...         "identity": "user@magistrala.com",     ...         "secret": "12345678"     ... }     >>> mf_resp = mfsdk.users.login(credentials)     >>> mf_resp                 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L123"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `refresh_token`
 
@@ -282,6 +314,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L525"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `reset_password`
 
 ```python
@@ -304,6 +338,8 @@ Usage:
 ```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     ... password = 234567     ... confirm_password = 234567     >>> mf_resp = mfsdk.users.reset_password(password, confirm_password, token)     >>> mf_resp 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L485"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `reset_password_request`
 
@@ -328,6 +364,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L698"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `search`
 
 ```python
@@ -340,6 +378,8 @@ search(query_params: dict, token: str)
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L782"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `send_verification`
 
 ```python
@@ -351,6 +391,8 @@ send_verification(token: str)
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L236"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update`
 
@@ -375,6 +417,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L446"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `update_password`
 
 ```python
@@ -398,6 +442,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L745"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `update_profile_picture`
 
 ```python
@@ -410,6 +456,8 @@ update_profile_picture(user: dict, token: str)
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L766"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `update_role`
 
 ```python
@@ -421,6 +469,8 @@ update_role(user: dict, token: str)
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L288"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update_user_identity`
 
@@ -447,6 +497,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L400"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `update_user_owner`
 
 ```python
@@ -471,6 +523,8 @@ Usage:
 ```          >>> from magistrala import sdk     >>> mfsdk = sdk.SDK(users_url="http://localhost:9002")     >>> user = {     ...     "name": "example",     ...     "id": "886b4266-77d1-4258-abae-2931fb4f16de",     ...     "owner": "c52d-3b0d-43b9-8c3e-275c087d875af"     ... }     >>> mf_resp = mfsdk.users.update_user_owner(user, user_token)     >>> mf_resp             
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L345"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update_user_tags`
 
@@ -497,6 +551,8 @@ Usage:
 
 ---
 
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L729"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
 ### <kbd>method</kbd> `update_username`
 
 ```python
@@ -508,6 +564,8 @@ update_username(user: dict, token: str)
 
 
 ---
+
+<a href="https://github.com/absmach/supermq-sdk-py/blob/main/magistrala/users.py#L797"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `verify_email`
 
